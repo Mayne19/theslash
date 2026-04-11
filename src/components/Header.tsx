@@ -51,7 +51,7 @@ export default function Header() {
 
             {/* Logo */}
             <Link href="/" style={{ textDecoration: "none", flexShrink: 0 }}>
-              <img src="/logo-texte.png" alt="/ theslash" style={{ height: "32px", width: "auto" }} />
+              <img src="/icon.svg" alt="/ theslash" style={{ height: "32px", width: "32px" }} />
             </Link>
 
             {/* Desktop nav */}

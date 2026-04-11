@@ -31,7 +31,7 @@ export default function ContactAnimatedWidget() {
         </div>
 
         <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "24px" }}>
-          <img src="/logo-texte.png" alt="/ theslash" style={{ height: "32px", width: "auto", filter: "brightness(0) invert(1)", flexShrink: 0 }} />
+          <img src="/icon.svg" alt="/ theslash" style={{ height: "40px", width: "40px", borderRadius: "10px", flexShrink: 0 }} />
           <div>
             <p style={{ fontWeight: 700, fontSize: "0.9rem", color: "#ffffff" }}>/ theslash</p>
             <p style={{ fontSize: "0.72rem", color: "rgba(255,255,255,0.4)" }}>Studio web francophone</p>

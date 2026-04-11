@@ -113,7 +113,7 @@ export default function ArticleSidebarLeft({ items }: ArticleSidebarLeftProps) {
 
       {/* CTA card */}
       <div style={{ backgroundColor: "#1A1A1A", borderRadius: "16px", padding: "20px" }}>
-        <img src="/logo-texte.png" alt="/ theslash" style={{ height: "32px", width: "auto", filter: "brightness(0) invert(1)", marginBottom: "12px" }} />
+        <img src="/icon.svg" alt="/ theslash" style={{ height: "32px", width: "32px", marginBottom: "12px" }} />
         <p style={{ fontFamily: "var(--font-inter), -apple-system, sans-serif", fontWeight: 800, fontSize: "0.9rem", color: "#ffffff", lineHeight: 1.35, marginBottom: "8px" }}>
           Et si on bossait ensemble ?
         </p>
