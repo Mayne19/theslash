@@ -61,7 +61,7 @@ export default function ArticleCallout({ type, label, children }: ArticleCallout
         fontFamily: "var(--font-inter), -apple-system, sans-serif",
         whiteSpace: "nowrap",
       }}>
-        {c.emoji} {label || c.label}
+        {label || c.label}
       </div>
       <div style={{
         fontSize: "0.92rem",
