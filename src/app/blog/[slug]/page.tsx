@@ -108,7 +108,7 @@ const placeholderContent: Record<string, { title: string; description: string; c
       <p>Créer un site web professionnel en 2026 n'est plus réservé aux grandes entreprises. Avec les bons outils et la bonne méthode, un entrepreneur peut aujourd'hui avoir une présence en ligne sérieuse, rapide et bien référencée. Ce guide vous explique tout.</p>
 
       <div style="position:relative;background:#DBEAFE;border:2px solid #3B82F6;border-radius:16px;padding:24px 24px 24px 28px;margin:32px 0;font-family:var(--font-inter),-apple-system,sans-serif">
-        <div style="position:absolute;top:-14px;left:20px;background:#3B82F6;color:#fff;font-weight:800;font-size:0.78rem;padding:4px 12px;border-radius:6px;white-space:nowrap">📊 Chiffre à connaître</div>
+        <div style="position:absolute;top:-14px;left:20px;background:#3B82F6;color:#fff;font-weight:800;font-size:0.78rem;padding:4px 12px;border-radius:6px;white-space:nowrap">Chiffre à connaître</div>
         <div style="font-size:0.92rem;color:#1A1A1A;line-height:1.8;margin-top:6px">75% des internautes jugent la crédibilité d'une entreprise sur la base de son site web. <em>(Source : Stanford Web Credibility Research)</em></div>
       </div>
 
@@ -119,7 +119,7 @@ const placeholderContent: Record<string, { title: string; description: string; c
       <p>Un site bien construit est un commercial qui travaille pour vous sans jamais s'arrêter.</p>
 
       <div style="position:relative;background:#FFF9C4;border:2px solid #F3C709;border-radius:16px;padding:24px 24px 24px 28px;margin:32px 0;font-family:var(--font-inter),-apple-system,sans-serif">
-        <div style="position:absolute;top:-14px;left:20px;background:#F3C709;color:#1A1A1A;font-weight:800;font-size:0.78rem;padding:4px 12px;border-radius:6px;white-space:nowrap">💡 À retenir</div>
+        <div style="position:absolute;top:-14px;left:20px;background:#F3C709;color:#1A1A1A;font-weight:800;font-size:0.78rem;padding:4px 12px;border-radius:6px;white-space:nowrap">À retenir</div>
         <div style="font-size:0.92rem;color:#1A1A1A;line-height:1.8;margin-top:6px">Un site web n'est pas une dépense. C'est un investissement qui génère des retours sur le long terme via le référencement naturel.</div>
       </div>
 
@@ -154,7 +154,7 @@ const placeholderContent: Record<string, { title: string; description: string; c
       <p>Un site codé from scratch avec Next.js offre une liberté totale sur le design, des performances optimales et une image plus premium.</p>
 
       <div style="position:relative;background:#FEE2E2;border:2px solid #EF4444;border-radius:16px;padding:24px 24px 24px 28px;margin:32px 0;font-family:var(--font-inter),-apple-system,sans-serif">
-        <div style="position:absolute;top:-14px;left:20px;background:#EF4444;color:#fff;font-weight:800;font-size:0.78rem;padding:4px 12px;border-radius:6px;white-space:nowrap">🥊 Erreur fréquente</div>
+        <div style="position:absolute;top:-14px;left:20px;background:#EF4444;color:#fff;font-weight:800;font-size:0.78rem;padding:4px 12px;border-radius:6px;white-space:nowrap">Erreur fréquente</div>
         <div style="font-size:0.92rem;color:#1A1A1A;line-height:1.8;margin-top:6px">Beaucoup d'entrepreneurs choisissent WordPress uniquement parce que c'est "ce que tout le monde utilise". Demandez-vous d'abord ce dont vous avez réellement besoin avant de choisir un outil.</div>
       </div>
 
