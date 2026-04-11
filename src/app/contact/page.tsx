@@ -7,7 +7,7 @@ import { AnimatedSection } from "@/components/AnimatedSection";
 import { Mail, Clock, Globe } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Contact, Démarrer un projet web | / theslash",
+  title: "Contact — Démarrer un projet web",
   description: "Parlez-nous de votre projet web. Réponse garantie sous 24 heures. Création de site, landing page, refonte ou application web.",
   openGraph: { url: "https://theslash.fr/contact" },
 };

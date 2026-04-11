@@ -7,7 +7,7 @@ import SlashTitle from "@/components/SlashTitle";
 import { AnimatedSection, AnimatedGrid } from "@/components/AnimatedSection";
 
 export const metadata: Metadata = {
-  title: "À propos | / theslash — Studio web francophone",
+  title: "À propos — Studio web francophone",
   description: "Qui sommes-nous ? / theslash est un studio web francophone qui crée des sites performants pour les entrepreneurs. Notre mission, notre approche, notre stack.",
   openGraph: { url: "https://theslash.fr/a-propos" },
 };
@@ -73,7 +73,7 @@ export default function AProposPage() {
               <SlashTitle gray="pourquoi" black="theslash ?" style={{ marginBottom: "24px" }} />
               <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
                 <p style={{ fontFamily: "var(--font-inter), -apple-system, sans-serif", fontSize: "0.95rem", color: "#6B7280", lineHeight: 1.8 }}>
-                  Le yuzu est un agrume japonais : petit, intense, unique. Il donne une saveur distincte à tout ce qu&apos;il touche. C&apos;est exactement ce qu&apos;on veut apporter à chaque projet, une identité forte, un travail précis, un résultat mémorable.
+                  Le slash, c&apos;est la barre oblique qu&apos;on met avant ce qui compte vraiment. Un symbole de clarté, de structure, de précision.
                 </p>
                 <p style={{ fontFamily: "var(--font-inter), -apple-system, sans-serif", fontSize: "0.95rem", color: "#6B7280", lineHeight: 1.8 }}>
                   On a lancé / theslash parce qu&apos;on voyait trop d&apos;entrepreneurs avec des sites qui ne les représentaient pas. Des templates achetés 30€, mal configurés, lents, mal référencés. Des sites qui existent mais ne travaillent pas.

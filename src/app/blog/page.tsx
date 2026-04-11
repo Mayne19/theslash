@@ -8,7 +8,7 @@ import { getAllArticles, getCategoryLabel } from "@/lib/articles";
 import { ArrowRight, Clock, Calendar } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Blog web design, IA et création de sites | / theslash",
+  title: "Blog web design, IA et création de sites",
   description: "Ressources pratiques pour les entrepreneurs : web design, SEO, intelligence artificielle et création de sites. Articles de fond par le studio / theslash.",
   openGraph: { url: "https://theslash.fr/blog" },
 };

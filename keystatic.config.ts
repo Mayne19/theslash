@@ -37,6 +37,17 @@ export default config({
           ],
         }),
         content: fields.mdx({ label: "Contenu" }),
+        faq: fields.array(
+          fields.object({
+            question: fields.text({ label: "Question" }),
+            answer: fields.text({ label: "Réponse", multiline: true }),
+          }),
+          {
+            label: "FAQ (optionnel)",
+            description: "Questions fréquentes spécifiques à cet article. Laissez vide si pas de FAQ.",
+            itemLabel: (props) => props.fields.question.value || "Question",
+          }
+        ),
       },
     }),
   },

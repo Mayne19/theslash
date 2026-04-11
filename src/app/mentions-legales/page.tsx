@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 export const metadata: Metadata = {
-  title: "Mentions légales | / theslash",
+  title: "Mentions légales",
   robots: { index: false },
 };
 

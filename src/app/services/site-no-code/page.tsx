@@ -8,7 +8,7 @@ import Breadcrumb from "@/components/Breadcrumb";
 import { AnimatedSection, AnimatedGrid } from "@/components/AnimatedSection";
 
 export const metadata: Metadata = {
-  title: "Création site Webflow / No-code | / theslash",
+  title: "Création site Webflow / No-code",
   description: "Création de sites Webflow et no-code pour entrepreneurs. Design visuel, gestion autonome, rapide à lancer. Studio web / theslash.",
   openGraph: { url: "https://theslash.fr/services/site-no-code" },
 };

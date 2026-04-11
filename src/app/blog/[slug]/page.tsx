@@ -41,7 +41,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-const placeholderContent: Record<string, { title: string; description: string; content: string; category: string; readingTime: number; date: string; updatedDate?: string }> = {
+const placeholderContent: Record<string, { title: string; description: string; content: string; category: string; readingTime: number; date: string; updatedDate?: string; faq?: { q: string; a: string }[] }> = {
   "comment-choisir-son-cms-2026": {
     title: "Comment choisir le bon CMS pour votre site en 2026",
     description: "WordPress, Webflow, headless CMS ou Next.js ? On décortique chaque option pour vous aider à faire le bon choix selon votre projet et votre budget.",
@@ -99,6 +99,11 @@ const placeholderContent: Record<string, { title: string; description: string; c
     readingTime: 8,
     date: "11 avril 2026",
     updatedDate: "11 avril 2026",
+    faq: [
+      { q: "Combien de temps faut-il pour créer un site web professionnel ?", a: "En général : 2 à 3 semaines pour un site vitrine, 1 à 2 semaines pour une landing page, 4 à 8 semaines pour une refonte complète. Tout dépend de la complexité et de votre réactivité dans la validation des étapes." },
+      { q: "Quelle est la différence entre un site vitrine et une landing page ?", a: "Un site vitrine présente votre activité globale sur plusieurs pages. Une landing page est une page unique, pensée pour un seul objectif : vendre une offre, récupérer un email, inscrire à un événement." },
+      { q: "Pourquoi faire appel à un studio web plutôt qu'à un freelance ?", a: "Un studio comme / theslash combine les compétences d'un designer, d'un développeur et d'un consultant SEO. Vous avez un interlocuteur unique mais une équipe derrière. Moins de coordination, plus de cohérence." },
+    ],
     content: `
       <p>Créer un site web professionnel en 2026 n'est plus réservé aux grandes entreprises. Avec les bons outils et la bonne méthode, un entrepreneur peut aujourd'hui avoir une présence en ligne sérieuse, rapide et bien référencée. Ce guide vous explique tout.</p>
 
@@ -288,11 +293,14 @@ export default async function ArticlePage({ params }: Props) {
     gap: "6px",
   };
 
-  const faqItems = [
-    { q: `Combien de temps faut-il pour créer un site web professionnel ?`, a: `En général : 2 à 3 semaines pour un site vitrine, 1 à 2 semaines pour une landing page, 4 à 8 semaines pour une refonte complète. Tout dépend de la complexité et de votre réactivité dans la validation des étapes.` },
-    { q: `Quelle est la différence entre un site vitrine et une landing page ?`, a: `Un site vitrine présente votre activité globale sur plusieurs pages. Une landing page est une page unique, pensée pour un seul objectif : vendre une offre, récupérer un email, inscrire à un événement.` },
-    { q: `Pourquoi faire appel à un studio web plutôt qu'à un freelance ?`, a: `Un studio comme / theslash combine les compétences d'un designer, d'un développeur et d'un consultant SEO. Vous avez un interlocuteur unique mais une équipe derrière. Moins de coordination, plus de cohérence.` },
-  ];
+  // FAQ : priorité au champ Keystatic, sinon FAQ du placeholder, sinon vide
+  const keystakFaq = article?.faq ?? [];
+  const placeholderFaq = placeholder?.faq ?? [];
+  const faqItems = (
+    keystakFaq.length > 0
+      ? keystakFaq.map((f) => ({ q: f.question, a: f.answer }))
+      : placeholderFaq
+  );
 
   return (
     <>

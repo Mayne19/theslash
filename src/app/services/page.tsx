@@ -9,7 +9,7 @@ import SlashTitle from "@/components/SlashTitle";
 import { AnimatedSection } from "@/components/AnimatedSection";
 
 export const metadata: Metadata = {
-  title: "Services web, Création, design et développement | / theslash",
+  title: "Services web — Création, design et développement",
   description: "Création de sites web, landing pages, refontes et applications web sur mesure pour entrepreneurs. Studio web francophone, solutions pensées pour convertir.",
   openGraph: { url: "https://theslash.fr/services" },
 };

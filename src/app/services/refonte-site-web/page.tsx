@@ -8,7 +8,7 @@ import Breadcrumb from "@/components/Breadcrumb";
 import { AnimatedSection, AnimatedGrid } from "@/components/AnimatedSection";
 
 export const metadata: Metadata = {
-  title: "Refonte site web professionnel | / theslash",
+  title: "Refonte site web professionnel",
   description: "Refonte complète de votre site web : design modernisé, performance améliorée, SEO optimisé. Transformez un site qui sous-performe en machine à convertir.",
   openGraph: { url: "https://theslash.fr/services/refonte-site-web" },
 };

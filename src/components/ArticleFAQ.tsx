@@ -14,6 +14,8 @@ interface ArticleFAQProps {
 export default function ArticleFAQ({ items }: ArticleFAQProps) {
   const [open, setOpen] = useState<number | null>(null);
 
+  if (!items || items.length === 0) return null;
+
   return (
     <section style={{ backgroundColor: "#F5F0E8", padding: "72px 0" }}>
       <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 clamp(20px, 3vw, 44px)" }}>
