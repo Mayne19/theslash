@@ -1,12 +1,12 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { motion, useInView, AnimatePresence } from "framer-motion";
+import { useRef, useState } from "react";
 
 const metrics = [
-  { label: "Performance", value: 98, color: "#22C55E" },
-  { label: "SEO", value: 94, color: "#F3C709" },
-  { label: "Accessibilité", value: 91, color: "#3B82F6" },
+  { label: "Performance", value: 98, color: "#22C55E", badge: "Excellent" },
+  { label: "SEO", value: 94, color: "#F3C709", badge: "Excellent" },
+  { label: "Accessibilité", value: 91, color: "#3B82F6", badge: "Très bon" },
 ];
 
 const r = 44;
@@ -17,6 +17,9 @@ const circumference = 2 * Math.PI * r;
 export default function SeoWidget() {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-60px" });
+  const [active, setActive] = useState(1); // SEO par défaut
+
+  const m = metrics[active];
 
   return (
     <motion.div
@@ -35,13 +38,26 @@ export default function SeoWidget() {
         fontFamily: "var(--font-inter), -apple-system, sans-serif",
       }}
     >
+      {/* Header */}
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "18px" }}>
         <p style={{ fontSize: "0.72rem", color: "#9CA3AF", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.06em" }}>
-          Score SEO
+          Score {m.label}
         </p>
-        <span style={{ fontSize: "0.68rem", backgroundColor: "rgba(34,197,94,0.1)", color: "#22C55E", fontWeight: 600, padding: "3px 8px", borderRadius: "50px" }}>
-          Excellent
-        </span>
+        <motion.span
+          key={active}
+          initial={{ opacity: 0, scale: 0.85 }}
+          animate={{ opacity: 1, scale: 1 }}
+          style={{
+            fontSize: "0.68rem",
+            backgroundColor: `${m.color}18`,
+            color: m.color,
+            fontWeight: 600,
+            padding: "3px 8px",
+            borderRadius: "50px",
+          }}
+        >
+          {m.badge}
+        </motion.span>
       </div>
 
       {/* SVG Circle */}
@@ -49,19 +65,23 @@ export default function SeoWidget() {
         <div style={{ position: "relative", width: "160px", height: "160px" }}>
           <svg width="160" height="160" viewBox="0 0 120 120" style={{ transform: "rotate(-90deg)" }}>
             <circle cx={cx} cy={cy} r={r} fill="none" stroke="#F0EDE8" strokeWidth="8" />
-            <motion.circle
-              cx={cx}
-              cy={cy}
-              r={r}
-              fill="none"
-              stroke="#F3C709"
-              strokeWidth="8"
-              strokeLinecap="round"
-              strokeDasharray={circumference}
-              initial={{ strokeDashoffset: circumference }}
-              animate={isInView ? { strokeDashoffset: circumference * (1 - 0.94) } : { strokeDashoffset: circumference }}
-              transition={{ duration: 1.6, delay: 0.4, ease: "easeOut" }}
-            />
+            <AnimatePresence mode="wait">
+              <motion.circle
+                key={active}
+                cx={cx}
+                cy={cy}
+                r={r}
+                fill="none"
+                stroke={m.color}
+                strokeWidth="8"
+                strokeLinecap="round"
+                strokeDasharray={circumference}
+                initial={{ strokeDashoffset: circumference }}
+                animate={isInView ? { strokeDashoffset: circumference * (1 - m.value / 100) } : { strokeDashoffset: circumference }}
+                exit={{ strokeDashoffset: circumference }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+              />
+            </AnimatePresence>
           </svg>
           <div style={{
             position: "absolute",
@@ -71,29 +91,54 @@ export default function SeoWidget() {
             alignItems: "center",
             justifyContent: "center",
           }}>
-            <span style={{ fontSize: "2.6rem", fontWeight: 800, color: "#1A1A1A", lineHeight: 1, letterSpacing: "-0.04em" }}>94</span>
+            <AnimatePresence mode="wait">
+              <motion.span
+                key={active}
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -6 }}
+                transition={{ duration: 0.25 }}
+                style={{ fontSize: "2.6rem", fontWeight: 800, color: "#1A1A1A", lineHeight: 1, letterSpacing: "-0.04em" }}
+              >
+                {m.value}
+              </motion.span>
+            </AnimatePresence>
             <span style={{ fontSize: "0.68rem", color: "#9CA3AF", marginTop: "2px" }}>/ 100</span>
           </div>
         </div>
       </div>
 
-      {/* Metrics */}
-      <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-        {metrics.map((m, idx) => (
-          <div key={m.label}>
+      {/* Clickable metrics */}
+      <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
+        {metrics.map((metric, idx) => (
+          <button
+            key={metric.label}
+            onClick={() => setActive(idx)}
+            style={{
+              background: active === idx ? `${metric.color}10` : "none",
+              border: active === idx ? `1px solid ${metric.color}40` : "1px solid transparent",
+              borderRadius: "10px",
+              padding: "8px 10px",
+              cursor: "pointer",
+              transition: "all 150ms",
+              textAlign: "left",
+            }}
+          >
             <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "5px" }}>
-              <span style={{ fontSize: "0.75rem", color: "#1A1A1A", fontWeight: 500 }}>{m.label}</span>
-              <span style={{ fontSize: "0.75rem", color: m.color, fontWeight: 700 }}>{m.value}</span>
+              <span style={{ fontSize: "0.75rem", color: active === idx ? "#1A1A1A" : "#6B7280", fontWeight: active === idx ? 700 : 500 }}>
+                {metric.label}
+              </span>
+              <span style={{ fontSize: "0.75rem", color: metric.color, fontWeight: 700 }}>{metric.value}</span>
             </div>
             <div style={{ height: "5px", backgroundColor: "#F0EDE8", borderRadius: "3px", overflow: "hidden" }}>
               <motion.div
                 initial={{ width: 0 }}
-                animate={isInView ? { width: `${m.value}%` } : { width: 0 }}
+                animate={isInView ? { width: `${metric.value}%` } : { width: 0 }}
                 transition={{ duration: 1, delay: 0.6 + idx * 0.15, ease: "easeOut" }}
-                style={{ height: "100%", backgroundColor: m.color, borderRadius: "3px" }}
+                style={{ height: "100%", backgroundColor: metric.color, borderRadius: "3px" }}
               />
             </div>
-          </div>
+          </button>
         ))}
       </div>
     </motion.div>

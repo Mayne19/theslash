@@ -70,6 +70,7 @@ export default function ContactForm() {
   return (
     <form
       onSubmit={handleSubmit}
+      autoComplete="off"
       style={{ backgroundColor: "#ffffff", borderRadius: "20px", padding: "40px", boxShadow: "0 4px 32px rgba(0,0,0,0.07)" }}
     >
       <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>

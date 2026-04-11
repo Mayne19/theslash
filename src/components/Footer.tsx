@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { useState } from "react";
 
 const navLinks = [
   { href: "/", label: "Accueil" },
@@ -21,6 +22,14 @@ const serviceLinks = [
 ];
 
 export default function Footer() {
+  const [nlEmail, setNlEmail] = useState("");
+  const [nlDone, setNlDone] = useState(false);
+
+  function handleNewsletter(e: React.FormEvent) {
+    e.preventDefault();
+    if (nlEmail) setNlDone(true);
+  }
+
   return (
     <footer style={{ backgroundColor: "#111111", color: "#ffffff" }}>
       <div style={{
@@ -163,44 +172,54 @@ export default function Footer() {
             }}>
               Conseils web, SEO et design chaque semaine. Pas de spam.
             </p>
-            <form onSubmit={(e) => e.preventDefault()} style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-              <input
-                type="email"
-                placeholder="votre@email.com"
-                style={{
-                  fontFamily: "var(--font-inter), -apple-system, sans-serif",
-                  fontSize: "0.875rem",
-                  padding: "11px 14px",
-                  borderRadius: "10px",
-                  border: "1px solid #2D2D2D",
-                  backgroundColor: "#1A1A1A",
-                  color: "#ffffff",
-                  outline: "none",
-                  width: "100%",
-                }}
-              />
-              <button
-                type="submit"
-                style={{
-                  fontFamily: "var(--font-inter), -apple-system, sans-serif",
-                  fontWeight: 600,
-                  fontSize: "0.875rem",
-                  padding: "11px 14px",
-                  borderRadius: "10px",
-                  backgroundColor: "#F3C709",
-                  color: "#1A1A1A",
-                  border: "none",
-                  cursor: "pointer",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  gap: "6px",
-                  transition: "opacity 200ms",
-                }}
-              >
-                S&apos;inscrire <ArrowRight size={14} />
-              </button>
-            </form>
+            {nlDone ? (
+              <p style={{ fontFamily: "var(--font-inter), -apple-system, sans-serif", fontSize: "0.85rem", color: "#22C55E", fontWeight: 600 }}>
+                ✓ Vous êtes inscrit !
+              </p>
+            ) : (
+              <form onSubmit={handleNewsletter} style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+                <input
+                  type="email"
+                  value={nlEmail}
+                  onChange={(e) => setNlEmail(e.target.value)}
+                  placeholder="votre@email.com"
+                  required
+                  style={{
+                    fontFamily: "var(--font-inter), -apple-system, sans-serif",
+                    fontSize: "0.875rem",
+                    padding: "11px 14px",
+                    borderRadius: "10px",
+                    border: "1px solid #2D2D2D",
+                    backgroundColor: "#1A1A1A",
+                    color: "#ffffff",
+                    outline: "none",
+                    width: "100%",
+                    boxSizing: "border-box",
+                  }}
+                />
+                <button
+                  type="submit"
+                  style={{
+                    fontFamily: "var(--font-inter), -apple-system, sans-serif",
+                    fontWeight: 600,
+                    fontSize: "0.875rem",
+                    padding: "11px 14px",
+                    borderRadius: "10px",
+                    backgroundColor: "#F3C709",
+                    color: "#1A1A1A",
+                    border: "none",
+                    cursor: "pointer",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: "6px",
+                    transition: "opacity 200ms",
+                  }}
+                >
+                  S&apos;inscrire <ArrowRight size={14} />
+                </button>
+              </form>
+            )}
           </div>
         </div>
 
