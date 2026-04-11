@@ -8,6 +8,10 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Champs requis manquants." }, { status: 400 });
     }
 
+    if (!process.env.WEB3FORMS_KEY) {
+      return NextResponse.json({ error: "Clé WEB3FORMS_KEY manquante sur le serveur." }, { status: 500 });
+    }
+
     const res = await fetch("https://api.web3forms.com/submit", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -27,12 +31,13 @@ export async function POST(req: NextRequest) {
     const data = await res.json();
 
     if (!data.success) {
-      throw new Error(data.message || "Erreur Web3Forms");
+      console.error("Web3Forms error:", data);
+      return NextResponse.json({ error: data.message || "Erreur Web3Forms", debug: data }, { status: 500 });
     }
 
     return NextResponse.json({ ok: true });
   } catch (err) {
     console.error("Erreur envoi email:", err);
-    return NextResponse.json({ error: "Erreur serveur." }, { status: 500 });
+    return NextResponse.json({ error: String(err) }, { status: 500 });
   }
 }

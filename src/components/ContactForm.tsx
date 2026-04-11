@@ -48,10 +48,12 @@ export default function ContactForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
-      if (!res.ok) throw new Error("Erreur serveur");
+      const json = await res.json();
+      if (!res.ok) throw new Error(json.error || "Erreur serveur");
       setSubmitted(true);
-    } catch {
-      setError("Une erreur est survenue. Réessayez ou écrivez directement à hello@theslash.fr.");
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : "Erreur inconnue";
+      setError(msg);
     } finally {
       setLoading(false);
     }
