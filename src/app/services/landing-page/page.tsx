@@ -9,7 +9,7 @@ import { AnimatedSection, AnimatedGrid } from "@/components/AnimatedSection";
 
 export const metadata: Metadata = {
   title: "Création landing page professionnelle",
-  description: "Création de landing page optimisée pour la conversion. Copywriting, design et structure pensés pour transformer vos visiteurs en clients. Studio web / theslash.",
+  description: "Création de landing page optimisée pour la conversion. Copywriting, design et structure pensés pour transformer vos visiteurs en clients. Studio web theslash.",
   openGraph: { url: "https://theslash.fr/services/landing-page" },
 };
 

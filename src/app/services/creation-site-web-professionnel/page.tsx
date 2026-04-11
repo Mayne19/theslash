@@ -9,7 +9,7 @@ import { AnimatedSection, AnimatedGrid } from "@/components/AnimatedSection";
 
 export const metadata: Metadata = {
   title: "Création site web professionnel sur mesure",
-  description: "Création de site web professionnel sur mesure pour entrepreneurs. Design, SEO, performance, tout inclus. Studio web francophone / theslash.",
+  description: "Création de site web professionnel sur mesure pour entrepreneurs. Design, SEO, performance, tout inclus. Studio web francophone theslash.",
   openGraph: { url: "https://theslash.fr/services/creation-site-web-professionnel" },
 };
 

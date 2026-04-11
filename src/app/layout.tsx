@@ -19,17 +19,17 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "/ theslash — Création de sites web | Studio web francophone",
-    template: "%s | / theslash",
+    default: "theslash — Création de sites web professionnels pour entrepreneurs | Studio web francophone",
+    template: "%s | theslash",
   },
   description:
-    "/ theslash crée des sites web modernes, performants et optimisés pour Google. Sites vitrines, landing pages, refontes et applications web sur mesure pour entrepreneurs francophones.",
+    "theslash crée des sites web modernes, performants et optimisés pour Google. Sites vitrines, landing pages, refontes et applications web sur mesure pour entrepreneurs francophones.",
   metadataBase: new URL("https://theslash.fr"),
   openGraph: {
     type: "website",
     locale: "fr_FR",
     url: "https://theslash.fr",
-    siteName: "/ theslash",
+    siteName: "theslash",
   },
   robots: { index: true, follow: true },
   icons: {

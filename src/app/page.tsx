@@ -16,9 +16,9 @@ import GrowthChart from "@/components/ui/GrowthChart";
 import SeoWidget from "@/components/ui/SeoWidget";
 
 export const metadata: Metadata = {
-  title: "/ theslash, Création de sites web professionnels pour entrepreneurs | Studio web francophone",
+  title: { absolute: "theslash — Création de sites web professionnels pour entrepreneurs | Studio web francophone" },
   description:
-    "/ theslash crée des sites web modernes, performants et optimisés pour Google. Sites vitrines, landing pages, refontes et applications web sur mesure pour entrepreneurs francophones.",
+    "theslash crée des sites web modernes, performants et optimisés pour Google. Sites vitrines, landing pages, refontes et applications web sur mesure pour entrepreneurs francophones.",
 };
 
 const numberedServices = [

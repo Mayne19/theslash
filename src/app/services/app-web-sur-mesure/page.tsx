@@ -9,7 +9,7 @@ import { AnimatedSection, AnimatedGrid } from "@/components/AnimatedSection";
 
 export const metadata: Metadata = {
   title: "Création application web sur mesure",
-  description: "Développement d'applications web sur mesure : SaaS, espaces membres, outils métier. Stack moderne Next.js, TypeScript. Studio web / theslash.",
+  description: "Développement d'applications web sur mesure : SaaS, espaces membres, outils métier. Stack moderne Next.js, TypeScript. Studio web theslash.",
   openGraph: { url: "https://theslash.fr/services/app-web-sur-mesure" },
 };
 

@@ -8,7 +8,7 @@ import { AnimatedSection, AnimatedGrid } from "@/components/AnimatedSection";
 
 export const metadata: Metadata = {
   title: "À propos — Studio web francophone",
-  description: "Qui sommes-nous ? / theslash est un studio web francophone qui crée des sites performants pour les entrepreneurs. Notre mission, notre approche, notre stack.",
+  description: "Qui sommes-nous ? theslash est un studio web francophone qui crée des sites performants pour les entrepreneurs. Notre mission, notre approche, notre stack.",
   openGraph: { url: "https://theslash.fr/a-propos" },
 };
 
