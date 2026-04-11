@@ -32,6 +32,10 @@ export const metadata: Metadata = {
     siteName: "/ theslash",
   },
   robots: { index: true, follow: true },
+  icons: {
+    icon: '/icon.svg',
+    shortcut: '/icon.svg',
+  },
 };
 
 export default function RootLayout({
@@ -39,9 +43,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="fr" className={inter.variable}>
-      <head>
-        <link rel="icon" href="/logo-icone.png" sizes="any" />
-      </head>
+
       <body
         style={{ fontFamily: "var(--font-inter), -apple-system, system-ui, sans-serif", backgroundColor: "#F5F0E8" }}
         className="min-h-screen flex flex-col antialiased"
