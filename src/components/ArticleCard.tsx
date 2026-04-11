@@ -14,9 +14,11 @@ interface ArticleCardProps {
 }
 
 const fallbackImages = [
-  "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80",
-  "https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&q=80",
-  "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80",
+  "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600&q=90",
+  "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&q=90",
+  "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=90",
+  "https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&q=90",
+  "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&q=90",
 ];
 
 export default function ArticleCard({
@@ -28,7 +30,7 @@ export default function ArticleCard({
   readingTime,
   coverImage,
 }: ArticleCardProps) {
-  const imgIndex = Math.abs(slug.charCodeAt(0) + (slug.charCodeAt(1) || 0)) % fallbackImages.length;
+  const imgIndex = slug.charCodeAt(0) % fallbackImages.length;
   const imgSrc = coverImage || fallbackImages[imgIndex];
 
   return (

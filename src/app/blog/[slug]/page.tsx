@@ -171,6 +171,9 @@ const placeholderContent: Record<string, { title: string; description: string; c
       </div>
 
       <h2>4. Les 5 étapes pour créer un site web professionnel qui convertit</h2>
+      <div style="margin:24px 0;border-radius:14px;overflow:hidden;max-height:420px">
+        <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=900&q=90" alt="Méthode de création de site web" style="width:100%;height:100%;object-fit:cover;display:block" />
+      </div>
       <p>Voici la méthode que nous appliquons chez / theslash sur chaque projet :</p>
       <ol>
         <li><strong>Définir l'objectif principal</strong> : que doit accomplir votre site ? Générer des leads, vendre un produit, présenter votre portfolio ?</li>
@@ -179,6 +182,9 @@ const placeholderContent: Record<string, { title: string; description: string; c
         <li><strong>Designer avec l'objectif en tête</strong> : chaque élément visuel doit guider le visiteur vers une action précise. Beau ne suffit pas.</li>
         <li><strong>Mesurer et itérer</strong> : Google Search Console, Analytics, heatmaps. Un site qui ne se mesure pas ne s'améliore pas.</li>
       </ol>
+
+      <h2>En résumé</h2>
+      <p>Créer un site web professionnel en 2026 ne se résume pas à choisir un template et y coller ses textes. C'est un projet stratégique qui demande une réflexion sur vos objectifs, vos cibles, votre message et les outils adaptés. Un bon site web est un investissement qui travaille pour vous 24h/24 — à condition d'être bien conçu, bien référencé et bien suivi. Si vous voulez aller plus vite et éviter les erreurs, faites-vous accompagner par des professionnels qui font ça tous les jours.</p>
     `,
   },
 };
@@ -255,7 +261,7 @@ export default async function ArticlePage({ params }: Props) {
     "photo-1551434678-e076c223a692",
     "photo-1498050108023-c5249f4df085",
   ];
-  const coverImg = coverImages[slug.charCodeAt(0) % coverImages.length];
+  const coverImg = article?.coverImage ?? coverImages[slug.charCodeAt(0) % coverImages.length];
 
   const rawContent = placeholder?.content ?? "";
   const processedContent = addIDsToHeadings(rawContent);
@@ -363,7 +369,7 @@ export default async function ArticlePage({ params }: Props) {
         <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 clamp(20px, 3vw, 44px)" }}>
           <div style={{ borderRadius: "16px", overflow: "hidden", height: "640px" }}>
             <img
-              src={`https://images.unsplash.com/${coverImg}?w=1200&q=80`}
+              src={coverImg.startsWith("http") ? coverImg : `https://images.unsplash.com/${coverImg}?w=1200&q=90`}
               alt={title}
               style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
             />
@@ -396,7 +402,7 @@ export default async function ArticlePage({ params }: Props) {
                 dangerouslySetInnerHTML={{ __html: processedContent }}
               />
 
-              <ArticleReactions />
+              <ArticleReactions slug={slug} />
             </main>
 
             {/* RIGHT SIDEBAR */}

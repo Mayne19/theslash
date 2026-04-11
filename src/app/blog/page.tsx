@@ -97,7 +97,11 @@ export default async function BlogPage() {
                   </div>
                   <div style={{ height: "100%", overflow: "hidden" }} className="featured-img">
                     <img
-                      src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600&q=80"
+                      src={(() => {
+                        const ids = ["photo-1499750310107-5fef28a66643","photo-1542744173-8e7e53415bb0","photo-1497366216548-37526070297c","photo-1551434678-e076c223a692","photo-1498050108023-c5249f4df085"];
+                        const id = ids[articles[0].slug.charCodeAt(0) % ids.length];
+                        return `https://images.unsplash.com/${id}?w=600&q=90`;
+                      })()}
                       alt={articles[0].title}
                       style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
                     />

@@ -27,10 +27,34 @@ const labelStyle: React.CSSProperties = {
 
 export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setSubmitted(true);
+    setLoading(true);
+    setError(null);
+    const form = e.currentTarget;
+    const data = {
+      name: (form.elements.namedItem("name") as HTMLInputElement).value,
+      email: (form.elements.namedItem("email") as HTMLInputElement).value,
+      projectType: (form.elements.namedItem("project-type") as HTMLSelectElement).value,
+      budget: (form.elements.namedItem("budget") as HTMLSelectElement).value,
+      message: (form.elements.namedItem("message") as HTMLTextAreaElement).value,
+    };
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      if (!res.ok) throw new Error("Erreur serveur");
+      setSubmitted(true);
+    } catch {
+      setError("Une erreur est survenue. Réessayez ou écrivez directement à hello@theslash.fr.");
+    } finally {
+      setLoading(false);
+    }
   }
 
   if (submitted) {
@@ -141,31 +165,41 @@ export default function ContactForm() {
         </div>
 
         {/* Submit */}
+        {error && (
+          <p style={{ fontFamily: "var(--font-inter), -apple-system, sans-serif", fontSize: "0.85rem", color: "#EF4444", textAlign: "center" }}>
+            {error}
+          </p>
+        )}
+
         <button
           type="submit"
+          disabled={loading}
           style={{
             width: "100%",
             height: "56px",
-            backgroundColor: "#F3C709",
+            backgroundColor: loading ? "#D1A400" : "#F3C709",
             color: "#1A1A1A",
             fontFamily: "var(--font-inter), -apple-system, sans-serif",
             fontWeight: 700,
             fontSize: "1rem",
             border: "none",
             borderRadius: "12px",
-            cursor: "pointer",
+            cursor: loading ? "not-allowed" : "pointer",
             transition: "transform 150ms, box-shadow 150ms",
+            opacity: loading ? 0.8 : 1,
           }}
           onMouseEnter={(e) => {
-            e.currentTarget.style.transform = "translateY(-1px)";
-            e.currentTarget.style.boxShadow = "0 6px 20px rgba(243,199,9,0.45)";
+            if (!loading) {
+              e.currentTarget.style.transform = "translateY(-1px)";
+              e.currentTarget.style.boxShadow = "0 6px 20px rgba(243,199,9,0.45)";
+            }
           }}
           onMouseLeave={(e) => {
             e.currentTarget.style.transform = "translateY(0)";
             e.currentTarget.style.boxShadow = "none";
           }}
         >
-          Envoyer ma demande →
+          {loading ? "Envoi en cours…" : "Envoyer ma demande →"}
         </button>
 
         <p style={{ textAlign: "center", fontFamily: "var(--font-inter), -apple-system, sans-serif", fontSize: "0.8rem", color: "#9CA3AF" }}>
