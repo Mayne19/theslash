@@ -48,8 +48,9 @@ export default function ContactForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
-      const json = await res.json();
-      if (!res.ok) throw new Error(json.error || "Erreur serveur");
+      let json: { ok?: boolean; error?: string } = {};
+      try { json = await res.json(); } catch { /* ignore parse error */ }
+      if (!res.ok || !json.ok) throw new Error(json.error || `Erreur ${res.status}`);
       setSubmitted(true);
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : "Erreur inconnue";
