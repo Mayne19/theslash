@@ -51,11 +51,7 @@ export default function Header() {
 
             {/* Logo */}
             <Link href="/" style={{ textDecoration: "none", flexShrink: 0 }}>
-              <span style={{ fontFamily: "var(--font-inter), -apple-system, sans-serif", fontSize: "1.6rem", letterSpacing: "-0.04em" }}>
-                <span style={{ color: "#A0A0A0", fontWeight: 800 }}>/</span>
-                <span style={{ color: "#A0A0A0", fontWeight: 800 }}> the</span>
-                <span style={{ color: "#1A1A1A", fontWeight: 800 }}>slash</span>
-              </span>
+              <img src="/logo-texte.png" alt="/ theslash" style={{ height: "32px", width: "auto" }} />
             </Link>
 
             {/* Desktop nav */}

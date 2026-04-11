@@ -340,7 +340,7 @@ export default async function ArticlePage({ params }: Props) {
 
             <div style={{ display: "flex", flexDirection: "column", gap: "14px", paddingTop: "6px" }}>
               <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-                <div style={{ flexShrink: 0, width: "40px", height: "40px", backgroundColor: "#F3C709", borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-inter), -apple-system, sans-serif", fontWeight: 800, fontSize: "0.6rem", color: "#1A1A1A", letterSpacing: "-0.03em" }}>/ts</div>
+                <img src="/logo-texte.png" alt="/ theslash" style={{ height: "32px", width: "auto", flexShrink: 0 }} />
                 <span style={{ fontFamily: "var(--font-inter), -apple-system, sans-serif", fontSize: "0.8rem", fontWeight: 700, color: "#1A1A1A" }}>/ theslash</span>
               </div>
               <div style={{ width: "100%", height: "1px", backgroundColor: "rgba(0,0,0,0.08)" }} />

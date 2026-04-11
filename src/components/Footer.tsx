@@ -41,11 +41,7 @@ export default function Footer() {
           {/* Brand column */}
           <div>
             <div style={{ marginBottom: "16px" }}>
-              <span style={{ fontFamily: "var(--font-inter), -apple-system, sans-serif", fontSize: "1.6rem", letterSpacing: "-0.04em" }}>
-                <span style={{ color: "#ffffff", fontWeight: 800 }}>/</span>
-                <span style={{ color: "#ffffff", fontWeight: 800 }}> the</span>
-                <span style={{ color: "#F3C709", fontWeight: 800 }}>slash</span>
-              </span>
+              <img src="/logo-texte.png" alt="/ theslash" style={{ height: "32px", width: "auto", filter: "brightness(0) invert(1)" }} />
             </div>
             <p style={{
               fontFamily: "var(--font-inter), -apple-system, sans-serif",
