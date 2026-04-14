@@ -67,13 +67,6 @@ export default function ArticleReactions({ slug }: { slug: string }) {
             <span style={{ fontSize: selected === i ? "2rem" : "1.6rem", lineHeight: 1, transition: "font-size 180ms" }}>
               {r.emoji}
             </span>
-            <span style={{
-              fontSize: "0.72rem",
-              fontWeight: selected === i ? 700 : 500,
-              color: selected === i ? "#1A1A1A" : "#9CA3AF",
-            }}>
-              {r.label}
-            </span>
           </button>
         ))}
       </div>

@@ -23,7 +23,7 @@
 }
 
 html {
-  overflow-x: hidden;
+  /* scroll-behavior removed: Next.js handles scroll-to-top on navigation */
 }
 
 body {
@@ -34,7 +34,6 @@ body {
   background-color: #F5F0E8;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overflow-x: hidden;
 }
 
 /* ─── Typography ─────────────────────────────────────────────── */
