@@ -47,35 +47,29 @@ export default function NotFound() {
 
       <div style={{ textAlign: "center", maxWidth: "600px", position: "relative", zIndex: 1 }}>
 
-        {/* Badge */}
-        <div style={{
-          display: "inline-flex",
-          alignItems: "center",
-          gap: "8px",
-          padding: "6px 16px",
-          backgroundColor: "rgba(243,199,9,0.15)",
-          border: "1px solid rgba(243,199,9,0.35)",
-          borderRadius: "50px",
-          marginBottom: "28px",
-        }}>
-          <span style={{ width: "6px", height: "6px", borderRadius: "50%", backgroundColor: "#F3C709", display: "inline-block" }} />
-          <span style={{ fontSize: "0.75rem", fontWeight: 700, color: "#1A1A1A", letterSpacing: "0.04em" }}>
-            ERREUR 404
-          </span>
-        </div>
-
         {/* Heading */}
         <h1 style={{
-          fontSize: "clamp(2rem, 5vw, 3.2rem)",
+          fontSize: "clamp(5rem, 18vw, 12rem)",
           fontWeight: 900,
           color: "#1A1A1A",
-          letterSpacing: "-0.04em",
-          lineHeight: 1.1,
+          letterSpacing: "-0.05em",
+          lineHeight: 1,
+          marginBottom: "20px",
+        }}>
+          404
+        </h1>
+
+        <p style={{
+          fontSize: "clamp(1.4rem, 3vw, 2rem)",
+          fontWeight: 800,
+          color: "#1A1A1A",
+          letterSpacing: "-0.03em",
+          lineHeight: 1.2,
           marginBottom: "20px",
         }}>
           Cette page a disparu<br />
           <span style={{ color: "#A0A0A0", fontWeight: 700 }}>quelque part sur internet.</span>
-        </h1>
+        </p>
 
         <p style={{
           fontSize: "1rem",
@@ -122,25 +116,6 @@ export default function NotFound() {
           ))}
         </div>
 
-        {/* Primary CTA */}
-        <Link
-          href="/"
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: "8px",
-            padding: "15px 32px",
-            backgroundColor: "#1A1A1A",
-            color: "#ffffff",
-            borderRadius: "50px",
-            fontWeight: 700,
-            fontSize: "0.95rem",
-            textDecoration: "none",
-            letterSpacing: "-0.01em",
-          }}
-        >
-          Retour à l&apos;accueil <ArrowRight size={16} />
-        </Link>
 
       </div>
     </section>
