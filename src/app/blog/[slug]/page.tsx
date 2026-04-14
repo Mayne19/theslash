@@ -107,7 +107,7 @@ const placeholderContent: Record<string, { title: string; description: string; c
     content: `
       <p>Créer un site web professionnel en 2026 n'est plus réservé aux grandes entreprises. Avec les bons outils et la bonne méthode, un entrepreneur peut aujourd'hui avoir une présence en ligne sérieuse, rapide et bien référencée. Ce guide vous explique tout.</p>
 
-      <div style="position:relative;background:#DBEAFE;border:2px solid #3B82F6;border-radius:16px;padding:24px 24px 24px 28px;margin:32px 0;font-family:var(--font-inter),-apple-system,sans-serif">
+      <div style="position:relative;background:#DBEAFE;border:2px solid #3B82F6;border-radius:16px;padding:24px 24px 24px 28px;margin:32px 0;font-family:var(--font-inter),-apple-system,sans-serif;box-sizing:border-box;max-width:100%">
         <div style="position:absolute;top:-14px;left:20px;background:#3B82F6;color:#fff;font-weight:800;font-size:0.78rem;padding:4px 12px;border-radius:6px;white-space:nowrap">Chiffre à connaître</div>
         <div style="font-size:0.92rem;color:#1A1A1A;line-height:1.8;margin-top:6px">75% des internautes jugent la crédibilité d'une entreprise sur la base de son site web. <em>(Source : Stanford Web Credibility Research)</em></div>
       </div>
@@ -118,7 +118,7 @@ const placeholderContent: Record<string, { title: string; description: string; c
       <ul><li>Il génère du trafic organique via Google 24h/24</li><li>Il présente votre offre de façon structurée</li><li>Il convertit les visiteurs en clients potentiels</li><li>Il renforce votre crédibilité immédiatement</li><li>Il vous différencie de la concurrence</li></ul>
       <p>Un site bien construit est un commercial qui travaille pour vous sans jamais s'arrêter.</p>
 
-      <div style="position:relative;background:#FFF9C4;border:2px solid #F3C709;border-radius:16px;padding:24px 24px 24px 28px;margin:32px 0;font-family:var(--font-inter),-apple-system,sans-serif">
+      <div style="position:relative;background:#FFF9C4;border:2px solid #F3C709;border-radius:16px;padding:24px 24px 24px 28px;margin:32px 0;font-family:var(--font-inter),-apple-system,sans-serif;box-sizing:border-box;max-width:100%">
         <div style="position:absolute;top:-14px;left:20px;background:#F3C709;color:#1A1A1A;font-weight:800;font-size:0.78rem;padding:4px 12px;border-radius:6px;white-space:nowrap">À retenir</div>
         <div style="font-size:0.92rem;color:#1A1A1A;line-height:1.8;margin-top:6px">Un site web n'est pas une dépense. C'est un investissement qui génère des retours sur le long terme via le référencement naturel.</div>
       </div>
@@ -126,8 +126,8 @@ const placeholderContent: Record<string, { title: string; description: string; c
       <h2>2. Les différents types de sites : lequel vous correspond ?</h2>
       <p>Avant de créer votre site, vous devez choisir le bon type selon votre activité et vos objectifs.</p>
 
-      <div style="overflow:hidden;border-radius:12px;border:1px solid #E5E7EB;margin:24px 0">
-        <table style="width:100%;border-collapse:collapse;font-family:var(--font-inter),-apple-system,sans-serif;font-size:0.88rem">
+      <div style="overflow-x:auto;border-radius:12px;border:1px solid #E5E7EB;margin:24px 0;max-width:100%">
+        <table style="min-width:500px;width:100%;border-collapse:collapse;font-family:var(--font-inter),-apple-system,sans-serif;font-size:0.88rem">
           <thead>
             <tr style="background:#F3C709">
               <th style="padding:12px 16px;text-align:left;font-weight:700;color:#000;border-bottom:1px solid #E5E7EB">Type de site</th>
@@ -153,12 +153,12 @@ const placeholderContent: Record<string, { title: string; description: string; c
       <h3>Site codé sur mesure : la solution premium</h3>
       <p>Un site codé from scratch avec Next.js offre une liberté totale sur le design, des performances optimales et une image plus premium.</p>
 
-      <div style="position:relative;background:#FEE2E2;border:2px solid #EF4444;border-radius:16px;padding:24px 24px 24px 28px;margin:32px 0;font-family:var(--font-inter),-apple-system,sans-serif">
+      <div style="position:relative;background:#FEE2E2;border:2px solid #EF4444;border-radius:16px;padding:24px 24px 24px 28px;margin:32px 0;font-family:var(--font-inter),-apple-system,sans-serif;box-sizing:border-box;max-width:100%">
         <div style="position:absolute;top:-14px;left:20px;background:#EF4444;color:#fff;font-weight:800;font-size:0.78rem;padding:4px 12px;border-radius:6px;white-space:nowrap">Erreur fréquente</div>
         <div style="font-size:0.92rem;color:#1A1A1A;line-height:1.8;margin-top:6px">Beaucoup d'entrepreneurs choisissent WordPress uniquement parce que c'est "ce que tout le monde utilise". Demandez-vous d'abord ce dont vous avez réellement besoin avant de choisir un outil.</div>
       </div>
 
-      <div style="margin:32px 0 32px 20px;display:flex;align-items:stretch;gap:0">
+      <div style="margin:32px 0;display:flex;align-items:stretch;gap:0;max-width:100%;box-sizing:border-box">
         <div style="width:4px;background:#F3C709;border-radius:2px;flex-shrink:0;margin-right:20px"></div>
         <div>
           <p style="font-style:italic;font-size:1rem;color:#4B5563;line-height:1.75;margin:0 0 8px;font-family:var(--font-inter),-apple-system,sans-serif">Un site lent perd 53% de ses visiteurs avant même qu'ils aient vu votre offre. La performance n'est pas un détail technique, c'est un enjeu business.</p>
@@ -166,9 +166,6 @@ const placeholderContent: Record<string, { title: string; description: string; c
         </div>
       </div>
 
-      <div style="margin:32px 0">
-        <blockquote class="reddit-embed-bq" style="height:500px" data-embed-height="546"><a href="https://www.reddit.com/r/microsaas/comments/1sifwpb/we_made_it/">We Made It</a><br> by <a href="https://www.reddit.com/user/EnvironmentHumble228/">u/EnvironmentHumble228</a> in <a href="https://www.reddit.com/r/microsaas/">microsaas</a></blockquote>
-      </div>
 
       <h2>4. Les 5 étapes pour créer un site web professionnel qui convertit</h2>
       <div style="margin:24px 0;border-radius:14px;overflow:hidden;max-height:420px">
@@ -536,6 +533,10 @@ export default async function ArticlePage({ params }: Props) {
         }
         .article-body table tbody tr:hover {
           background-color: rgba(243, 199, 9, 0.07) !important;
+        }
+        .article-body {
+          overflow-x: hidden;
+          max-width: 100%;
         }
         .article-body img {
           max-width: 100%;
