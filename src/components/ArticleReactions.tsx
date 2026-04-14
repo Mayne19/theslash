@@ -22,7 +22,6 @@ export default function ArticleReactions({ slug }: { slug: string }) {
   }, [storageKey]);
 
   function vote(i: number) {
-    if (selected !== null) return;
     localStorage.setItem(storageKey, String(i));
     setSelected(i);
   }
@@ -41,16 +40,20 @@ export default function ArticleReactions({ slug }: { slug: string }) {
       <p style={{ fontSize: "0.88rem", fontWeight: 600, color: "#6B7280", marginBottom: "20px" }}>
         {selected !== null ? "Merci pour votre retour !" : "Cet article vous a été utile ?"}
       </p>
+      {selected !== null && (
+        <p style={{ fontSize: "0.75rem", color: "#C4BBAD", marginTop: "-12px", marginBottom: "16px" }}>
+          Vous pouvez changer votre avis
+        </p>
+      )}
       <div style={{ display: "flex", justifyContent: "center", gap: "24px" }}>
         {REACTIONS.map((r, i) => (
           <button
             key={i}
             onClick={() => vote(i)}
-            disabled={selected !== null}
             style={{
               background: "none",
               border: "none",
-              cursor: selected !== null ? "default" : "pointer",
+              cursor: "pointer",
               padding: "8px",
               display: "flex",
               flexDirection: "column",
@@ -58,13 +61,15 @@ export default function ArticleReactions({ slug }: { slug: string }) {
               gap: "6px",
               borderRadius: "12px",
               transition: "all 180ms ease",
-              opacity: selected !== null && selected !== i ? 0.35 : 1,
-              transform: selected === i ? "scale(1.12)" : "scale(1)",
-              outline: selected === i ? "2px solid #F3C709" : "none",
-              outlineOffset: "2px",
+              transform: selected === i ? "scale(1.15)" : "scale(1)",
             }}
           >
-            <span style={{ fontSize: selected === i ? "2rem" : "1.6rem", lineHeight: 1, transition: "font-size 180ms" }}>
+            <span style={{
+              fontSize: selected === i ? "2rem" : "1.6rem",
+              lineHeight: 1,
+              transition: "all 180ms ease",
+              filter: selected !== null && selected !== i ? "grayscale(1) opacity(0.4)" : "none",
+            }}>
               {r.emoji}
             </span>
           </button>
