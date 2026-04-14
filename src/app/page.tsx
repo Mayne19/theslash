@@ -16,12 +16,6 @@ import GrowthChart from "@/components/ui/GrowthChart";
 import SeoWidget from "@/components/ui/SeoWidget";
 import { getAllArticles, getCategoryLabel } from "@/lib/articles";
 
-const fallbackArticles = [
-  { title: "Créer un site web professionnel en 2026 : le guide complet", excerpt: "De la définition de l'objectif au choix de la technologie, voici la méthode complète pour créer un site qui convertit.", slug: "creer-site-web-professionnel-guide", category: "Création de site", readingTime: 8, date: "2026-04-11" },
-  { title: "Comment choisir le bon CMS pour votre site en 2026", excerpt: "WordPress, Webflow, Next.js + Keystatic, on décortique les options pour vous aider à faire le bon choix.", slug: "comment-choisir-son-cms-2026", category: "Création de site", readingTime: 7, date: "2026-03-15" },
-  { title: "Les 5 erreurs SEO qui ruinent votre référencement dès le départ", excerpt: "Des balises title manquantes aux pages orphelines, voici les pièges les plus courants, et comment les éviter.", slug: "erreurs-seo-debutant", category: "SEO", readingTime: 5, date: "2026-03-08" },
-  { title: "Pourquoi votre landing page ne convertit pas (et comment y remédier)", excerpt: "Copywriting flou, CTA enterré, trop d'options, les raisons sont souvent simples mais coûtent cher.", slug: "landing-page-ne-convertit-pas", category: "Web Design", readingTime: 6, date: "2026-03-01" },
-];
 
 export const metadata: Metadata = {
   title: { absolute: "theslash — Création de sites web professionnels pour entrepreneurs | Studio web francophone" },
@@ -93,16 +87,14 @@ const whyItems = [
 
 export default async function HomePage() {
   const dbArticles = await getAllArticles();
-  const homeArticles = dbArticles.length > 0
-    ? dbArticles.slice(0, 3).map((a) => ({
+  const homeArticles = dbArticles.slice(0, 3).map((a) => ({
         title: a.title,
         excerpt: a.description,
         slug: a.slug,
         category: getCategoryLabel(a.category),
         readingTime: a.readingTime ?? undefined,
         coverImage: a.coverImage ?? undefined,
-      }))
-    : fallbackArticles.slice(0, 3);
+      }));
   const orgSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
