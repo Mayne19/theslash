@@ -325,7 +325,7 @@ export default async function ArticlePage({ params }: Props) {
               marginTop: "28px",
             }}
           >
-            <div>
+            <div style={{ minWidth: 0 }}>
               {category && (
                 <span style={{ display: "inline-block", padding: "5px 14px", backgroundColor: "rgba(243,199,9,0.15)", border: "1px solid rgba(243,199,9,0.3)", borderRadius: "50px", fontFamily: "var(--font-inter), -apple-system, sans-serif", fontWeight: 700, fontSize: "0.72rem", color: "#1A1A1A", marginBottom: "16px" }}>
                   {category}
@@ -392,7 +392,7 @@ export default async function ArticlePage({ params }: Props) {
             </div>
 
             {/* MAIN CONTENT */}
-            <main>
+            <main style={{ minWidth: 0 }}>
               <div
                 style={{ fontFamily: "var(--font-inter), -apple-system, sans-serif" }}
                 className="article-body"
