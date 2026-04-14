@@ -296,9 +296,6 @@ export default function HeroHome() {
           .hero-grid {
             grid-template-columns: 1fr !important;
           }
-          .hero-widgets {
-            display: none !important;
-          }
         }
       `}</style>
     </section>
