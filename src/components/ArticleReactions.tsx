@@ -8,20 +8,15 @@ const REACTIONS = [
   { emoji: "😄", label: "Très utile" },
 ];
 
-const BASE_COUNTS = [4, 11, 38];
-
 export default function ArticleReactions({ slug }: { slug: string }) {
   const storageKey = `reaction_${slug}`;
   const [selected, setSelected] = useState<number | null>(null);
-  const [counts, setCounts] = useState<number[]>(BASE_COUNTS);
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
     const saved = localStorage.getItem(storageKey);
     if (saved !== null) {
-      const idx = Number(saved);
-      setSelected(idx);
-      setCounts(BASE_COUNTS.map((c, i) => (i === idx ? c + 1 : c)));
+      setSelected(Number(saved));
     }
     setReady(true);
   }, [storageKey]);
@@ -30,7 +25,6 @@ export default function ArticleReactions({ slug }: { slug: string }) {
     if (selected !== null) return;
     localStorage.setItem(storageKey, String(i));
     setSelected(i);
-    setCounts((prev) => prev.map((c, idx) => (idx === i ? c + 1 : c)));
   }
 
   if (!ready) return null;
@@ -78,7 +72,7 @@ export default function ArticleReactions({ slug }: { slug: string }) {
               fontWeight: selected === i ? 700 : 500,
               color: selected === i ? "#1A1A1A" : "#9CA3AF",
             }}>
-              {counts[i]}
+              {r.label}
             </span>
           </button>
         ))}

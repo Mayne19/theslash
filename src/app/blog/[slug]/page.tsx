@@ -537,6 +537,45 @@ export default async function ArticlePage({ params }: Props) {
         .article-body table tbody tr:hover {
           background-color: rgba(243, 199, 9, 0.07) !important;
         }
+        .article-body img {
+          max-width: 100%;
+          height: auto;
+          border-radius: 8px;
+          display: block;
+        }
+        .article-body table {
+          width: 100%;
+          max-width: 100%;
+          overflow-x: auto;
+          display: block;
+          border-collapse: collapse;
+          font-family: var(--font-inter), -apple-system, sans-serif;
+          font-size: 0.88rem;
+        }
+        .article-body pre {
+          max-width: 100%;
+          overflow-x: auto;
+          background: #F5F0E8;
+          border-radius: 10px;
+          padding: 16px;
+          margin: 20px 0;
+        }
+        .article-body code {
+          word-break: break-word;
+          font-size: 0.85em;
+          background: #F5F0E8;
+          padding: 2px 6px;
+          border-radius: 4px;
+        }
+        .article-body pre code {
+          background: none;
+          padding: 0;
+          word-break: normal;
+        }
+        .article-body div[style] {
+          max-width: 100%;
+          box-sizing: border-box;
+        }
         @media (max-width: 1024px) {
           .article-layout { grid-template-columns: 1fr !important; }
           .article-sidebar-left { display: none !important; }
@@ -546,6 +585,9 @@ export default async function ArticlePage({ params }: Props) {
         @media (max-width: 640px) {
           .article-hero-cols > div:last-child { display: none !important; }
           .article-cover { height: 240px !important; }
+          .article-body h2 { font-size: 1.25rem !important; }
+          .article-body h3 { font-size: 1.1rem !important; }
+          .article-body p, .article-body li { font-size: 0.95rem !important; }
         }
       `}</style>
     </>

@@ -10,12 +10,12 @@ interface BreadcrumbProps {
 }
 
 export default function Breadcrumb({ items }: BreadcrumbProps) {
-  const allItems = [{ label: "Accueil", href: "/" }, ...items];
+  const schemaItems = [{ label: "Accueil", href: "/" }, ...items];
 
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    itemListElement: allItems.map((item, index) => ({
+    itemListElement: schemaItems.map((item, index) => ({
       "@type": "ListItem",
       position: index + 1,
       name: item.label,
@@ -31,14 +31,14 @@ export default function Breadcrumb({ items }: BreadcrumbProps) {
       />
       <nav aria-label="Fil d'Ariane" className="py-3">
         <ol className="flex items-center gap-2 text-sm text-[#6B7280] flex-wrap">
-          {allItems.map((item, index) => (
+          {items.map((item, index) => (
             <li key={index} className="flex items-center gap-2">
               {index > 0 && (
                 <span className="text-[#D1D5DB]" aria-hidden>
                   /
                 </span>
               )}
-              {item.href && index < allItems.length - 1 ? (
+              {item.href && index < items.length - 1 ? (
                 <Link
                   href={item.href}
                   className="hover:text-[#0A0A0A] transition-colors"
@@ -47,8 +47,8 @@ export default function Breadcrumb({ items }: BreadcrumbProps) {
                 </Link>
               ) : (
                 <span
-                  className={index === allItems.length - 1 ? "text-[#0A0A0A] font-medium" : ""}
-                  aria-current={index === allItems.length - 1 ? "page" : undefined}
+                  className={index === items.length - 1 ? "text-[#0A0A0A] font-medium" : ""}
+                  aria-current={index === items.length - 1 ? "page" : undefined}
                 >
                   {item.label}
                 </span>

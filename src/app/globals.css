@@ -23,7 +23,7 @@
 }
 
 html {
-  /* scroll-behavior removed: Next.js handles scroll-to-top on navigation */
+  overflow-x: hidden;
 }
 
 body {
