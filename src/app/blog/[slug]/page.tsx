@@ -367,7 +367,7 @@ export default async function ArticlePage({ params }: Props) {
       {/* ── COVER IMAGE — fond blanc, pleine largeur ── */}
       <div style={{ backgroundColor: "#ffffff", padding: "40px 0 0" }}>
         <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 clamp(20px, 3vw, 44px)" }}>
-          <div style={{ borderRadius: "16px", overflow: "hidden", height: "640px" }}>
+          <div className="article-cover" style={{ borderRadius: "16px", overflow: "hidden", height: "640px" }}>
             <img
               src={coverImg.startsWith("http") ? coverImg : `https://images.unsplash.com/${coverImg}?w=1200&q=90`}
               alt={title}
@@ -545,6 +545,7 @@ export default async function ArticlePage({ params }: Props) {
         }
         @media (max-width: 640px) {
           .article-hero-cols > div:last-child { display: none !important; }
+          .article-cover { height: 240px !important; }
         }
       `}</style>
     </>

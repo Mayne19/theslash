@@ -172,7 +172,7 @@ export default function HomePage() {
               </div>
             </AnimatedSection>
 
-            <div style={{ display: "flex", justifyContent: "center" }}>
+            <div className="seowidget-col" style={{ display: "flex", justifyContent: "center" }}>
               <SeoWidget />
             </div>
           </div>
@@ -180,6 +180,7 @@ export default function HomePage() {
         <style>{`
           @media (max-width: 768px) {
             .two-col-grid { grid-template-columns: 1fr !important; }
+            .seowidget-col { display: none !important; }
           }
         `}</style>
       </section>

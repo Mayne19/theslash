@@ -61,6 +61,7 @@ export default function StatsBanner() {
       <div style={{
         maxWidth: "1200px",
         margin: "0 auto",
+        padding: "0 clamp(20px, 3vw, 44px)",
         display: "grid",
         gridTemplateColumns: "repeat(4, 1fr)",
         gap: "40px",
@@ -98,7 +99,7 @@ export default function StatsBanner() {
         ))}
       </div>
       <style>{`
-        @media (max-width: 640px) {
+        @media (max-width: 768px) {
           .stats-grid {
             grid-template-columns: repeat(2, 1fr) !important;
             gap: 28px !important;

@@ -238,7 +238,7 @@ export default function HeroHome() {
         </div>
 
         {/* RIGHT — Widgets: StatWidget fixed at top, LeadNotification reserved space at bottom */}
-        <div style={{
+        <div className="hero-widgets" style={{
           display: "flex",
           flexDirection: "column",
           gap: "16px",
@@ -295,6 +295,9 @@ export default function HeroHome() {
         @media (max-width: 768px) {
           .hero-grid {
             grid-template-columns: 1fr !important;
+          }
+          .hero-widgets {
+            display: none !important;
           }
         }
       `}</style>

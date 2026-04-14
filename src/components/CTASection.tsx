@@ -25,6 +25,7 @@ export default function CTASection({
       <div style={{
         maxWidth: "900px",
         margin: "0 auto",
+        padding: "0 clamp(20px, 3vw, 44px)",
         textAlign: "center",
       }}>
         <h2 style={{
