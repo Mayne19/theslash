@@ -13,41 +13,26 @@ export const metadata: Metadata = {
   openGraph: { url: "https://theslash.fr/blog" },
 };
 
-const fallbackArticles = [
-  { title: "Créer un site web professionnel en 2026 : le guide complet", excerpt: "De la définition de l'objectif au choix de la technologie, voici la méthode complète pour créer un site qui convertit.", slug: "creer-site-web-professionnel-guide", category: "Création de site", readingTime: 8, date: "11 avr. 2026" },
-  { title: "Comment choisir le bon CMS pour votre site en 2026", excerpt: "WordPress, Webflow, Next.js + Keystatic, on décortique les options pour vous aider à faire le bon choix selon votre projet.", slug: "comment-choisir-son-cms-2026", category: "Création de site", readingTime: 7, date: "15 mars 2026" },
-  { title: "Les 5 erreurs SEO qui ruinent votre référencement dès le départ", excerpt: "Des balises title manquantes aux pages orphelines, voici les pièges les plus courants, et comment les éviter.", slug: "erreurs-seo-debutant", category: "SEO", readingTime: 5, date: "8 mars 2026" },
-  { title: "Pourquoi votre landing page ne convertit pas (et comment y remédier)", excerpt: "Copywriting flou, CTA enterré, trop d'options, les raisons sont souvent simples mais coûtent cher.", slug: "landing-page-ne-convertit-pas", category: "Web Design", readingTime: 6, date: "1 mars 2026" },
-  { title: "Next.js vs WordPress en 2026 : lequel choisir pour votre projet ?", excerpt: "Performance, SEO, coût, facilité d'utilisation, le comparatif complet pour faire le bon choix.", slug: "nextjs-vs-wordpress-2026", category: "Création de site", readingTime: 8, date: "22 fév. 2026" },
-  { title: "Comment rédiger une page 'À propos' qui convainc vraiment", excerpt: "La page à propos est souvent la plus visitée, et la plus mal rédigée. Voici comment en faire un atout commercial.", slug: "page-a-propos-qui-convainc", category: "Web Design", readingTime: 5, date: "15 fév. 2026" },
-  { title: "Google Core Web Vitals : le guide pratique pour les non-développeurs", excerpt: "LCP, FID, CLS, c'est quoi exactement et pourquoi ça compte pour votre référencement ?", slug: "core-web-vitals-guide", category: "SEO", readingTime: 6, date: "8 fév. 2026" },
-];
-
-const mostConsulted = [
-  { title: "Créer un site web professionnel en 2026 : le guide complet", slug: "creer-site-web-professionnel-guide", date: "11 avr. 2026", readingTime: 8 },
-  { title: "Les 5 erreurs SEO qui ruinent votre référencement dès le départ", slug: "erreurs-seo-debutant", date: "8 mars 2026", readingTime: 5 },
-  { title: "Pourquoi votre landing page ne convertit pas (et comment y remédier)", slug: "landing-page-ne-convertit-pas", date: "1 mars 2026", readingTime: 6 },
-];
 
 export default async function BlogPage() {
   const dbArticles = await getAllArticles();
 
-  const articles = (dbArticles.length > 0
-    ? dbArticles
-        .sort((a, b) => {
-          const da = a.date ? new Date(a.date).getTime() : 0;
-          const db = b.date ? new Date(b.date).getTime() : 0;
-          return db - da;
-        })
-        .map((a) => ({
-          title: a.title,
-          excerpt: a.description ?? undefined,
-          slug: a.slug,
-          category: getCategoryLabel(a.category),
-          readingTime: a.readingTime ?? undefined,
-          date: a.date ? new Date(a.date).toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" }) : undefined,
-        }))
-    : fallbackArticles);
+  const articles = dbArticles
+    .sort((a, b) => {
+      const da = a.date ? new Date(a.date).getTime() : 0;
+      const db = b.date ? new Date(b.date).getTime() : 0;
+      return db - da;
+    })
+    .map((a) => ({
+      title: a.title,
+      excerpt: a.description ?? undefined,
+      slug: a.slug,
+      category: getCategoryLabel(a.category),
+      readingTime: a.readingTime ?? undefined,
+      date: a.date ? new Date(a.date).toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" }) : undefined,
+    }));
+
+  const mostConsulted = articles.slice(0, 3);
 
   // Cap grid at 5 rows × 3 cols = 15 articles (excluding featured)
   const gridArticles = articles.slice(1, 16);
