@@ -2,6 +2,8 @@ backend:
   name: github
   repo: Mayne19/theslash
   branch: main
+  base_url: https://www.theslash.fr
+  auth_endpoint: api/auth
 
 media_folder: public/images/blog
 public_folder: /images/blog
