@@ -4,7 +4,7 @@ description: "De la définition de l'objectif au choix de la technologie, voici 
 date: 2026-04-11T00:00:00.000Z
 author: / theslash
 readingTime: 8
-category: creation-site
+category: site-web
 faq:
   - question: Combien de temps faut-il pour créer un site web professionnel ?
     answer: "En général : 2 à 3 semaines pour un site vitrine, 1 à 2 semaines pour une landing page, 4 à 8 semaines pour une refonte complète."

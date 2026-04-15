@@ -4,7 +4,7 @@ description: WordPress, Webflow, Next.js + Keystatic — on décortique les opti
 date: 2026-03-15T00:00:00.000Z
 author: / theslash
 readingTime: 7
-category: creation-site
+category: site-web
 ---
 
 ## Introduction

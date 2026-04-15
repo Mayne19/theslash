@@ -19,11 +19,16 @@ export interface Article {
 }
 
 const categoryLabels: Record<string, string> = {
-  "web-design": "Web Design",
   "seo": "SEO",
-  "ia": "Intelligence Artificielle",
-  "creation-site": "Création de site",
-  "strategie": "Stratégie digitale",
+  "web-design": "Web Design",
+  "performance": "Performance",
+  "site-web": "Site web",
+  "marketing": "Marketing",
+  "e-commerce": "E-commerce",
+  "tech": "Tech",
+  "analytics": "Analytics",
+  "copywriting": "Copywriting",
+  "local-business": "Local Business",
 };
 
 export function getCategoryLabel(value: string) {

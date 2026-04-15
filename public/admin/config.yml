@@ -23,11 +23,16 @@ collections:
         name: category
         widget: select
         options:
-          - { label: "Création de site", value: "creation-site" }
           - { label: "SEO", value: "seo" }
           - { label: "Web Design", value: "web-design" }
-          - { label: "Intelligence Artificielle", value: "ia" }
-          - { label: "Stratégie digitale", value: "strategie" }
+          - { label: "Performance", value: "performance" }
+          - { label: "Site web", value: "site-web" }
+          - { label: "Marketing", value: "marketing" }
+          - { label: "E-commerce", value: "e-commerce" }
+          - { label: "Tech", value: "tech" }
+          - { label: "Analytics", value: "analytics" }
+          - { label: "Copywriting", value: "copywriting" }
+          - { label: "Local Business", value: "local-business" }
       - { label: "Temps de lecture (min)", name: readingTime, widget: number }
       - { label: "Image de couverture", name: coverImage, widget: image, required: false }
       - { label: Auteur, name: author, widget: string, default: "/ theslash" }
