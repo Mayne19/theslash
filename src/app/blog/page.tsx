@@ -73,7 +73,7 @@ export default async function BlogPage() {
               <div className="featured-top-grid" style={{ display: "grid", gridTemplateColumns: "1fr 280px", gap: "28px", alignItems: "stretch" }}>
 
                 {/* Bloc à la une */}
-                <Link href={`/blog/${articles[0].slug}`} style={{ textDecoration: "none", display: "grid", gridTemplateColumns: "2fr 3fr", gap: "0", alignItems: "stretch", backgroundColor: "#F5F0E8", borderRadius: "24px", overflow: "hidden", maxHeight: "300px" }} className="featured-grid">
+                <Link href={`/blog/${articles[0].slug}`} style={{ textDecoration: "none", display: "grid", gridTemplateColumns: "3fr 2fr", gap: "0", alignItems: "stretch", backgroundColor: "#F5F0E8", borderRadius: "24px", overflow: "hidden", maxHeight: "300px" }} className="featured-grid">
                   <div style={{ padding: "32px", minWidth: 0, overflow: "hidden" }} className="featured-content">
                     <div style={{ display: "flex", gap: "6px", marginBottom: "12px" }}>
                       {articles[0].category && (
