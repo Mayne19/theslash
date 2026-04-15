@@ -387,8 +387,6 @@ export default async function ArticlePage({ params }: Props) {
           font-family: var(--font-inter), -apple-system, sans-serif;
           font-size: 0.88rem;
           margin: 24px 0;
-          border-radius: 12px;
-          border: 1px solid #E5E7EB;
         }
         .article-body table thead tr {
           background: #F3C709;
@@ -397,20 +395,20 @@ export default async function ArticlePage({ params }: Props) {
           padding: 12px 16px;
           text-align: left;
           font-weight: 700;
-          color: #000;
-          border-bottom: 1px solid #E5E7EB;
+          color: #1A1A1A;
           white-space: nowrap;
         }
         .article-body table td {
           padding: 12px 16px;
-          color: #4B5563;
-          border-bottom: 1px solid #E5E7EB;
+          color: #1A1A1A !important;
+          border-top: 1px solid #F0EDE8;
         }
-        .article-body table tbody tr:nth-child(even) {
-          background: #FAFAFA;
+        .article-body table td a {
+          color: #1A1A1A !important;
+          text-decoration: none;
         }
-        .article-body table tbody tr:last-child td {
-          border-bottom: none;
+        .article-body table tbody tr:nth-child(even) td {
+          background: #FAFAF9;
         }
         .article-body pre {
           max-width: 100%;
