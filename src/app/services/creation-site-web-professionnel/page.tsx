@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Target, Search, Zap, Globe, Smartphone, CheckCircle, ArrowRight } from "lucide-react";
+import { Search, TrendingUp, PenTool, Target, BarChart2, CheckCircle, ArrowRight } from "lucide-react";
 import CTASection from "@/components/CTASection";
 import FAQSplit from "@/components/FAQSplit";
 import SlashTitle from "@/components/SlashTitle";
@@ -8,49 +8,46 @@ import Breadcrumb from "@/components/Breadcrumb";
 import { AnimatedSection, AnimatedGrid } from "@/components/AnimatedSection";
 
 export const metadata: Metadata = {
-  title: "Création site web professionnel sur mesure",
-  description: "Création de site web professionnel sur mesure pour entrepreneurs. Design, SEO, performance, tout inclus. Studio web francophone theslash.",
+  title: "Blog & stratégie SEO — Attirer des clients via Google",
+  description: "Créez un blog qui génère du trafic organique durable. Stratégie de contenu, SEO on-page, rédaction et structure pensée pour Google. Studio theslash.",
   openGraph: { url: "https://theslash.fr/services/creation-site-web-professionnel" },
 };
 
 const faqItems = [
-  { question: "Quelle est la différence entre un site vitrine et un site web professionnel ?", answer: "Un site vitrine est un type de site professionnel. Un site web professionnel, c'est le terme général qui désigne tout site créé avec une intention business : vitrine, e-commerce, blog, application. Chez / theslash, on parle d'un site complet, pensé stratégiquement pour votre activité." },
-  { question: "Combien coûte la création d'un site web professionnel ?", answer: "Cela dépend de la complexité de votre projet. Un site vitrine simple commence autour de 800€. Un site avec plusieurs pages, un blog et une structure SEO avancée peut aller jusqu'à 3 000€. Contactez-nous pour une estimation précise." },
-  { question: "En combien de temps mon site sera-t-il prêt ?", answer: "Entre 2 et 6 semaines selon la complexité. Un site vitrine 5 pages peut être livré en 2 à 3 semaines. Un site avec blog et structure SEO complexe prendra 4 à 6 semaines." },
-  { question: "Est-ce que mon site sera optimisé pour Google ?", answer: "Oui, systématiquement. SEO technique, structure Hn, balises meta, sitemap, performance Core Web Vitals, tout est pensé pour le référencement dès le départ, pas ajouté après coup." },
-  { question: "Puis-je modifier le contenu de mon site moi-même ?", answer: "Oui. Nous intégrons un CMS simple qui vous permet de gérer vos textes, images et articles sans toucher au code. Une documentation est fournie à la livraison." },
-  { question: "Que se passe-t-il après la livraison ?", answer: "Vous recevez un site fonctionnel, documenté, avec accès au CMS. Nous restons disponibles pendant 30 jours pour les ajustements mineurs." },
-  { question: "Travaillez-vous avec des clients hors de France ?", answer: "Oui. France, Belgique, Suisse, Canada, Maghreb. Le travail se fait à distance, sans contrainte de localisation." },
+  { question: "En combien de temps un blog commence à générer du trafic ?", answer: "En général, les premiers résultats SEO significatifs apparaissent entre 3 et 6 mois. C'est un investissement sur le long terme : le contenu travaille pour vous 24h/24, contrairement à la publicité qui s'arrête dès que vous coupez le budget." },
+  { question: "Faut-il écrire beaucoup d'articles pour que ça fonctionne ?", answer: "Non. Mieux vaut 10 articles bien ciblés et bien rédigés que 100 articles génériques. Nous privilégions la qualité et la pertinence des sujets en fonction des mots-clés que cherchent vraiment vos clients potentiels." },
+  { question: "Est-ce que vous rédigez les articles ou je dois le faire moi-même ?", answer: "Les deux options sont possibles. Nous pouvons rédiger les articles pour vous à partir d'un brief, ou structurer les articles et vous laisser les rédiger. Dans les deux cas, nous assurons l'optimisation SEO." },
+  { question: "Quelle différence entre un blog SEO et un blog classique ?", answer: "Un blog classique publie ce qui vous intéresse. Un blog SEO publie ce que vos clients cherchent sur Google. Chaque article cible une intention de recherche précise, avec une structure pensée pour remonter dans les résultats." },
+  { question: "Peut-on intégrer un blog à mon site existant ?", answer: "Oui. Si vous avez déjà un site, nous intégrons une section blog cohérente avec votre design et votre CMS. Si vous partez de zéro, nous créons un site complet avec le blog intégré." },
+  { question: "Travaillez-vous avec des clients hors de France ?", answer: "Oui. France, Belgique, Suisse, Canada, Maghreb. Le travail se fait entièrement à distance." },
 ];
 
 const inclus = [
-  "Design sur mesure (pas de template)",
-  "Développement Next.js ou adapté au projet",
-  "Structure SEO complète (Hn, balises, sitemap)",
-  "Responsive mobile / tablette / desktop",
-  "CMS pour gérer votre contenu",
-  "Optimisation des images et performance",
-  "Formulaire de contact",
-  "Google Analytics ou équivalent",
-  "Documentation de livraison",
-  "30 jours de support post-livraison",
+  "Audit de mots-clés ciblés pour votre activité",
+  "Calendrier éditorial structuré",
+  "Rédaction ou optimisation des articles",
+  "Structure SEO on-page (Hn, balises, meta)",
+  "Maillage interne entre les articles",
+  "Optimisation des images et temps de chargement",
+  "Intégration au CMS de votre site",
+  "Suivi des positions Google (Search Console)",
 ];
 
 const reasons = [
-  { icon: <Target className="w-5 h-5" />, title: "Stratégie avant design", text: "Avant de créer une seule maquette, on comprend votre activité, votre cible et vos objectifs. Le design vient ensuite, pas l'inverse." },
-  { icon: <Search className="w-5 h-5" />, title: "SEO pensé dès la structure", text: "Chaque page est construite avec une intention de recherche précise. Les titres, les sections, les mots-clés, tout est pensé pour Google." },
-  { icon: <Zap className="w-5 h-5" />, title: "Performance maximale", text: "Sites Next.js ultra-rapides, optimisés pour les Core Web Vitals. Un site lent, c'est du chiffre d'affaires perdu." },
-  { icon: <Globe className="w-5 h-5" />, title: "Accompagnement francophone", text: "Vous êtes servi en français, sans jargon, avec un interlocuteur unique du début à la fin." },
-  { icon: <Smartphone className="w-5 h-5" />, title: "100% responsive", text: "Chaque site est testé sur mobile, tablette et desktop. Plus de 70% de votre trafic vient du mobile." },
+  { icon: <Search className="w-5 h-5" />, title: "Ciblage par intention de recherche", text: "Chaque article cible une requête précise que tapent vos futurs clients sur Google. On ne publie pas au hasard." },
+  { icon: <TrendingUp className="w-5 h-5" />, title: "Trafic durable, pas payant", text: "Contrairement aux publicités, le contenu SEO continue d'attirer des visiteurs des mois et des années après publication." },
+  { icon: <PenTool className="w-5 h-5" />, title: "Contenu qui convertit", text: "Nos articles ne se contentent pas d'informer : ils guident le lecteur vers une action concrète — contact, achat, inscription." },
+  { icon: <Target className="w-5 h-5" />, title: "Stratégie avant rédaction", text: "Avant d'écrire une ligne, on analyse votre marché, vos concurrents et les sujets qui ont du potentiel pour vous." },
+  { icon: <BarChart2 className="w-5 h-5" />, title: "Résultats mesurables", text: "Search Console, positions, trafic, clics — tout est suivi et partagé pour mesurer concrètement la progression." },
 ];
 
-export default function CreationSiteWebPage() {
+export default function BlogStrategieSeoPage() {
   return (
     <>
       {/* Hero */}
       <section style={{ background: "linear-gradient(135deg, #F5F0E8 0%, #FDF8ED 100%)", padding: "120px 0 80px" }}>
         <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 clamp(20px, 3vw, 44px)" }}>
-          <Breadcrumb items={[{ label: "Services", href: "/services" }, { label: "Création site web professionnel" }]} />
+          <Breadcrumb items={[{ label: "Services", href: "/services" }, { label: "Blog & stratégie SEO" }]} />
           <AnimatedSection>
             <div style={{ maxWidth: "760px", marginTop: "24px" }}>
               <div style={{
@@ -65,7 +62,7 @@ export default function CreationSiteWebPage() {
                 fontSize: "0.75rem",
                 color: "#1A1A1A",
               }}>
-                Service phare
+                Contenu & référencement
               </div>
               <h1 style={{
                 fontFamily: "var(--font-inter), -apple-system, sans-serif",
@@ -76,7 +73,7 @@ export default function CreationSiteWebPage() {
                 marginBottom: "20px",
                 lineHeight: 1.1,
               }}>
-                Création de site web professionnel sur mesure
+                Blog & stratégie SEO pour attirer vos clients via Google
               </h1>
               <p style={{
                 fontFamily: "var(--font-inter), -apple-system, sans-serif",
@@ -86,10 +83,10 @@ export default function CreationSiteWebPage() {
                 marginBottom: "28px",
                 maxWidth: "580px",
               }}>
-                Pas un template. Pas un thème modifié. Un site construit de zéro, pensé pour votre activité, votre cible et vos objectifs, avec le SEO intégré dès la structure.
+                Un blog bien construit est la machine à leads la plus rentable qui soit. On le conçoit, on le structure et on le remplit de contenu pensé pour Google et pour vos clients.
               </p>
               <div style={{ display: "flex", flexWrap: "wrap", gap: "8px", marginBottom: "32px" }}>
-                {["SEO intégré", "Design unique", "Code propre", "Livraison documentée"].map((tag) => (
+                {["Mots-clés ciblés", "Contenu evergreen", "Trafic organique", "Sans pub payante"].map((tag) => (
                   <span key={tag} style={{
                     display: "inline-flex",
                     alignItems: "center",
@@ -124,7 +121,7 @@ export default function CreationSiteWebPage() {
                   textDecoration: "none",
                 }}
               >
-                Demander un devis
+                Démarrer ma stratégie SEO
                 <ArrowRight size={16} />
               </Link>
             </div>
@@ -135,30 +132,26 @@ export default function CreationSiteWebPage() {
       {/* What is it */}
       <section style={{ backgroundColor: "#ffffff", padding: "96px 0" }}>
         <div style={{ maxWidth: "900px", margin: "0 auto", padding: "0 clamp(20px, 3vw, 44px)" }}>
-          <div style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: "clamp(40px, 6vw, 80px)",
-            alignItems: "center",
-          }}
-          className="two-col-grid"
+          <div
+            style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "clamp(40px, 6vw, 80px)", alignItems: "center" }}
+            className="two-col-grid"
           >
             <AnimatedSection>
               <div>
-                <SlashTitle gray="c'est quoi," black="un site web professionnel ?" as="h3" fontSize="clamp(1.8rem, 3vw, 2.4rem)" style={{ marginBottom: "16px" }} />
+                <SlashTitle gray="pourquoi un blog" black="est votre meilleur commercial ?" as="h3" fontSize="clamp(1.8rem, 3vw, 2.4rem)" style={{ marginBottom: "16px" }} />
                 <p style={{ fontFamily: "var(--font-inter), -apple-system, sans-serif", fontSize: "1rem", color: "#6B7280", lineHeight: 1.75, marginBottom: "16px" }}>
-                  Un site web professionnel, ce n&apos;est pas juste un site &ldquo;beau&rdquo;. C&apos;est un site conçu pour atteindre un objectif business précis : générer des leads, vendre une offre, asseoir une crédibilité.
+                  La publicité arrête de fonctionner dès que vous coupez le budget. Un article SEO bien placé sur Google continue d&apos;attirer des visiteurs qualifiés pendant des années, sans coût supplémentaire.
                 </p>
                 <p style={{ fontFamily: "var(--font-inter), -apple-system, sans-serif", fontSize: "1rem", color: "#6B7280", lineHeight: 1.75 }}>
-                  Ça implique une réflexion stratégique sur la structure des pages, le contenu, le parcours utilisateur, l&apos;optimisation pour Google, et bien sûr, un design à la hauteur de votre image.
+                  Un blog stratégique, c&apos;est la différence entre attendre que les clients vous trouvent par hasard et être visible exactement au moment où ils cherchent ce que vous proposez.
                 </p>
               </div>
             </AnimatedSection>
             <AnimatedSection delay={0.15}>
               <div style={{ borderRadius: "20px", overflow: "hidden" }}>
                 <img
-                  src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80"
-                  alt="Création site web professionnel"
+                  src="https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=600&q=80"
+                  alt="Stratégie SEO et blog"
                   style={{ width: "100%", height: "320px", objectFit: "cover", display: "block" }}
                 />
               </div>
@@ -168,12 +161,12 @@ export default function CreationSiteWebPage() {
         <style>{`@media (max-width: 640px) { .two-col-grid { grid-template-columns: 1fr !important; } }`}</style>
       </section>
 
-      {/* Pourquoi Yuzzu */}
+      {/* Pourquoi theslash */}
       <section style={{ backgroundColor: "#F5F0E8", padding: "96px 0" }}>
         <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 clamp(20px, 3vw, 44px)" }}>
           <AnimatedSection>
             <div style={{ textAlign: "center", marginBottom: "56px" }}>
-              <SlashTitle gray="pourquoi confier" black="votre site à / theslash ?" />
+              <SlashTitle gray="notre approche" black="du contenu SEO" />
             </div>
           </AnimatedSection>
           <AnimatedGrid className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" baseDelay={0.08}>
@@ -214,18 +207,16 @@ export default function CreationSiteWebPage() {
         <div style={{ maxWidth: "800px", margin: "0 auto", padding: "0 clamp(20px, 3vw, 44px)" }}>
           <AnimatedSection>
             <div style={{ textAlign: "center", marginBottom: "48px" }}>
-              <SlashTitle gray="notre méthode" black="en 7 étapes" />
+              <SlashTitle gray="notre méthode" black="en 5 étapes" />
             </div>
           </AnimatedSection>
           <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
             {[
-              { n: "01", title: "Cadrage", text: "On comprend votre activité, vos clients cibles et vos objectifs." },
-              { n: "02", title: "Architecture", text: "Quelles pages, dans quel ordre, avec quelle logique de navigation." },
-              { n: "03", title: "Structure SEO", text: "Titres, sections, maillage interne, intention de chaque page." },
-              { n: "04", title: "Design", text: "Maquettes sur mesure, validées avec vous avant développement." },
-              { n: "05", title: "Développement", text: "Code propre, rapide, optimisé Core Web Vitals." },
-              { n: "06", title: "SEO on-page", text: "Balises, images optimisées, sitemap, prêt avant mise en ligne." },
-              { n: "07", title: "Livraison", text: "Site fonctionnel, documenté, avec formation CMS si besoin." },
+              { n: "01", title: "Audit & recherche de mots-clés", text: "On identifie les requêtes que tapent vos clients potentiels, celles qui ont du volume et peu de concurrence." },
+              { n: "02", title: "Calendrier éditorial", text: "On planifie les sujets à couvrir, dans quel ordre, avec quelle priorité selon votre activité et vos objectifs." },
+              { n: "03", title: "Rédaction & structuration", text: "Chaque article est construit avec un plan SEO précis : titres Hn, intro, corps, conclusion, liens internes." },
+              { n: "04", title: "Optimisation technique", text: "Balises meta, images compressées et alt text, vitesse de chargement, balisage schema.org si pertinent." },
+              { n: "05", title: "Suivi & ajustements", text: "Suivi mensuel des positions sur Search Console. Ajustements des articles qui peuvent progresser." },
             ].map((step, i) => (
               <AnimatedSection key={step.n} delay={i * 0.05}>
                 <div style={{ backgroundColor: "#ffffff", borderRadius: "14px", padding: "18px 22px", display: "flex", gap: "16px", alignItems: "flex-start", border: "1px solid rgba(0,0,0,0.04)" }}>
@@ -247,10 +238,10 @@ export default function CreationSiteWebPage() {
         items={faqItems}
         grayTitle="vos questions,"
         blackTitle="nos réponses"
-        imageUrl="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=400&q=80"
-        imageCaption="Chaque projet commence par une vraie conversation, pas un formulaire."
+        imageUrl="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=400&q=80"
+        imageCaption="Le SEO, c'est un investissement. On vous explique honnêtement ce que vous pouvez attendre et quand."
       />
-      <CTASection title="Prêt à créer votre site web professionnel ?" cta="Demander un devis" ctaHref="/contact" />
+      <CTASection title="Prêt à construire votre audience organique ?" cta="Démarrer ma stratégie SEO" ctaHref="/contact" />
     </>
   );
 }
