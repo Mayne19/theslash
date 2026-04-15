@@ -2,8 +2,6 @@ backend:
   name: github
   repo: Mayne19/theslash
   branch: main
-  base_url: https://api.netlify.com
-  auth_endpoint: auth
 
 media_folder: public/images/blog
 public_folder: /images/blog
