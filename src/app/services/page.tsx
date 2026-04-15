@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Globe, Home, Target, RefreshCw, Code2, Layers, ArrowRight } from "lucide-react";
+import { Home, Target, RefreshCw, Code2, PenTool, Layers, ArrowRight } from "lucide-react";
 import CTASection from "@/components/CTASection";
 import NumberedServiceCard from "@/components/NumberedServiceCard";
 import ServiceAccordion from "@/components/ServiceAccordion";
@@ -15,20 +15,20 @@ export const metadata: Metadata = {
 };
 
 const numberedServices = [
-  { num: "01", icon: <Globe className="w-7 h-7" />, title: "Création de site web professionnel", description: "De la stratégie au lancement : structure SEO, design sur mesure, développement performant. Pour les entrepreneurs qui veulent un site qui travaille pour eux.", href: "/services/creation-site-web-professionnel" },
-  { num: "02", icon: <Home className="w-7 h-7" />, title: "Création de site vitrine", description: "Pour présenter votre activité de façon claire et professionnelle. Simple, efficace, orienté contact.", href: "/services/site-vitrine" },
-  { num: "03", icon: <Target className="w-7 h-7" />, title: "Création de landing page", description: "Une page pensée pour une seule chose : convertir. Copywriting, design et structure optimisés pour le taux de conversion.", href: "/services/landing-page" },
-  { num: "04", icon: <RefreshCw className="w-7 h-7" />, title: "Refonte de site web", description: "Votre site existe déjà mais ne convertit pas ? On le repense de zéro, design, performance et SEO.", href: "/services/refonte-site-web" },
-  { num: "05", icon: <Code2 className="w-7 h-7" />, title: "Application web sur mesure", description: "Pour les projets ambitieux : SaaS, espaces membres, outils métier. Développement sur mesure.", href: "/services/app-web-sur-mesure" },
+  { num: "01", icon: <Home className="w-7 h-7" />, title: "Site vitrine", description: "Pour les freelances, coachs, consultants et PME qui veulent présenter leur activité de façon claire et professionnelle.", href: "/services/site-vitrine" },
+  { num: "02", icon: <Target className="w-7 h-7" />, title: "Landing page", description: "Pour vendre une offre précise, promouvoir un événement ou lancer un produit. Chaque élément est pensé pour convertir.", href: "/services/landing-page" },
+  { num: "03", icon: <RefreshCw className="w-7 h-7" />, title: "Refonte de site web", description: "Votre site existe déjà mais est lent ou ne convertit pas ? Nous le repensons de zéro, design, performance et SEO.", href: "/services/refonte-site-web" },
+  { num: "04", icon: <Code2 className="w-7 h-7" />, title: "Application web sur mesure", description: "Pour les projets ambitieux : SaaS, espaces membres, outils métier. Du développement adapté à votre besoin exact.", href: "/services/app-web-sur-mesure" },
+  { num: "05", icon: <PenTool className="w-7 h-7" />, title: "Blog & stratégie SEO", description: "Pour construire une audience durable et attirer des clients via Google sur le long terme.", href: "/services/creation-site-web-professionnel" },
   { num: "06", icon: <Layers className="w-7 h-7" />, title: "Site Webflow / No-code", description: "Sites designés visuellement, sans code. Pour les clients qui veulent gérer leur site en totale autonomie après livraison.", href: "/services/site-no-code" },
 ];
 
 const accordionServices = [
-  { icon: <Globe className="w-4 h-4" />, title: "Création de site web professionnel", description: "Un site complet, pensé stratégiquement pour votre activité, structure SEO, design sur mesure, performance Core Web Vitals. De la maquette au lancement.", tags: ["Stratégie", "Design", "SEO", "Livraison"], href: "/services/creation-site-web-professionnel" },
-  { icon: <Home className="w-4 h-4" />, title: "Création de site vitrine", description: "Pour les freelances, coachs, consultants et PME qui veulent présenter leur activité de façon claire et professionnelle.", tags: ["Vitrine", "Contact", "Mobile-first"], href: "/services/site-vitrine" },
-  { icon: <Target className="w-4 h-4" />, title: "Création de landing page", description: "Une page, un objectif. Copywriting, design et structure optimisés pour convertir les visiteurs en clients, abonnés ou prospects.", tags: ["Conversion", "Copywriting", "A/B test"], href: "/services/landing-page" },
+  { icon: <Home className="w-4 h-4" />, title: "Site vitrine", description: "Pour les freelances, coachs, consultants et PME qui veulent présenter leur activité de façon claire et professionnelle.", tags: ["Vitrine", "Contact", "Mobile-first"], href: "/services/site-vitrine" },
+  { icon: <Target className="w-4 h-4" />, title: "Landing page", description: "Une page, un objectif. Copywriting, design et structure optimisés pour convertir les visiteurs en clients, abonnés ou prospects.", tags: ["Conversion", "Copywriting", "A/B test"], href: "/services/landing-page" },
   { icon: <RefreshCw className="w-4 h-4" />, title: "Refonte de site web", description: "Votre site existe mais est lent, vieillissant ou ne convertit pas. On le repense de zéro avec une approche stratégique.", tags: ["Audit", "Redesign", "Performance"], href: "/services/refonte-site-web" },
   { icon: <Code2 className="w-4 h-4" />, title: "Application web sur mesure", description: "Pour les projets ambitieux : SaaS, espaces membres, outils métier. Du développement adapté à votre besoin exact.", tags: ["SaaS", "Next.js", "API", "Scalable"], href: "/services/app-web-sur-mesure" },
+  { icon: <PenTool className="w-4 h-4" />, title: "Blog & stratégie SEO", description: "Pour construire une audience durable et attirer des clients via Google sur le long terme.", tags: ["SEO", "Blog", "Contenu", "Trafic"], href: "/services/creation-site-web-professionnel" },
   { icon: <Layers className="w-4 h-4" />, title: "Site Webflow / No-code", description: "Sites designés visuellement, sans code. Pour les clients qui veulent gérer leur site en totale autonomie après livraison.", tags: ["Webflow", "No-code", "Autonomie", "CMS"], href: "/services/site-no-code" },
 ];
 

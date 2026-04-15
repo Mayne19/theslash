@@ -3,9 +3,15 @@ import { NextRequest } from "next/server";
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
   const code = searchParams.get("code");
+  const state = searchParams.get("state");
+  const savedState = req.cookies.get("oauth_state")?.value;
 
   if (!code) {
     return new Response("Missing code", { status: 400 });
+  }
+
+  if (!state || !savedState || state !== savedState) {
+    return new Response("Invalid state", { status: 403 });
   }
 
   const resp = await fetch("https://github.com/login/oauth/access_token", {
