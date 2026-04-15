@@ -8,7 +8,7 @@ import ArticleSidebarLeft from "@/components/ArticleSidebarLeft";
 import ArticleSidebarRight from "@/components/ArticleSidebarRight";
 import ArticleReactions from "@/components/ArticleReactions";
 import ArticleFAQ from "@/components/ArticleFAQ";
-import { getAllArticles, getArticleBySlug, getCategoryLabel } from "@/lib/articles";
+import { getAllArticles, getArticleBySlug, getCategoryLabel, renderMarkdown } from "@/lib/articles";
 import { Clock, Calendar, RefreshCw } from "lucide-react";
 import SocialEmbedLoader from "@/components/SocialEmbedLoader";
 
@@ -99,7 +99,7 @@ export default async function ArticlePage({ params }: Props) {
   ];
   const coverImg = article.coverImage ?? coverImages[slug.charCodeAt(0) % coverImages.length];
 
-  const rawContent = "";
+  const rawContent = article.content ? renderMarkdown(article.content) : "";
   const processedContent = addIDsToHeadings(rawContent);
   const tocItems = extractTOC(rawContent);
 

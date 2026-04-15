@@ -1,8 +1,8 @@
 ---
 title: Comment choisir le bon CMS pour votre site en 2026
 description: WordPress, Webflow, Next.js + Keystatic — on décortique les options pour vous aider à faire le bon choix selon votre projet.
-date: 2026-03-15
-author: Yuzzu
+date: 2026-03-15T00:00:00.000Z
+author: / theslash
 readingTime: 7
 category: creation-site
 ---
@@ -20,11 +20,13 @@ Dans cet article, on vous donne une analyse honnête des options les plus couran
 WordPress représente encore environ 40% des sites web dans le monde. C'est dire si l'écosystème est mature.
 
 **Avantages :**
+
 - Facile à prendre en main pour un non-développeur
 - Des milliers de plugins pour tout faire
 - Une communauté énorme, beaucoup de ressources
 
 **Limites :**
+
 - Performance médiocre par défaut (beaucoup de plugins = beaucoup de requêtes)
 - Sécurité à surveiller constamment
 - Maintenance régulière nécessaire (mises à jour, sauvegardes)
@@ -36,11 +38,13 @@ WordPress représente encore environ 40% des sites web dans le monde. C'est dire
 Webflow est une plateforme no-code qui génère du code propre. Elle séduit beaucoup de designers.
 
 **Avantages :**
+
 - Design très libre, sans toucher au code
 - Hébergement inclus, bonnes performances
 - CMS intégré correct
 
 **Limites :**
+
 - Prix élevé (surtout pour l'e-commerce)
 - Vendor lock-in : difficile à migrer
 - Courbe d'apprentissage réelle malgré le "no-code"
@@ -49,22 +53,22 @@ Webflow est une plateforme no-code qui génère du code propre. Elle séduit bea
 
 ## Next.js + CMS headless : la solution performante
 
-C'est notre stack principal chez Yuzzu. Next.js génère des sites ultra-rapides, et on connecte un CMS headless (Keystatic, Sanity, Contentful) pour la gestion du contenu.
+C'est notre stack principal chez / theslash. Next.js génère des sites ultra-rapides, et on connecte un CMS headless pour la gestion du contenu.
 
 **Avantages :**
+
 - Performance maximale (scores Google Lighthouse au-dessus de 95)
 - Design totalement libre
 - SEO parfaitement contrôlé
 - Évolutif vers une application complète si besoin
 
 **Limites :**
+
 - Nécessite un développeur pour la mise en place
 - Plus complexe à comprendre techniquement
 
-**Pour qui :** entrepreneurs qui veulent le meilleur en performance et SEO, projets avec ambition de croissance, sites qui ont besoin de différenciation.
+**Pour qui :** entrepreneurs qui veulent le meilleur en performance et SEO, projets avec ambition de croissance.
 
 ## Notre recommandation
 
 Il n'existe pas de CMS universel. La bonne question n'est pas "quel est le meilleur CMS ?" mais "quel CMS est adapté à mon projet, mon budget et mes compétences ?"
-
-Si vous hésitez, parlez-en avec nous. On vous conseillera honnêtement — même si la solution la plus simple n'est pas celle que nous proposons.
