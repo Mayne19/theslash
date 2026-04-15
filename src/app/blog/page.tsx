@@ -66,16 +66,16 @@ export default async function BlogPage() {
               <div className="featured-top-grid" style={{ display: "grid", gridTemplateColumns: "1fr 280px", gap: "28px", alignItems: "stretch" }}>
 
                 {/* Bloc à la une */}
-                <Link href={`/blog/${articles[0].slug}`} style={{ textDecoration: "none", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0", alignItems: "stretch", backgroundColor: "#F5F0E8", borderRadius: "24px", overflow: "hidden", maxHeight: "300px" }} className="featured-grid">
-                  <div style={{ padding: "32px" }} className="featured-content">
+                <Link href={`/blog/${articles[0].slug}`} style={{ textDecoration: "none", display: "grid", gridTemplateColumns: "2fr 3fr", gap: "0", alignItems: "stretch", backgroundColor: "#F5F0E8", borderRadius: "24px", overflow: "hidden", maxHeight: "300px" }} className="featured-grid">
+                  <div style={{ padding: "32px", minWidth: 0, overflow: "hidden" }} className="featured-content">
                     <div style={{ display: "flex", gap: "6px", marginBottom: "12px" }}>
                       {articles[0].category && (
                         <span style={{ padding: "3px 10px", backgroundColor: "rgba(243,199,9,0.2)", borderRadius: "50px", fontFamily: "var(--font-inter), -apple-system, sans-serif", fontSize: "0.68rem", fontWeight: 700, color: "#1A1A1A" }}>{articles[0].category}</span>
                       )}
                       <span style={{ padding: "3px 10px", backgroundColor: "rgba(0,0,0,0.06)", borderRadius: "50px", fontFamily: "var(--font-inter), -apple-system, sans-serif", fontSize: "0.68rem", fontWeight: 600, color: "#6B7280" }}>À la une</span>
                     </div>
-                    <h2 style={{ fontFamily: "var(--font-inter), -apple-system, sans-serif", fontWeight: 800, fontSize: "clamp(1.15rem, 2vw, 1.55rem)", color: "#1A1A1A", letterSpacing: "-0.02em", marginBottom: "10px", lineHeight: 1.3 }}>{articles[0].title}</h2>
-                    <p style={{ fontFamily: "var(--font-inter), -apple-system, sans-serif", fontSize: "0.82rem", color: "#6B7280", lineHeight: 1.6, marginBottom: "16px" }}>{articles[0].excerpt}</p>
+                    <h2 style={{ fontFamily: "var(--font-inter), -apple-system, sans-serif", fontWeight: 800, fontSize: "clamp(1.15rem, 2vw, 1.55rem)", color: "#1A1A1A", letterSpacing: "-0.02em", marginBottom: "10px", lineHeight: 1.3, overflowWrap: "break-word", wordBreak: "break-word" }}>{articles[0].title}</h2>
+                    <p style={{ fontFamily: "var(--font-inter), -apple-system, sans-serif", fontSize: "0.82rem", color: "#6B7280", lineHeight: 1.6, marginBottom: "16px", overflowWrap: "break-word", wordBreak: "break-word" }}>{articles[0].excerpt}</p>
                     <div style={{ display: "flex", alignItems: "center", gap: "6px", fontFamily: "var(--font-inter), -apple-system, sans-serif", fontSize: "0.78rem", fontWeight: 700, color: "#1A1A1A" }}>
                       Lire l&apos;article <ArrowRight size={12} />
                     </div>
@@ -142,9 +142,9 @@ export default async function BlogPage() {
               .featured-top-grid > a + div { display: none !important; }
             }
             @media (max-width: 640px) {
-              .featured-grid { grid-template-columns: 1fr !important; }
+              .featured-grid { grid-template-columns: 1fr !important; max-height: none !important; }
               .featured-img { display: none !important; }
-              .featured-content { padding: 28px !important; }
+              .featured-content { padding: 24px !important; min-width: 0 !important; overflow: hidden !important; }
             }
           `}</style>
         </section>
