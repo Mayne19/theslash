@@ -22,8 +22,10 @@ const faqItems = [
 const serviceLinks = [
   { label: "Site vitrine", href: "/services/site-vitrine" },
   { label: "Landing page", href: "/services/landing-page" },
-  { label: "Refonte", href: "/services/refonte-site-web" },
-  { label: "Application web", href: "/services/app-web-sur-mesure" },
+  { label: "Refonte de site web", href: "/services/refonte-site-web" },
+  { label: "Application web sur mesure", href: "/services/app-web-sur-mesure" },
+  { label: "Blog & stratégie SEO", href: "/services/creation-site-web-professionnel" },
+  { label: "Site Webflow / No-code", href: "/services/site-no-code" },
 ];
 
 export default function ContactPage() {
