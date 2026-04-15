@@ -1,0 +1,41 @@
+backend:
+  name: github
+  repo: Mayne19/theslash
+  branch: main
+  base_url: https://api.netlify.com
+  auth_endpoint: auth
+
+media_folder: public/images/blog
+public_folder: /images/blog
+
+collections:
+  - name: articles
+    label: Articles
+    folder: content/posts
+    create: true
+    format: frontmatter
+    slug: "{{slug}}"
+    fields:
+      - { label: Titre, name: title, widget: string }
+      - { label: Description, name: description, widget: string }
+      - { label: Date, name: date, widget: datetime }
+      - label: Catégorie
+        name: category
+        widget: select
+        options:
+          - { label: "Création de site", value: "creation-site" }
+          - { label: "SEO", value: "seo" }
+          - { label: "Web Design", value: "web-design" }
+          - { label: "Intelligence Artificielle", value: "ia" }
+          - { label: "Stratégie digitale", value: "strategie" }
+      - { label: "Temps de lecture (min)", name: readingTime, widget: number }
+      - { label: "Image de couverture", name: coverImage, widget: image, required: false }
+      - { label: Auteur, name: author, widget: string, default: "/ theslash" }
+      - label: FAQ
+        name: faq
+        widget: list
+        required: false
+        fields:
+          - { label: Question, name: question, widget: string }
+          - { label: Réponse, name: answer, widget: text }
+      - { label: Contenu, name: body, widget: markdown }
