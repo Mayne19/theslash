@@ -378,36 +378,36 @@ export default async function ArticlePage({ params }: Props) {
           border-radius: 8px;
           display: block;
         }
-        .article-body table {
-          width: 100%;
-          max-width: 100%;
+        .article-body .table-wrapper {
           overflow-x: auto;
-          display: block;
+          margin: 24px 0;
+          border-radius: 12px;
+          border: 1px solid #E5E7EB;
+          -webkit-overflow-scrolling: touch;
+        }
+        .article-body .table-wrapper table {
+          width: 100%;
+          min-width: 480px;
           border-collapse: collapse;
           font-family: var(--font-inter), -apple-system, sans-serif;
           font-size: 0.88rem;
-          margin: 24px 0;
         }
-        .article-body table thead tr {
+        .article-body .table-wrapper table thead tr {
           background: #F3C709;
         }
-        .article-body table th {
+        .article-body .table-wrapper table th {
           padding: 12px 16px;
           text-align: left;
           font-weight: 700;
           color: #1A1A1A;
           white-space: nowrap;
         }
-        .article-body table td {
+        .article-body .table-wrapper table td {
           padding: 12px 16px;
-          color: #1A1A1A !important;
+          color: #1A1A1A;
           border-top: 1px solid #F0EDE8;
         }
-        .article-body table td a {
-          color: #1A1A1A !important;
-          text-decoration: none;
-        }
-        .article-body table tbody tr:nth-child(even) td {
+        .article-body .table-wrapper table tbody tr:nth-child(even) td {
           background: #FAFAF9;
         }
         .article-body pre {

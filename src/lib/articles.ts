@@ -78,6 +78,13 @@ export async function getArticleBySlug(slug: string): Promise<Article | null> {
   }
 }
 
+const renderer = new marked.Renderer();
+renderer.table = ({ header, rows }) => {
+  const thead = `<thead><tr>${header.map((h) => `<th>${h.text}</th>`).join("")}</tr></thead>`;
+  const tbody = `<tbody>${rows.map((row) => `<tr>${row.map((cell) => `<td>${cell.text}</td>`).join("")}</tr>`).join("")}</tbody>`;
+  return `<div class="table-wrapper"><table>${thead}${tbody}</table></div>`;
+};
+
 export async function renderMarkdown(content: string): Promise<string> {
-  return await marked.parse(content);
+  return await marked.parse(content, { renderer });
 }
