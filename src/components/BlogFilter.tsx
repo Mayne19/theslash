@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import ArticleCard from "@/components/ArticleCard";
 
-const CATEGORIES = ["Tous", "Création de site", "SEO", "Web Design", "Performance"];
+const CATEGORIES = ["Tous", "SEO", "Web Design", "Performance", "Site web", "Marketing", "E-commerce", "Tech", "Analytics", "Copywriting", "Local Business"];
 
 interface Article {
   title: string;
