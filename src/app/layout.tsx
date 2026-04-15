@@ -31,9 +31,11 @@ export const metadata: Metadata = {
     locale: "fr_FR",
     url: "https://theslash.fr",
     siteName: "theslash",
+    images: [{ url: "/link.png", width: 1200, height: 630, alt: "theslash" }],
   },
   twitter: {
     card: "summary_large_image",
+    images: ["/link.png"],
   },
   robots: { index: true, follow: true },
   icons: {
