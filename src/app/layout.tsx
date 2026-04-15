@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { headers } from "next/headers";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -39,9 +40,12 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  const pathname = (await headers()).get("x-pathname") ?? "";
+  const isKeystatic = pathname.startsWith("/keystatic") || pathname.startsWith("/api/keystatic");
+
   return (
     <html lang="fr" className={inter.variable}>
 
@@ -49,10 +53,10 @@ export default function RootLayout({
         style={{ fontFamily: "var(--font-inter), -apple-system, system-ui, sans-serif", backgroundColor: "#F5F0E8" }}
         className="min-h-screen flex flex-col antialiased"
       >
-        <ScrollRestorer />
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        {!isKeystatic && <ScrollRestorer />}
+        {!isKeystatic && <Header />}
+        {isKeystatic ? children : <main className="flex-1">{children}</main>}
+        {!isKeystatic && <Footer />}
       </body>
     </html>
   );
