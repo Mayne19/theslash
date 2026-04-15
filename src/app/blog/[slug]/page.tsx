@@ -118,14 +118,7 @@ export default async function ArticlePage({ params }: Props) {
 
   const allArticles = await getAllArticles();
   const related = allArticles
-    .filter((a) => a.slug !== slug)
-    .sort((a, b) => {
-      const aC = getCategoryLabel(a.category);
-      const bC = getCategoryLabel(b.category);
-      if (aC === category && bC !== category) return -1;
-      if (bC === category && aC !== category) return 1;
-      return 0;
-    })
+    .filter((a) => a.slug !== slug && getCategoryLabel(a.category) === category)
     .slice(0, 3);
 
   const metaStyle: React.CSSProperties = {
@@ -169,7 +162,7 @@ export default async function ArticlePage({ params }: Props) {
                 {title}
               </h1>
               {description && (
-                <p style={{ fontFamily: "var(--font-inter), -apple-system, sans-serif", fontSize: "1rem", color: "#6B7280", lineHeight: 1.75 }}>
+                <p style={{ fontFamily: "var(--font-inter), -apple-system, sans-serif", fontSize: "1rem", color: "#6B7280", lineHeight: 1.75, overflowWrap: "break-word" }}>
                   {description}
                 </p>
               )}
@@ -200,7 +193,7 @@ export default async function ArticlePage({ params }: Props) {
         <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 clamp(20px, 3vw, 44px)" }}>
           <div className="article-cover" style={{ borderRadius: "16px", overflow: "hidden", height: "640px" }}>
             <img
-              src={coverImg.startsWith("http") ? coverImg : `https://images.unsplash.com/${coverImg}?w=1200&q=90`}
+              src={coverImg.startsWith("http") || coverImg.startsWith("/") ? coverImg : `https://images.unsplash.com/${coverImg}?w=1200&q=90`}
               alt={title}
               style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
             />
@@ -246,7 +239,7 @@ export default async function ArticlePage({ params }: Props) {
       </section>
 
       {/* ── ARTICLES LIÉS ── */}
-      <section style={{ backgroundColor: "#F5F0E8", padding: "72px 0" }}>
+      <section style={{ backgroundColor: "#F5F0E8", padding: "72px 0", overflowX: "hidden" }}>
         <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 clamp(20px, 3vw, 44px)" }}>
           <div style={{ marginBottom: "40px" }}>
             <h2 style={{ fontFamily: "var(--font-inter), -apple-system, sans-serif", fontWeight: 800, fontSize: "clamp(1.8rem, 3vw, 2.4rem)", color: "#1A1A1A", letterSpacing: "-0.03em", lineHeight: 1.15 }}>
@@ -255,7 +248,7 @@ export default async function ArticlePage({ params }: Props) {
               <span style={{ color: "#1A1A1A", fontWeight: 800 }}>{category.toLowerCase()}</span>
             </h2>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "20px" }} className="related-grid">
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "20px", minWidth: 0 }} className="related-grid">
             {related.map((a) => (
               <ArticleCard
                 key={a.slug}
