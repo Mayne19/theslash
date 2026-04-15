@@ -102,7 +102,6 @@ function LegalSection({ title, children }: { title: string; children: React.Reac
   return (
     <div style={{ backgroundColor: "#FAFAF8", borderRadius: "16px", padding: "28px 32px", border: "1px solid rgba(0,0,0,0.05)" }}>
       <h2 style={{ fontFamily: "var(--font-inter), -apple-system, sans-serif", fontWeight: 800, fontSize: "clamp(1.05rem, 2vw, 1.2rem)", letterSpacing: "-0.02em", lineHeight: 1.2, marginBottom: "16px" }}>
-        <span style={{ color: "#A0A0A0", fontWeight: 700 }}>/ </span>
         <span style={{ color: "#1A1A1A" }}>{title}</span>
       </h2>
       {children}
