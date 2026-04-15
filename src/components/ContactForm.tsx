@@ -43,14 +43,20 @@ export default function ContactForm() {
       message: (form.elements.namedItem("message") as HTMLTextAreaElement).value,
     };
     try {
-      const res = await fetch("/api/contact", {
+      const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify({
+          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY,
+          subject: "Nouveau projet — " + data.name,
+          from_name: "Formulaire theslash.fr",
+          ...data,
+          message: `Type : ${data.projectType || "Non précisé"}\nBudget : ${data.budget || "Non précisé"}\n\n${data.message}`,
+          botcheck: "",
+        }),
       });
-      let json: { ok?: boolean; error?: string } = {};
-      try { json = await res.json(); } catch { /* ignore parse error */ }
-      if (!res.ok || !json.ok) throw new Error(json.error || `Erreur ${res.status}`);
+      const json = await res.json();
+      if (!json.success) throw new Error(json.message || "Erreur lors de l'envoi");
       setSubmitted(true);
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : "Erreur inconnue";
