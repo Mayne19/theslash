@@ -132,10 +132,10 @@ export default function ContactForm() {
               <option value="">Choisir...</option>
               <option value="site-vitrine">Site vitrine</option>
               <option value="landing-page">Landing page</option>
-              <option value="refonte">Refonte</option>
-              <option value="app-web">Application web</option>
-              <option value="webflow">Site Webflow / No-code</option>
-              <option value="creation-complete">Création complète</option>
+              <option value="refonte-site-web">Refonte de site web</option>
+              <option value="app-web-sur-mesure">Application web sur mesure</option>
+              <option value="blog-seo">Blog & stratégie SEO</option>
+              <option value="site-no-code">Site Webflow / No-code</option>
               <option value="autre">Autre</option>
             </select>
           </div>
