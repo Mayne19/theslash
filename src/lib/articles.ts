@@ -73,6 +73,6 @@ export async function getArticleBySlug(slug: string): Promise<Article | null> {
   }
 }
 
-export function renderMarkdown(content: string): string {
-  return marked.parse(content) as string;
+export async function renderMarkdown(content: string): Promise<string> {
+  return await marked.parse(content);
 }

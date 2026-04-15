@@ -99,7 +99,7 @@ export default async function ArticlePage({ params }: Props) {
   ];
   const coverImg = article.coverImage ?? coverImages[slug.charCodeAt(0) % coverImages.length];
 
-  const rawContent = article.content ? renderMarkdown(article.content) : "";
+  const rawContent = article.content ? await renderMarkdown(article.content) : "";
   const processedContent = addIDsToHeadings(rawContent);
   const tocItems = extractTOC(rawContent);
 
