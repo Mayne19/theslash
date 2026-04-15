@@ -386,6 +386,31 @@ export default async function ArticlePage({ params }: Props) {
           border-collapse: collapse;
           font-family: var(--font-inter), -apple-system, sans-serif;
           font-size: 0.88rem;
+          margin: 24px 0;
+          border-radius: 12px;
+          border: 1px solid #E5E7EB;
+        }
+        .article-body table thead tr {
+          background: #F3C709;
+        }
+        .article-body table th {
+          padding: 12px 16px;
+          text-align: left;
+          font-weight: 700;
+          color: #000;
+          border-bottom: 1px solid #E5E7EB;
+          white-space: nowrap;
+        }
+        .article-body table td {
+          padding: 12px 16px;
+          color: #4B5563;
+          border-bottom: 1px solid #E5E7EB;
+        }
+        .article-body table tbody tr:nth-child(even) {
+          background: #FAFAFA;
+        }
+        .article-body table tbody tr:last-child td {
+          border-bottom: none;
         }
         .article-body pre {
           max-width: 100%;
