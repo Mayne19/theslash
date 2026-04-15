@@ -43,7 +43,7 @@ export default async function BlogPage() {
       <section style={{ background: "linear-gradient(135deg, #F5F0E8 0%, #FDF8ED 100%)", padding: "120px 0 80px" }}>
         <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 clamp(20px, 3vw, 44px)" }}>
           <AnimatedSection>
-            <div style={{ maxWidth: "900px" }}>
+            <div style={{ maxWidth: "900px" }} className="blog-hero-content">
               <div style={{ display: "inline-block", padding: "6px 16px", backgroundColor: "rgba(243,199,9,0.12)", border: "1px solid rgba(243,199,9,0.3)", borderRadius: "50px", marginBottom: "24px", fontFamily: "var(--font-inter), -apple-system, sans-serif", fontWeight: 600, fontSize: "0.75rem", color: "#1A1A1A" }}>
                 Ressources pour entrepreneurs
               </div>
@@ -55,6 +55,13 @@ export default async function BlogPage() {
               </p>
             </div>
           </AnimatedSection>
+          <style>{`
+            @media (max-width: 640px) {
+              .blog-hero-content { text-align: center; max-width: 100% !important; }
+              .blog-hero-content > div:first-child { display: block; margin: 0 auto 24px; }
+              .blog-hero-content p { margin-left: auto; margin-right: auto; }
+            }
+          `}</style>
         </div>
       </section>
 
