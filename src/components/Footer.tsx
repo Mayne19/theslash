@@ -59,7 +59,7 @@ export default function Footer() {
             <p style={{
               fontFamily: "var(--font-inter), -apple-system, sans-serif",
               fontSize: "0.875rem",
-              color: "#6B7280",
+              color: "#9CA3AF",
               lineHeight: 1.75,
               maxWidth: "260px",
               marginBottom: "20px",
@@ -88,7 +88,7 @@ export default function Footer() {
               fontWeight: 600,
               textTransform: "uppercase",
               letterSpacing: "0.08em",
-              color: "#4B5563",
+              color: "#9CA3AF",
               marginBottom: "16px",
             }}>
               Navigation
@@ -123,7 +123,7 @@ export default function Footer() {
               fontWeight: 600,
               textTransform: "uppercase",
               letterSpacing: "0.08em",
-              color: "#4B5563",
+              color: "#9CA3AF",
               marginBottom: "16px",
             }}>
               Services
@@ -158,7 +158,7 @@ export default function Footer() {
               fontWeight: 600,
               textTransform: "uppercase",
               letterSpacing: "0.08em",
-              color: "#4B5563",
+              color: "#9CA3AF",
               marginBottom: "16px",
             }}>
               Newsletter
@@ -166,7 +166,7 @@ export default function Footer() {
             <p style={{
               fontFamily: "var(--font-inter), -apple-system, sans-serif",
               fontSize: "0.8rem",
-              color: "#6B7280",
+              color: "#9CA3AF",
               lineHeight: 1.65,
               marginBottom: "16px",
             }}>
@@ -180,6 +180,7 @@ export default function Footer() {
               <form onSubmit={handleNewsletter} style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
                 <input
                   type="email"
+                  aria-label="Adresse e-mail pour la newsletter"
                   value={nlEmail}
                   onChange={(e) => setNlEmail(e.target.value)}
                   placeholder="votre@email.com"
@@ -236,7 +237,7 @@ export default function Footer() {
           <p style={{
             fontFamily: "var(--font-inter), -apple-system, sans-serif",
             fontSize: "0.78rem",
-            color: "#4B5563",
+            color: "#9CA3AF",
           }}>
             © 2026 / theslash. Tous droits réservés.
           </p>
@@ -246,7 +247,7 @@ export default function Footer() {
               style={{
                 fontFamily: "var(--font-inter), -apple-system, sans-serif",
                 fontSize: "0.78rem",
-                color: "#4B5563",
+                color: "#9CA3AF",
                 textDecoration: "none",
                 transition: "color 150ms",
               }}
@@ -258,7 +259,7 @@ export default function Footer() {
               style={{
                 fontFamily: "var(--font-inter), -apple-system, sans-serif",
                 fontSize: "0.78rem",
-                color: "#4B5563",
+                color: "#9CA3AF",
                 textDecoration: "none",
                 transition: "color 150ms",
               }}

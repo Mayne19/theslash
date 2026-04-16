@@ -99,6 +99,7 @@ export default function TestimonialsCarousel() {
             </a>
             <div style={{ display: "flex", gap: "8px" }}>
               <button
+                aria-label="Témoignage précédent"
                 onClick={() => navigate(-1)}
                 style={{
                   width: "42px",
@@ -114,9 +115,10 @@ export default function TestimonialsCarousel() {
                   transition: "background-color 200ms",
                 }}
               >
-                <ChevronLeft size={18} />
+                <ChevronLeft size={18} aria-hidden="true" />
               </button>
               <button
+                aria-label="Témoignage suivant"
                 onClick={() => navigate(1)}
                 style={{
                   width: "42px",
@@ -132,7 +134,7 @@ export default function TestimonialsCarousel() {
                   transition: "background-color 200ms",
                 }}
               >
-                <ChevronRight size={18} />
+                <ChevronRight size={18} aria-hidden="true" />
               </button>
             </div>
           </div>
@@ -258,10 +260,13 @@ export default function TestimonialsCarousel() {
         </div>
 
         {/* Pagination dots */}
-        <div style={{ display: "flex", justifyContent: "center", gap: "8px", marginTop: "24px" }}>
+        <div role="tablist" aria-label="Témoignages" style={{ display: "flex", justifyContent: "center", gap: "8px", marginTop: "24px" }}>
           {testimonials.map((_, i) => (
             <button
               key={i}
+              role="tab"
+              aria-label={`Témoignage ${i + 1}`}
+              aria-selected={i === current}
               onClick={() => { setDirection(i > current ? 1 : -1); setCurrent(i); }}
               style={{
                 width: i === current ? "24px" : "8px",

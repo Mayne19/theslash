@@ -27,7 +27,7 @@ export default function LeadNotification() {
   const lead = leads[current];
 
   return (
-    <AnimatePresence mode="wait">
+    <AnimatePresence mode="wait" initial={false}>
       {visible && (
         <motion.div
           key={current}

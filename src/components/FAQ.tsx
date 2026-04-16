@@ -45,11 +45,14 @@ export default function FAQ({ items, title = "Questions fréquentes" }: FAQProps
             <AnimatedSection key={index} delay={index * 0.05}>
               <div className="bg-white rounded-2xl overflow-hidden shadow-[0_2px_12px_rgba(0,0,0,0.05)]">
                 <button
+                  aria-expanded={openIndex === index}
+                  aria-controls={`faq-${index}`}
                   onClick={() => setOpenIndex(openIndex === index ? null : index)}
                   className="w-full flex items-center justify-between p-6 text-left hover:bg-[#FAFAFA] transition-colors"
                 >
                   <span className="font-semibold text-[#0A0A0A] pr-4">{item.question}</span>
                   <span
+                    aria-hidden="true"
                     className={`shrink-0 w-6 h-6 rounded-full bg-[#F0F2F5] flex items-center justify-center transition-transform ${
                       openIndex === index ? "rotate-45" : ""
                     }`}
@@ -62,6 +65,7 @@ export default function FAQ({ items, title = "Questions fréquentes" }: FAQProps
                 <AnimatePresence>
                   {openIndex === index && (
                     <motion.div
+                      id={`faq-${index}`}
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}

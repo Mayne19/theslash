@@ -60,7 +60,7 @@ export default function HeroHome() {
         <div>
           {/* Badge */}
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 1, y: 0 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             style={{
@@ -150,7 +150,7 @@ export default function HeroHome() {
 
           {/* Subtitle */}
           <motion.p
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 1, y: 0 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.56 }}
             style={{
@@ -169,7 +169,7 @@ export default function HeroHome() {
 
           {/* CTAs */}
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 1, y: 0 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.66 }}
             style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}

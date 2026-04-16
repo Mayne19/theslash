@@ -160,6 +160,8 @@ export default function FAQSplit({
                   style={{ borderBottom: "1px solid rgba(0,0,0,0.08)" }}
                 >
                   <button
+                    aria-expanded={isOpen}
+                    aria-controls={`faq-split-${idx}`}
                     onClick={() => setOpen(isOpen ? null : idx)}
                     style={{
                       width: "100%",
@@ -183,7 +185,7 @@ export default function FAQSplit({
                     }}>
                       {item.question}
                     </span>
-                    <div style={{
+                    <div aria-hidden="true" style={{
                       flexShrink: 0,
                       width: "28px",
                       height: "28px",
@@ -206,6 +208,7 @@ export default function FAQSplit({
                   <AnimatePresence>
                     {isOpen && (
                       <motion.div
+                        id={`faq-split-${idx}`}
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
