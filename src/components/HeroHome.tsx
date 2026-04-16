@@ -259,11 +259,8 @@ export default function HeroHome() {
         </div>
       </div>
 
-      {/* Scroll hint */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.8 }}
+      {/* Scroll hint — CSS animation, no JS delay */}
+      <div
         style={{
           position: "absolute",
           bottom: "28px",
@@ -273,10 +270,9 @@ export default function HeroHome() {
           flexDirection: "column",
           alignItems: "center",
         }}
+        className="scroll-hint"
       >
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+        <div
           style={{
             width: "20px",
             height: "32px",
@@ -287,15 +283,34 @@ export default function HeroHome() {
             paddingTop: "5px",
           }}
         >
-          <div style={{ width: "4px", height: "8px", backgroundColor: "rgba(26,26,26,0.3)", borderRadius: "2px" }} />
-        </motion.div>
-      </motion.div>
+          <div
+            style={{ width: "4px", height: "8px", backgroundColor: "rgba(26,26,26,0.3)", borderRadius: "2px" }}
+            className="scroll-dot"
+          />
+        </div>
+      </div>
 
       <style>{`
         @media (max-width: 768px) {
           .hero-grid {
             grid-template-columns: 1fr !important;
           }
+          .hero-widgets {
+            display: none !important;
+          }
+          .scroll-hint {
+            display: none !important;
+          }
+        }
+        @keyframes scroll-bounce {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(8px); }
+        }
+        .scroll-dot {
+          animation: scroll-bounce 1.6s ease-in-out infinite;
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .scroll-dot { animation: none; }
         }
       `}</style>
     </section>
