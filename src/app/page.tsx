@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import {
   Home, Target, RefreshCw, Code2, PenTool, Layers,
   ArrowRight, CheckCircle, Zap, Lock, TrendingUp, Gem,
@@ -12,9 +13,11 @@ import HeroHome from "@/components/HeroHome";
 import StatsBanner from "@/components/StatsBanner";
 import TestimonialsCarousel from "@/components/TestimonialsCarousel";
 import NewsletterSection from "@/components/NewsletterSection";
-import GrowthChart from "@/components/ui/GrowthChart";
-import SeoWidget from "@/components/ui/SeoWidget";
 import { getAllArticles, getCategoryLabel } from "@/lib/articles";
+
+// Dynamically import below-fold components to reduce initial bundle
+const GrowthChart = dynamic(() => import("@/components/ui/GrowthChart"));
+const SeoWidget = dynamic(() => import("@/components/ui/SeoWidget"));
 
 
 export const metadata: Metadata = {

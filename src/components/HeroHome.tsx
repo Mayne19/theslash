@@ -89,9 +89,9 @@ export default function HeroHome() {
           {/* H1 */}
           <div style={{ marginBottom: "24px" }}>
             {/* Line 1: static */}
-            <div style={{ overflow: "hidden" }}>
+            <div>
               <motion.h1
-                initial={{ y: "110%", opacity: 0 }}
+                initial={{ y: 0, opacity: 1 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.08, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
                 style={{
@@ -111,7 +111,7 @@ export default function HeroHome() {
 
             {/* Line 2: animated rotating word — fixed height so nothing shifts */}
             <motion.div
-              initial={{ opacity: 0 }}
+              initial={{ opacity: 1 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.35, duration: 0.4 }}
               style={{

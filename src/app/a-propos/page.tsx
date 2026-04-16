@@ -62,6 +62,7 @@ export default function AProposPage() {
                 <img
                   src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=600&q=80"
                   alt="Studio / theslash"
+                  loading="lazy"
                   style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
                 />
               </div>
@@ -216,6 +217,7 @@ export default function AProposPage() {
                 <img
                   src={logo.src}
                   alt={logo.name}
+                  loading="lazy"
                   width={64}
                   height={64}
                   style={{ width: "64px", height: "64px", objectFit: "contain", filter: "brightness(0) opacity(0.45)" }}
@@ -278,6 +280,7 @@ export default function AProposPage() {
                 <img
                   src={logo.src}
                   alt={logo.name}
+                  loading="lazy"
                   width={64}
                   height={64}
                   style={{ width: "64px", height: "64px", objectFit: "contain", filter: "brightness(0) opacity(0.45)" }}

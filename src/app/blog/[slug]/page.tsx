@@ -195,6 +195,8 @@ export default async function ArticlePage({ params }: Props) {
             <img
               src={coverImg.startsWith("http") || coverImg.startsWith("/") ? coverImg : `https://images.unsplash.com/${coverImg}?w=1200&q=90`}
               alt={title}
+              fetchPriority="high"
+              loading="eager"
               style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
             />
           </div>

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <!-- Lemon shape -->
+  <defs>
+    <linearGradient id="lemonGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F3C709;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E6B800;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Main lemon body -->
+  <ellipse cx="64" cy="72" rx="40" ry="48" fill="url(#lemonGradient)"/>
+
+  <!-- Top point -->
+  <ellipse cx="64" cy="20" rx="18" ry="20" fill="url(#lemonGradient)"/>
+
+  <!-- Bottom point -->
+  <ellipse cx="64" cy="118" rx="14" ry="18" fill="url(#lemonGradient)"/>
+
+  <!-- Subtle highlight -->
+  <ellipse cx="48" cy="50" rx="16" ry="24" fill="#FFF9E6" opacity="0.3"/>
+
+  <!-- Leaf -->
+  <g transform="translate(75, 25) rotate(-20)">
+    <ellipse cx="0" cy="0" rx="12" ry="8" fill="#2D5016" opacity="0.8"/>
+    <line x1="-8" y1="0" x2="8" y2="0" stroke="#1a3d0f" stroke-width="0.5" opacity="0.6"/>
+  </g>
+</svg>

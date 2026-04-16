@@ -152,6 +152,7 @@ export default function BlogStrategieSeoPage() {
                 <img
                   src="https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?w=600&q=80"
                   alt="Stratégie SEO et blog"
+                  loading="lazy"
                   style={{ width: "100%", height: "320px", objectFit: "cover", display: "block" }}
                 />
               </div>

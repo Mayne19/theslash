@@ -152,6 +152,7 @@ export default function DashboardWidgets() {
             <img
               src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=500&q=80"
               alt="Satisfaction client"
+              fetchPriority="high"
               style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
             />
             <div style={{

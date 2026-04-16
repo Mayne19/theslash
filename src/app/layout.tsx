@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { headers } from "next/headers";
 import Script from "next/script";
 import "./globals.css";
 import Header from "@/components/Header";
@@ -12,11 +11,11 @@ import ScrollRestorer from "@/components/ScrollRestorer";
   globals.css     → font-family: var(--font-inter), ... sur body & headings
 */
 const inter = Inter({
-  subsets: ["latin", "latin-ext"],
+  subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
   preload: true,
-  weight: ["400", "500", "600", "700", "800", "900"],
+  weight: ["400", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
@@ -46,12 +45,9 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-  const pathname = (await headers()).get("x-pathname") ?? "";
-  const isKeystatic = pathname.startsWith("/keystatic") || pathname.startsWith("/api/keystatic");
-
   return (
     <html lang="fr" className={inter.variable}>
       <Script src="https://www.googletagmanager.com/gtag/js?id=G-NQP0TCMF3D" strategy="afterInteractive" />
@@ -66,10 +62,10 @@ export default async function RootLayout({
         style={{ fontFamily: "var(--font-inter), -apple-system, system-ui, sans-serif", backgroundColor: "#F5F0E8" }}
         className="min-h-screen flex flex-col antialiased"
       >
-        {!isKeystatic && <ScrollRestorer />}
-        {!isKeystatic && <Header />}
-        {isKeystatic ? children : <main className="flex-1">{children}</main>}
-        {!isKeystatic && <Footer />}
+        <ScrollRestorer />
+        <Header />
+        <main className="flex-1">{children}</main>
+        <Footer />
       </body>
     </html>
   );

@@ -32,7 +32,7 @@ export default function Header() {
   return (
     <>
       <motion.header
-        initial={{ y: -64, opacity: 0 }}
+        initial={{ y: 0, opacity: 1 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
         style={{

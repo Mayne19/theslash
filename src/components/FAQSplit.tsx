@@ -133,6 +133,7 @@ export default function FAQSplit({
                 <img
                   src={imageUrl}
                   alt="FAQ"
+                  loading="lazy"
                   style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
                 />
               </div>
