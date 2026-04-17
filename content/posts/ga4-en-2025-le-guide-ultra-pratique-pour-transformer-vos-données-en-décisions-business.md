@@ -22,7 +22,8 @@ Ce que vous maîtriserez en refermant cet article : un paramétrage ancré dans 
 Chaque interaction devient un événement autonome — voilà le changement architectural de GA4
 
 ![GA4, c'est quoi exactement et pourquoi ça change tout pour votre business ?](https://www.seo.fr/wp-content/uploads/2023/02/infographies_blog_GA4_FR-1024x576.png)
-*Source : [Les événements GA4 : Définition et types | GreenRed](https://www.greenred.fr/analytics/definition-et-types-devenements-ga4/)*
+
+_Source :_ [_Les événements GA4 : Définition et types | GreenRed_](https://www.greenred.fr/analytics/definition-et-types-devenements-ga4/)
 
 Dans **Google Analytics 4**, **la moindre interaction est traitée comme un événement autonome**. Défilement de page, clic sur « Mettre au panier », lecture d'une vidéo — chaque geste constitue une unité de mesure distincte. Le carcan « sessions / pages consultées » d'Universal Analytics a disparu.
 
@@ -42,14 +43,10 @@ En pratique, un marchand en ligne sous UA obtenait : « X sessions sur cette fic
 
 Les paramètres par défaut laissent votre activité dans l'ombre — personnalisez dès l'installation
 
-
-
 <div style="background:#FFF1F2;border-left:4px solid #FF4C4C;padding:16px 20px;border-radius:0 8px 8px 0;margin:24px 0;">
 <span style="display:inline-block;background:#FF4C4C;color:#fff;font-size:11px;font-weight:700;padding:3px 10px;border-radius:4px;text-transform:uppercase;letter-spacing:.5px;">Erreur fréquente</span>
 <p style="margin:10px 0 0 0;color:#7F1D1D;"><strong>Ne faites pas confiance aux données par défaut</strong><br/>Les événements collectés automatiquement par GA4 ne couvrent pas vos vrais objectifs business. Sans mapping personnalisé de vos conversions, vous pilotez à l'aveugle avec des métriques cosmétiques.</p>
 </div>
-
-
 
 Dès la mise en place, le réglage doit épouser votre réalité métier. Un modèle standardisé ne suffit jamais. Les prérequis techniques figurent dans la [documentation officielle Google Analytics 4](https://support.google.com/analytics/answer/9304153).
 
@@ -64,7 +61,7 @@ Sélectionner ses événements en partant de son activité
 Ce n'est pas la liste des événements disponibles qui guide votre choix. C'est votre métier.
 
 | Secteur | Conversions prioritaires | Signaux intermédiaires à capter |
-|---|---|---|
+| --- | --- | --- |
 | **E-commerce** | purchase, add_to_cart, begin_checkout | view_item, add_to_wishlist |
 | **SaaS** | sign_up, trial_start, feature_used | pricing_page_viewed, demo_requested |
 | **Génération de leads** | form_submit, phone_click | pdf_download, scroll_75 |
@@ -80,7 +77,8 @@ Point crucial pour quiconque migre depuis UA : la notion d'objectif a disparu. C
 Cinq rapports déclenchent des décisions — les autres décorent vos écrans
 
 ![Quels rapports GA4 créer pour piloter votre croissance ?](https://www.toonetcreation.com/media/plg_jspeed/cache/images/92d7aa932c5b607a781ad9ed71b131bf88c2eef8_4x.webp)
-*Source : [GA4 - Google Analytics 4 - Les fondamentaux - Les rapports - 11/11](https://www.youtube.com/watch?v=wvoqUwD7Cdk)*
+
+_Source :_ [_GA4 - Google Analytics 4 - Les fondamentaux - Les rapports - 11/11_](https://www.youtube.com/watch?v=wvoqUwD7Cdk)
 
 La bonne question ne porte jamais sur la quantité de rapports. Elle porte sur ceux qui provoquent un passage à l'acte. Les tableaux livrés clés en main servent de point de départ, jamais de conclusion.
 
@@ -128,14 +126,10 @@ Courant 2025, Google enrichit ces fonctions d'IA avec des recommandations d'opti
 
 Le consent mode v2 est obligatoire depuis mars 2024 — déployez-le sans ruiner votre collecte
 
-
-
 <div style="background:#FFFBEB;border-left:4px solid #FFC42C;padding:16px 20px;border-radius:0 8px 8px 0;margin:24px 0;">
 <span style="display:inline-block;background:#FFC42C;color:#fff;font-size:11px;font-weight:700;padding:3px 10px;border-radius:4px;text-transform:uppercase;letter-spacing:.5px;">À noter</span>
 <p style="margin:10px 0 0 0;color:#78350F;"><strong>Préparez-vous à perdre 20-40 % de données</strong><br/>L'activation du consent mode v2 entraîne une baisse significative des données trackées. Ce n'est pas un dysfonctionnement : anticipez-le dans vos reportings et vos objectifs chiffrés.</p>
 </div>
-
-
 
 GA4 doit se plier aux préférences de consentement de chaque visiteur. Négliger cette exigence expose à un double risque : sanctions réglementaires d'un côté, données corrompues de l'autre.
 
@@ -154,7 +148,8 @@ Le **server-side tagging** via GTM Server diminue la dépendance aux cookies tie
 GA4 a des faiblesses réelles — voici cinq irritants et leurs parades testées
 
 ![Quelles sont les vraies limites de GA4 (et comment les contourner) ?](https://thankyouanalytics.com/wp-content/uploads/2025/06/article-ga4-limites-1024x538.png)
-*Source : [GA4 : Quelles limites pour les responsables acquisition ?](https://thankyouanalytics.com/fr/blog/limites-ga4-acquisition/)*
+
+_Source :_ [_GA4 : Quelles limites pour les responsables acquisition ?_](https://thankyouanalytics.com/fr/blog/limites-ga4-acquisition/)
 
 Prétendre que GA4 est exempt de défauts serait malhonnête. Ses faiblesses sont identifiées. Les reconnaître d'emblée vous épargnera un temps considérable.
 
@@ -204,24 +199,18 @@ En situation réelle : un entrepreneur SaaS met en place cette architecture. Il 
 
 Conclusion — et trois chantiers à ouvrir sans attendre
 
-
-
 <div style="background:#F0FDF4;border-left:4px solid #22C55E;padding:16px 20px;border-radius:0 8px 8px 0;margin:24px 0;">
 <span style="display:inline-block;background:#22C55E;color:#fff;font-size:11px;font-weight:700;padding:3px 10px;border-radius:4px;text-transform:uppercase;letter-spacing:.5px;">Notre service</span>
 <p style="margin:10px 0 0 0;color:#14532D;"><strong>Un tracking GA4 pensé dès la conception</strong><br/>On intègre GA4, le consent mode et les événements de conversion dès le premier jour de votre projet de refonte ou de création de site.</p>
 <a href="https://theslash.fr/services/refonte-site-web" style="display:inline-block;margin-top:10px;background:#22C55E;color:#fff;padding:8px 18px;border-radius:6px;text-decoration:none;font-size:13px;font-weight:600;">Découvrir →</a>
 </div>
 
-
-
 GA4 s'impose en 2025 comme le fondement de toute stratégie guidée par la donnée. Les entrepreneurs qui en extraient le maximum ne sont pas les plus pointus techniquement. Ce sont ceux qui ont aligné leur configuration sur des **objectifs commerciaux concrets**.
 
 Trois actions à déclencher immédiatement :
 
 1. **Passez au crible votre configuration GA4.** Chaque événement marqué comme conversion doit correspondre à un objectif métier réel — pas à un paramètre par défaut resté intact.
-
 2. **Montez votre premier tableau de bord Looker Studio** en y intégrant les cinq analyses détaillées plus haut. Votre usage quotidien de GA4 en sera transformé.
-
 3. **Implémentez le consent mode v2 et lancez l'export BigQuery.** Le premier sécurise votre conformité juridique. Le second supprime toute contrainte de rétention.
 
 Si vous êtes en pleine construction ou refonte de votre site, le moment est idéal pour intégrer GA4 dès la conception. Notre équipe embarque cette logique dans chacun de ses [projets de refonte de site web](https://theslash.fr/services/refonte-site-web), avec un tracking opérationnel dès le lancement.
@@ -245,4 +234,6 @@ Oui. Les audiences prédictives imposent un seuil plancher de volume hebdomadair
 Peut-on utiliser GA4 en Europe sans bandeau de consentement ?
 
 Non. Le RGPD requiert un consentement explicite avant toute pose de cookie analytique. Le consent mode v2 est obligatoire depuis mars 2024 pour les annonceurs Google. Pour supprimer la bannière, tournez-vous vers Plausible (sans cookie) ou Matomo configuré en mode éligible à l'exemption CNIL.
+
+```plain
 ```
