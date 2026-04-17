@@ -3,7 +3,7 @@ import path from "path";
 import matter from "gray-matter";
 import { marked } from "marked";
 
-const POSTS_DIR = path.join(process.cwd(), "content/posts");
+const POSTS_DIR = path.join(process.cwd(), "src/content/articles");
 
 export interface Article {
   slug: string;
@@ -35,11 +35,18 @@ export function getCategoryLabel(value: string) {
   return categoryLabels[value] ?? value;
 }
 
+function parseTitle(raw: unknown): string {
+  // Keystatic fields.slug stores { name, slug } or a plain string
+  if (typeof raw === "string") return raw;
+  if (raw && typeof raw === "object" && "name" in raw) return String((raw as { name: unknown }).name);
+  return "";
+}
+
 function parseArticle(slug: string, raw: string): Article {
   const { data, content } = matter(raw);
   return {
     slug,
-    title: data.title ?? "",
+    title: parseTitle(data.title),
     description: data.description ?? "",
     date: data.date ? new Date(data.date).toISOString().split("T")[0] : "",
     author: data.author ?? "/ theslash",
@@ -54,10 +61,10 @@ function parseArticle(slug: string, raw: string): Article {
 export async function getAllArticles(): Promise<Article[]> {
   try {
     if (!fs.existsSync(POSTS_DIR)) return [];
-    const files = fs.readdirSync(POSTS_DIR).filter((f) => f.endsWith(".md"));
+    const files = fs.readdirSync(POSTS_DIR).filter((f) => f.endsWith(".md") || f.endsWith(".mdx"));
     return files
       .map((file) => {
-        const slug = file.replace(/\.md$/, "");
+        const slug = file.replace(/\.(mdx?|yaml)$/, "");
         const raw = fs.readFileSync(path.join(POSTS_DIR, file), "utf8");
         return parseArticle(slug, raw);
       })
@@ -69,8 +76,13 @@ export async function getAllArticles(): Promise<Article[]> {
 
 export async function getArticleBySlug(slug: string): Promise<Article | null> {
   try {
-    const filePath = path.join(POSTS_DIR, `${slug}.md`);
-    if (!fs.existsSync(filePath)) return null;
+    // Keystatic writes .mdx, legacy support for .md
+    const candidates = [
+      path.join(POSTS_DIR, `${slug}.mdx`),
+      path.join(POSTS_DIR, `${slug}.md`),
+    ];
+    const filePath = candidates.find((p) => fs.existsSync(p));
+    if (!filePath) return null;
     const raw = fs.readFileSync(filePath, "utf8");
     return parseArticle(slug, raw);
   } catch {
