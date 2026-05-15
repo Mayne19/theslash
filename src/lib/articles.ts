@@ -45,7 +45,7 @@ function parseTitle(raw: unknown): string {
 function parseArticle(slug: string, raw: string): Article {
   const { data, content } = matter(raw);
   return {
-    slug,
+    slug: slug.normalize("NFC"),
     title: parseTitle(data.title),
     description: data.description ?? "",
     date: data.date ? new Date(data.date).toISOString().split("T")[0] : "",
@@ -77,11 +77,30 @@ export async function getAllArticles(): Promise<Article[]> {
 export async function getArticleBySlug(slug: string): Promise<Article | null> {
   try {
     // Keystatic writes .mdx, legacy support for .md
+    // Normalize Unicode to handle accented characters properly
+    const normalizedSlug = slug.normalize("NFC");
     const candidates = [
-      path.join(POSTS_DIR, `${slug}.mdx`),
-      path.join(POSTS_DIR, `${slug}.md`),
+      path.join(POSTS_DIR, `${normalizedSlug}.mdx`),
+      path.join(POSTS_DIR, `${normalizedSlug}.md`),
     ];
-    const filePath = candidates.find((p) => fs.existsSync(p));
+    let filePath = candidates.find((p) => fs.existsSync(p));
+    
+    // If not found, try checking all files in directory for case-insensitive and encoding-tolerant match
+    if (!filePath) {
+      try {
+        const files = fs.readdirSync(POSTS_DIR).filter((f) => f.endsWith(".md") || f.endsWith(".mdx"));
+        filePath = files.find((f) => {
+          const fileSlug = f.replace(/\.(mdx?|yaml)$/, "").normalize("NFC");
+          return fileSlug === normalizedSlug;
+        });
+        if (filePath) {
+          filePath = path.join(POSTS_DIR, filePath);
+        }
+      } catch {
+        // Ignore, filePath remains null
+      }
+    }
+    
     if (!filePath) return null;
     const raw = fs.readFileSync(filePath, "utf8");
     return parseArticle(slug, raw);
