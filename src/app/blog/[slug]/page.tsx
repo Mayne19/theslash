@@ -7,6 +7,7 @@ import ArticleSidebarLeft from "@/components/ArticleSidebarLeft";
 import ArticleSidebarRight from "@/components/ArticleSidebarRight";
 import ArticleReactions from "@/components/ArticleReactions";
 import { getAllArticles, getArticleBySlug, getCategoryLabel, renderMarkdown } from "@/lib/articles";
+import { transformIdeasStudioCallouts } from "@/lib/articleCallouts";
 import { Clock, Calendar, RefreshCw } from "lucide-react";
 import SocialEmbedLoader from "@/components/SocialEmbedLoader";
 
@@ -133,7 +134,7 @@ export default async function ArticlePage({ params }: Props) {
   const coverImg = article.coverImage ?? coverImages[slug.charCodeAt(0) % coverImages.length];
 
   const rawContent = article.content ? await renderMarkdown(article.content) : "";
-  const processedContent = addIDsToHeadings(rawContent);
+  const processedContent = addIDsToHeadings(transformIdeasStudioCallouts(rawContent));
   const tocItems = extractTOC(rawContent);
 
   const articleUrl = `https://theslash.fr/blog/${slug}`;
@@ -467,6 +468,28 @@ export default async function ArticlePage({ params }: Props) {
         }
         .article-body .table-wrapper table tbody tr:nth-child(even) td {
           background: #FAFAF9;
+        }
+        .article-body .article-callout-content p,
+        .article-body .article-callout-content li,
+        .article-body .article-callout-content ul,
+        .article-body .article-callout-content ol,
+        .article-body .article-callout-content blockquote {
+          color: inherit !important;
+          font-size: inherit !important;
+          line-height: inherit !important;
+        }
+        .article-body .article-callout-content p:last-child,
+        .article-body .article-callout-content ul:last-child,
+        .article-body .article-callout-content ol:last-child {
+          margin-bottom: 0;
+        }
+        .article-body .article-callout-content ul,
+        .article-body .article-callout-content ol {
+          margin-bottom: 0;
+        }
+        .article-body .article-callout-content ul li::before,
+        .article-body .article-callout-content ol li::before {
+          color: inherit;
         }
         .article-body pre {
           max-width: 100%;

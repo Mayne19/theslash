@@ -1,38 +1,13 @@
-import { ideasStudioCallouts } from "@/lib/ideasStudioConfig";
+import { articleCalloutConfigs, type ArticleCalloutType } from "@/lib/articleCallouts";
 
 interface ArticleCalloutProps {
-  type: "important" | "erreur" | "chiffre";
+  type: ArticleCalloutType;
   label?: string;
   children: React.ReactNode;
 }
 
-const configs = Object.fromEntries(
-  ideasStudioCallouts.map((callout) => [
-    callout.key,
-    {
-      label: callout.defaultTitle,
-      bg: callout.colors.background,
-      border: callout.colors.border,
-      labelBg: callout.colors.badgeBackground,
-      labelColor: callout.colors.badgeText,
-      textColor: callout.colors.text,
-      emoji: callout.emoji,
-      className: callout.className,
-    },
-  ])
-) as Record<ArticleCalloutProps["type"], {
-  label: string;
-  bg: string;
-  border: string;
-  labelBg: string;
-  labelColor: string;
-  textColor: string;
-  emoji: string;
-  className: string;
-}>;
-
 export default function ArticleCallout({ type, label, children }: ArticleCalloutProps) {
-  const c = configs[type];
+  const c = articleCalloutConfigs[type];
   return (
     <div
       className={c.className}
