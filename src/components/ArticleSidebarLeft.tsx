@@ -21,35 +21,37 @@ export default function ArticleSidebarLeft({ items }: ArticleSidebarLeftProps) {
   const updateScroll = useCallback(() => {
     if (items.length === 0) return;
 
+    const HEADER_OFFSET = 120;
     const scrollY = window.scrollY;
+    const currentPosition = scrollY + HEADER_OFFSET;
+
     const offsets = items.map((item) => {
       const el = document.getElementById(item.id);
-      return el ? el.getBoundingClientRect().top + scrollY - 120 : null;
-    }).filter((v): v is number => v !== null);
+      return el ? el.getBoundingClientRect().top + scrollY : null;
+    });
 
-    if (offsets.length === 0) return;
+    const validItems = items.filter((_, i) => offsets[i] !== null);
+    const validOffsets = offsets.filter((v): v is number => v !== null);
 
-    const viewportMiddle = scrollY + window.innerHeight / 2;
+    if (validItems.length === 0) return;
 
-    let currentActive = items[0].id;
-    for (let i = 0; i < offsets.length; i++) {
-      if (viewportMiddle >= offsets[i]) {
-        currentActive = items[i].id;
+    let currentActive = validItems[0].id;
+    for (let i = 0; i < validOffsets.length; i++) {
+      if (currentPosition >= validOffsets[i]) {
+        currentActive = validItems[i].id;
       }
     }
 
+    const activeIndex = validItems.findIndex((item) => item.id === currentActive);
     const updates: Record<string, number> = {};
-    items.forEach((item, i) => {
-      const el = document.getElementById(item.id);
-      if (!el) return;
-      const start = el.getBoundingClientRect().top + scrollY - 120;
-      const nextEl = items[i + 1] ? document.getElementById(items[i + 1].id) : null;
-      const end = nextEl
-        ? nextEl.getBoundingClientRect().top + scrollY - 120
-        : start + el.offsetHeight;
-      const p = Math.max(0, Math.min(1, (scrollY - start) / (end - start)));
-      updates[item.id] = p;
-    });
+    if (activeIndex !== -1) {
+      const start = validOffsets[activeIndex];
+      const end = activeIndex + 1 < validOffsets.length
+        ? validOffsets[activeIndex + 1]
+        : start + (document.getElementById(validItems[activeIndex].id)?.offsetHeight ?? 600);
+      const raw = (currentPosition - start) / (end - start);
+      updates[currentActive] = Math.max(0, Math.min(1, raw));
+    }
 
     setActiveId(currentActive);
     setSectionProgress(updates);
