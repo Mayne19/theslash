@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
@@ -18,39 +18,52 @@ export default function ArticleSidebarLeft({ items }: ArticleSidebarLeftProps) {
   const [activeId, setActiveId] = useState<string>("");
   const [sectionProgress, setSectionProgress] = useState<Record<string, number>>({});
 
-  useEffect(() => {
+  const updateScroll = useCallback(() => {
     if (items.length === 0) return;
 
-    const onScroll = () => {
-      const updates: Record<string, number> = {};
-      let currentActive = "";
+    const scrollY = window.scrollY;
+    const offsets = items.map((item) => {
+      const el = document.getElementById(item.id);
+      return el ? el.getBoundingClientRect().top + scrollY - 120 : null;
+    }).filter((v): v is number => v !== null);
 
-      items.forEach((item, i) => {
-        const el = document.getElementById(item.id);
-        if (!el) return;
+    if (offsets.length === 0) return;
 
-        const nextEl = items[i + 1] ? document.getElementById(items[i + 1].id) : null;
-        const start = el.offsetTop - 140;
-        const articleBody = document.querySelector(".article-body") as HTMLElement | null;
-        const end = nextEl
-          ? (nextEl.offsetTop - 140)
-          : el.offsetTop + (articleBody?.offsetHeight ?? 600);
-        const raw = (window.scrollY - start) / (end - start);
-        const p = Math.max(0, Math.min(1, raw));
+    const viewportMiddle = scrollY + window.innerHeight / 2;
 
-        updates[item.id] = p;
-        if (p > 0 && p < 1) currentActive = item.id;
-        else if (p >= 1 && i === items.length - 1) currentActive = item.id;
-      });
+    let currentActive = items[0].id;
+    for (let i = 0; i < offsets.length; i++) {
+      if (viewportMiddle >= offsets[i]) {
+        currentActive = items[i].id;
+      }
+    }
 
-      setSectionProgress(updates);
-      if (currentActive) setActiveId(currentActive);
-    };
+    const updates: Record<string, number> = {};
+    items.forEach((item, i) => {
+      const el = document.getElementById(item.id);
+      if (!el) return;
+      const start = el.getBoundingClientRect().top + scrollY - 120;
+      const nextEl = items[i + 1] ? document.getElementById(items[i + 1].id) : null;
+      const end = nextEl
+        ? nextEl.getBoundingClientRect().top + scrollY - 120
+        : start + el.offsetHeight;
+      const p = Math.max(0, Math.min(1, (scrollY - start) / (end - start)));
+      updates[item.id] = p;
+    });
 
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-    return () => window.removeEventListener("scroll", onScroll);
+    setActiveId(currentActive);
+    setSectionProgress(updates);
   }, [items]);
+
+  useEffect(() => {
+    window.addEventListener("scroll", updateScroll, { passive: true });
+    return () => window.removeEventListener("scroll", updateScroll);
+  }, [updateScroll]);
+
+  useEffect(() => {
+    const raf = requestAnimationFrame(updateScroll);
+    return () => cancelAnimationFrame(raf);
+  }, [updateScroll]);
 
   return (
     <div style={{ position: "sticky", top: "104px", display: "flex", flexDirection: "column", gap: "20px" }}>
@@ -60,7 +73,7 @@ export default function ArticleSidebarLeft({ items }: ArticleSidebarLeftProps) {
           <ul style={{ listStyle: "none", padding: 0, margin: "0 0 8px 0", display: "flex", flexDirection: "column", gap: "0" }}>
             {items.map((item) => {
               const p = sectionProgress[item.id] ?? 0;
-              const isActive = activeId === item.id || (p > 0 && p < 1);
+              const isActive = activeId === item.id;
               return (
                 <li key={item.id}>
                   <a
@@ -84,7 +97,6 @@ export default function ArticleSidebarLeft({ items }: ArticleSidebarLeftProps) {
                   >
                     {item.text}
                   </a>
-                  {/* Progress bar: only visible while reading this section */}
                   {isActive && (
                     <div style={{
                       height: "2px",
@@ -111,7 +123,6 @@ export default function ArticleSidebarLeft({ items }: ArticleSidebarLeftProps) {
         </nav>
       )}
 
-      {/* CTA card */}
       <div style={{ backgroundColor: "#1A1A1A", borderRadius: "16px", padding: "20px" }}>
         <img src="/icon.svg" alt="/ theslash" style={{ height: "32px", width: "32px", marginBottom: "12px" }} />
         <p style={{ fontFamily: "var(--font-inter), -apple-system, sans-serif", fontWeight: 800, fontSize: "0.9rem", color: "#ffffff", lineHeight: 1.35, marginBottom: "8px" }}>

@@ -6,17 +6,17 @@ import {
 } from "./ideasStudio";
 
 export interface Article {
+  id?: string;
   slug: string;
   title: string;
   description: string;
   date: string;
+  updatedAt: string | null;
   author: string;
-  readingTime: number | null;
+  readingTime: number;
   category: string;
   coverImage: string | null;
-  faq?: { question: string; answer: string }[];
   content?: string;
-  /** Identifies source for slug dedup */
   _source?: "ideas-studio";
 }
 
@@ -66,14 +66,23 @@ export function getCategories(): { slug: string; name: string; color: string }[]
   }));
 }
 
+function estimateReadingTime(html: string | null): number {
+  if (!html) return 5;
+  const text = html.replace(/<[^>]+>/g, "").replace(/&[^;]+;/g, " ").trim();
+  const wordCount = text.split(/\s+/).filter(Boolean).length;
+  return Math.max(1, Math.round(wordCount / 200));
+}
+
 function ideasStudioToArticle(isa: IdeasStudioArticle): Article {
   return {
+    id: isa.id,
     slug: isa.slug,
     title: isa.title,
     description: isa.excerpt || isa.meta_description || "",
     date: isa.published_at ? new Date(isa.published_at).toISOString().split("T")[0] : "",
+    updatedAt: isa.updated_at ? new Date(isa.updated_at).toISOString().split("T")[0] : null,
     author: "/ theslash",
-    readingTime: null,
+    readingTime: estimateReadingTime(isa.content),
     category: isa.category?.slug || "",
     coverImage: isa.cover_image_url,
     content: isa.content || undefined,

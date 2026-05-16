@@ -6,7 +6,6 @@ import ArticleCard from "@/components/ArticleCard";
 import ArticleSidebarLeft from "@/components/ArticleSidebarLeft";
 import ArticleSidebarRight from "@/components/ArticleSidebarRight";
 import ArticleReactions from "@/components/ArticleReactions";
-import ArticleFAQ from "@/components/ArticleFAQ";
 import { getAllArticles, getArticleBySlug, getCategoryLabel, renderMarkdown } from "@/lib/articles";
 import { Clock, Calendar, RefreshCw } from "lucide-react";
 import SocialEmbedLoader from "@/components/SocialEmbedLoader";
@@ -43,16 +42,41 @@ function slugify(text: string): string {
     .trim();
 }
 
+function decodeEntities(text: string): string {
+  return text
+    .replace(/&nbsp;/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&rsquo;/g, "'")
+    .replace(/&lsquo;/g, "'")
+    .replace(/&mdash;/g, "—")
+    .replace(/&ndash;/g, "–")
+    .replace(/&agrave;/gi, "à")
+    .replace(/&egrave;/gi, "è")
+    .replace(/&eacute;/gi, "é")
+    .replace(/&ecirc;/gi, "ê")
+    .replace(/&ccedil;/gi, "ç")
+    .replace(/&ugrave;/gi, "ù")
+    .replace(/&ocirc;/gi, "ô")
+    .replace(/&laquo;/g, "«")
+    .replace(/&raquo;/g, "»")
+    .replace(/&#(\d+);/g, (_m: string, n: string) => String.fromCodePoint(Number(n)));
+}
+
 function extractTOC(html: string): { id: string; text: string; level: "h2" | "h3" }[] {
-  const headingRegex = /<(h2|h3)[^>]*>([\s\S]*?)<\/\1>/gi;
+  const headingRegex = /<(h2|h3)[^>]*id="([^"]*)"[^>]*>([\s\S]*?)<\/\1>/gi;
   const items: { id: string; text: string; level: "h2" | "h3" }[] = [];
   let match;
   while ((match = headingRegex.exec(html)) !== null) {
     const level = match[1].toLowerCase() as "h2" | "h3";
-    const raw = match[2].replace(/<[^>]+>/g, "").trim().replace(/^\d+\.\s*/, "");
-    if (raw.toLowerCase() === "introduction") continue;
-    const id = slugify(raw);
-    items.push({ id, text: raw, level });
+    const id = match[2];
+    const raw = match[3].replace(/<[^>]+>/g, "").trim().replace(/^\d+\.\s*/, "");
+    if (decodeEntities(raw).toLowerCase().trim() === "introduction") continue;
+    const cleanText = decodeEntities(raw).replace(/\s+/g, " ").trim();
+    items.push({ id, text: cleanText, level });
   }
   return items;
 }
@@ -80,14 +104,16 @@ export default async function ArticlePage({ params }: Props) {
     notFound();
   }
 
-  const title = article.title ?? "";
-  const description = article.description ?? "";
+  const title = article.title;
+  const description = article.description;
   const category = getCategoryLabel(article.category);
-  const readingTime = article.readingTime ?? 5;
+  const readingTime = article.readingTime;
   const date = article.date
     ? new Date(article.date).toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" })
     : "";
-  const updatedDate = null;
+  const updatedDate = article.updatedAt
+    ? new Date(article.updatedAt).toLocaleDateString("fr-FR", { day: "numeric", month: "long", year: "numeric" })
+    : null;
 
   const coverImages = [
     "photo-1499750310107-5fef28a66643",
@@ -117,8 +143,13 @@ export default async function ArticlePage({ params }: Props) {
 
   const allArticles = await getAllArticles();
   const related = allArticles
-    .filter((a) => a.slug !== slug && getCategoryLabel(a.category) === category)
+    .filter((a) => a.slug !== slug && a.id !== article.id && getCategoryLabel(a.category) === category)
     .slice(0, 3);
+  if (related.length < 3) {
+    const slugs = new Set(related.map((a) => a.slug));
+    const extras = allArticles.filter((a) => !slugs.has(a.slug) && a.slug !== slug && a.id !== article.id).slice(0, 3 - related.length);
+    related.push(...extras);
+  }
 
   const metaStyle: React.CSSProperties = {
     fontFamily: "var(--font-inter), -apple-system, sans-serif",
@@ -128,8 +159,6 @@ export default async function ArticlePage({ params }: Props) {
     alignItems: "center",
     gap: "6px",
   };
-
-  const faqItems = (article.faq ?? []).map((f) => ({ q: f.question, a: f.answer }));
 
   return (
     <>
@@ -269,9 +298,6 @@ export default async function ArticlePage({ params }: Props) {
         `}</style>
       </section>
 
-      {/* ── FAQ ── */}
-      <ArticleFAQ items={faqItems} />
-
       <CTASection />
 
       <SocialEmbedLoader />
@@ -361,6 +387,13 @@ export default async function ArticlePage({ params }: Props) {
         }
         .article-body table tbody tr:hover {
           background-color: rgba(243, 199, 9, 0.07) !important;
+        }
+        .article-body li p {
+          margin-bottom: 0;
+        }
+        .article-body ul li + li,
+        .article-body ol li + li {
+          margin-top: 2px;
         }
         .article-body {
           overflow-x: hidden;
