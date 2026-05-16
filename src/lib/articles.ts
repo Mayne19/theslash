@@ -35,6 +35,10 @@ export function getCategoryLabel(value: string) {
   return categoryLabels[value] ?? value;
 }
 
+export function getCategoryLabels() {
+  return { ...categoryLabels };
+}
+
 function parseTitle(raw: unknown): string {
   // Keystatic fields.slug stores { name, slug } or a plain string
   if (typeof raw === "string") return raw;
