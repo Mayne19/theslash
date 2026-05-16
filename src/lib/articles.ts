@@ -81,8 +81,10 @@ function ideasStudioToArticle(isa: IdeasStudioArticle): Article {
     description: isa.excerpt || isa.meta_description || "",
     date: isa.published_at ? new Date(isa.published_at).toISOString().split("T")[0] : "",
     updatedAt: isa.updated_at ? new Date(isa.updated_at).toISOString().split("T")[0] : null,
-    author: "/ theslash",
-    readingTime: estimateReadingTime(isa.content),
+    author: isa.author_name?.trim() || "/ theslash",
+    readingTime: (isa.reading_time_minutes && isa.reading_time_minutes > 0)
+      ? Math.round(isa.reading_time_minutes)
+      : estimateReadingTime(isa.content),
     category: isa.category?.slug || "",
     coverImage: isa.cover_image_url,
     content: isa.content || undefined,

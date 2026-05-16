@@ -20,6 +20,8 @@ export interface IdeasStudioArticle {
   cover_image_url: string | null;
   published_at: string;
   updated_at: string;
+  author_name?: string | null;
+  reading_time_minutes?: number | null;
 }
 
 export async function fetchPublishedArticles(): Promise<IdeasStudioArticle[]> {

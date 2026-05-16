@@ -143,8 +143,8 @@ export default async function ArticlePage({ params }: Props) {
     "@type": "Article",
     headline: title,
     description,
-    author: { "@type": "Organization", name: "/ theslash", url: "https://theslash.fr" },
-    publisher: { "@type": "Organization", name: "/ theslash", url: "https://theslash.fr" },
+    author: { "@type": "Organization", name: article.author, url: "https://theslash.fr" },
+    publisher: { "@type": "Organization", name: article.author, url: "https://theslash.fr" },
     datePublished: article.date ?? "",
     url: articleUrl,
   };
@@ -206,8 +206,8 @@ export default async function ArticlePage({ params }: Props) {
 
             <div style={{ display: "flex", flexDirection: "column", gap: "14px", paddingTop: "6px" }}>
               <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-                <img src="/icon.svg" alt="/ theslash" style={{ height: "32px", width: "32px", flexShrink: 0 }} />
-                <span style={{ fontFamily: "var(--font-inter), -apple-system, sans-serif", fontSize: "0.8rem", fontWeight: 700, color: "#1A1A1A" }}>/ theslash</span>
+                <img src="/icon.svg" alt={article.author} style={{ height: "32px", width: "32px", flexShrink: 0 }} />
+                <span style={{ fontFamily: "var(--font-inter), -apple-system, sans-serif", fontSize: "0.8rem", fontWeight: 700, color: "#1A1A1A" }}>{article.author}</span>
               </div>
               <div style={{ width: "100%", height: "1px", backgroundColor: "rgba(0,0,0,0.08)" }} />
               {readingTime && (
