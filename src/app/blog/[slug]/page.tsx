@@ -66,31 +66,39 @@ function decodeEntities(text: string): string {
     .replace(/&#(\d+);/g, (_m: string, n: string) => String.fromCodePoint(Number(n)));
 }
 
+function headingId(inner: string): string {
+  const text = decodeEntities(inner.replace(/<[^>]+>/g, ""))
+    .replace(/^\d+\.\s*/, "")
+    .replace(/\s+/g, " ")
+    .trim();
+  return slugify(text);
+}
+
 function extractTOC(html: string): { id: string; text: string; level: "h2" | "h3" }[] {
   const headingRegex = /<(h2|h3)[^>]*>([\s\S]*?)<\/\1>/gi;
   const items: { id: string; text: string; level: "h2" | "h3" }[] = [];
   let match;
   while ((match = headingRegex.exec(html)) !== null) {
     const level = match[1].toLowerCase() as "h2" | "h3";
-    const raw = match[2].replace(/<[^>]+>/g, "").trim().replace(/^\d+\.\s*/, "");
-    const cleaned = decodeEntities(raw).replace(/\s+/g, " ").trim();
+    const inner = match[2];
+    const cleaned = decodeEntities(inner.replace(/<[^>]+>/g, ""))
+      .replace(/^\d+\.\s*/, "")
+      .replace(/\s+/g, " ")
+      .trim();
     if (cleaned.toLowerCase() === "introduction") continue;
-    const id = slugify(cleaned);
-    items.push({ id, text: cleaned, level });
+    items.push({ id: headingId(inner), text: cleaned, level });
   }
   return items;
 }
 
 function addIDsToHeadings(html: string): string {
   let result = html.replace(/<h2[^>]*>([\s\S]*?)<\/h2>/gi, (_match, inner) => {
-    const clean = inner.replace(/<[^>]+>/g, "").trim().replace(/^\d+\.\s*/, "");
-    const id = slugify(clean);
+    const id = headingId(inner);
     const cleanInner = inner.replace(/^\d+\.\s*/, "");
     return `<h2 id="${id}">${cleanInner}</h2>`;
   });
   result = result.replace(/<h3[^>]*>([\s\S]*?)<\/h3>/gi, (_match, inner) => {
-    const text = inner.replace(/<[^>]+>/g, "").trim();
-    const id = slugify(text);
+    const id = headingId(inner);
     return `<h3 id="${id}">${inner}</h3>`;
   });
   return result;
