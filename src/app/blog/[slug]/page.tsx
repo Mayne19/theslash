@@ -276,6 +276,29 @@ export default async function ArticlePage({ params }: Props) {
         </div>
       </section>
 
+      {/* ── FAQ ── */}
+      {article.faq.length > 0 && (
+        <section style={{ backgroundColor: "#ffffff", padding: "64px 0" }}>
+          <div style={{ maxWidth: "800px", margin: "0 auto", padding: "0 clamp(20px, 3vw, 44px)" }}>
+            <h2 style={{ fontFamily: "var(--font-inter), -apple-system, sans-serif", fontWeight: 800, fontSize: "clamp(1.5rem, 2.5vw, 2rem)", color: "#1A1A1A", letterSpacing: "-0.03em", lineHeight: 1.15, marginBottom: "36px" }}>
+              Questions fréquentes
+            </h2>
+            <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+              {article.faq.map((item, i) => (
+                <div key={i} style={{ border: "1px solid #E5E7EB", borderRadius: "12px", padding: "20px 24px", backgroundColor: "#FAFAF9" }}>
+                  <p style={{ fontFamily: "var(--font-inter), -apple-system, sans-serif", fontWeight: 700, fontSize: "0.95rem", color: "#1A1A1A", lineHeight: 1.4, marginBottom: "10px" }}>
+                    {item.question}
+                  </p>
+                  <p style={{ fontFamily: "var(--font-inter), -apple-system, sans-serif", fontSize: "0.9rem", color: "#4B5563", lineHeight: 1.7, margin: 0 }}>
+                    {item.answer}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* ── ARTICLES LIÉS ── */}
       <section style={{ backgroundColor: "#F5F0E8", padding: "72px 0", overflowX: "hidden" }}>
         <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 clamp(20px, 3vw, 44px)" }}>

@@ -22,6 +22,7 @@ export interface IdeasStudioArticle {
   updated_at: string;
   author_name?: string | null;
   reading_time_minutes?: number | null;
+  faq_json?: string | null;
 }
 
 export async function fetchPublishedArticles(): Promise<IdeasStudioArticle[]> {

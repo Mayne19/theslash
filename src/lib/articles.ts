@@ -17,6 +17,7 @@ export interface Article {
   category: string;
   coverImage: string | null;
   content?: string;
+  faq: { question: string; answer: string }[];
   _source?: "ideas-studio";
 }
 
@@ -73,6 +74,23 @@ function estimateReadingTime(html: string | null): number {
   return Math.max(1, Math.round(wordCount / 200));
 }
 
+function parseFAQ(faq_json: string | null | undefined): { question: string; answer: string }[] {
+  if (!faq_json) return [];
+  try {
+    const parsed = JSON.parse(faq_json);
+    if (Array.isArray(parsed)) {
+      return parsed.filter(
+        (item): item is { question: string; answer: string } =>
+          typeof item === "object" && item !== null &&
+          typeof item.question === "string" && typeof item.answer === "string"
+      );
+    }
+    return [];
+  } catch {
+    return [];
+  }
+}
+
 function ideasStudioToArticle(isa: IdeasStudioArticle): Article {
   return {
     id: isa.id,
@@ -88,6 +106,7 @@ function ideasStudioToArticle(isa: IdeasStudioArticle): Article {
     category: isa.category?.slug || "",
     coverImage: isa.cover_image_url,
     content: isa.content || undefined,
+    faq: parseFAQ(isa.faq_json),
     _source: "ideas-studio",
   };
 }
