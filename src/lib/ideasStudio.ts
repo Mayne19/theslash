@@ -2,10 +2,6 @@ export const IDEAS_STUDIO_PROJECT_ID =
   process.env.NEXT_PUBLIC_IDEAS_STUDIO_PROJECT_ID;
 export const IDEAS_STUDIO_TRACKING_KEY =
   process.env.NEXT_PUBLIC_IDEAS_STUDIO_TRACKING_KEY;
-export const IDEAS_STUDIO_PUBLIC_PROJECT_ENDPOINT =
-  process.env.NEXT_PUBLIC_IDEAS_STUDIO_PUBLIC_PROJECT_ENDPOINT;
-export const IDEAS_STUDIO_PUBLIC_JS_ENDPOINT =
-  process.env.NEXT_PUBLIC_IDEAS_STUDIO_PUBLIC_JS_ENDPOINT;
 export const IDEAS_STUDIO_TRACKING_JS_URL =
   process.env.NEXT_PUBLIC_IDEAS_STUDIO_TRACKING_JS_URL;
 
@@ -42,8 +38,9 @@ export async function fetchPublishedArticles(): Promise<IdeasStudioArticle[]> {
 export async function fetchArticleBySlug(slug: string): Promise<IdeasStudioArticle | null> {
   if (!PROJECT_ID) return null;
   try {
+    const raw = decodeURIComponent(slug).normalize("NFC");
     const res = await fetch(
-      `${API_BASE}/projects/${PROJECT_ID}/articles/${encodeURIComponent(slug)}`,
+      `${API_BASE}/projects/${PROJECT_ID}/articles/${encodeURIComponent(raw)}`,
       { next: { revalidate: 300 } }
     );
     if (!res.ok) return null;

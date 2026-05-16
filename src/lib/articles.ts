@@ -1,14 +1,9 @@
-import fs from "fs";
-import path from "path";
-import matter from "gray-matter";
 import { marked } from "marked";
 import {
   fetchPublishedArticles,
   fetchArticleBySlug,
   type IdeasStudioArticle,
 } from "./ideasStudio";
-
-const POSTS_DIR = path.join(process.cwd(), "content/posts");
 
 export interface Article {
   slug: string;
@@ -22,7 +17,7 @@ export interface Article {
   faq?: { question: string; answer: string }[];
   content?: string;
   /** Identifies source for slug dedup */
-  _source?: "static" | "ideas-studio";
+  _source?: "ideas-studio";
 }
 
 const categoryLabels: Record<string, string> = {
@@ -71,29 +66,6 @@ export function getCategories(): { slug: string; name: string; color: string }[]
   }));
 }
 
-function parseTitle(raw: unknown): string {
-  // Keystatic fields.slug stores { name, slug } or a plain string
-  if (typeof raw === "string") return raw;
-  if (raw && typeof raw === "object" && "name" in raw) return String((raw as { name: unknown }).name);
-  return "";
-}
-
-function parseArticle(slug: string, raw: string): Article {
-  const { data, content } = matter(raw);
-  return {
-    slug: slug.normalize("NFC"),
-    title: parseTitle(data.title),
-    description: data.description ?? "",
-    date: data.date ? new Date(data.date).toISOString().split("T")[0] : "",
-    author: data.author ?? "/ theslash",
-    readingTime: data.readingTime ?? null,
-    category: data.category ?? "web-design",
-    coverImage: data.coverImage ?? null,
-    faq: Array.isArray(data.faq) ? data.faq : [],
-    content,
-  };
-}
-
 function ideasStudioToArticle(isa: IdeasStudioArticle): Article {
   return {
     slug: isa.slug,
@@ -119,27 +91,8 @@ async function fetchIdeasStudioArticles(): Promise<Article[]> {
 }
 
 export async function getAllArticles(): Promise<Article[]> {
-  let staticArticles: Article[] = [];
-  try {
-    if (fs.existsSync(POSTS_DIR)) {
-      const files = fs.readdirSync(POSTS_DIR).filter((f) => f.endsWith(".md") || f.endsWith(".mdx"));
-      staticArticles = files.map((file) => {
-        const slug = file.replace(/\.(mdx?|yaml)$/, "");
-        const raw = fs.readFileSync(path.join(POSTS_DIR, file), "utf8");
-        return { ...parseArticle(slug, raw), _source: "static" as const };
-      });
-    }
-  } catch {
-    // No static posts
-  }
-
   const ideasArticles = await fetchIdeasStudioArticles();
-
-  // Merge: Ideas Studio articles take precedence for same slug
-  const slugSet = new Set(ideasArticles.map((a) => a.slug));
-  const uniqueStatic = staticArticles.filter((a) => !slugSet.has(a.slug));
-
-  return [...ideasArticles, ...uniqueStatic].sort((a, b) => {
+  return ideasArticles.sort((a, b) => {
     const da = a.date ? new Date(a.date).getTime() : 0;
     const db = b.date ? new Date(b.date).getTime() : 0;
     return db - da;
@@ -147,39 +100,6 @@ export async function getAllArticles(): Promise<Article[]> {
 }
 
 export async function getArticleBySlug(slug: string): Promise<Article | null> {
-  // Try static files first
-  try {
-    const normalizedSlug = slug.normalize("NFC");
-    const candidates = [
-      path.join(POSTS_DIR, `${normalizedSlug}.mdx`),
-      path.join(POSTS_DIR, `${normalizedSlug}.md`),
-    ];
-    let filePath = candidates.find((p) => fs.existsSync(p));
-
-    if (!filePath) {
-      try {
-        const files = fs.readdirSync(POSTS_DIR).filter((f) => f.endsWith(".md") || f.endsWith(".mdx"));
-        filePath = files.find((f) => {
-          const fileSlug = f.replace(/\.(mdx?|yaml)$/, "").normalize("NFC");
-          return fileSlug === normalizedSlug;
-        });
-        if (filePath) {
-          filePath = path.join(POSTS_DIR, filePath);
-        }
-      } catch {
-        // Ignore
-      }
-    }
-
-    if (filePath) {
-      const raw = fs.readFileSync(filePath, "utf8");
-      return { ...parseArticle(slug, raw), _source: "static" as const };
-    }
-  } catch {
-    // Not found locally
-  }
-
-  // Try Ideas Studio public API
   try {
     const isa = await fetchArticleBySlug(slug);
     if (isa) {
