@@ -5,6 +5,11 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ScrollRestorer from "@/components/ScrollRestorer";
+import {
+  IDEAS_STUDIO_PROJECT_ID,
+  IDEAS_STUDIO_TRACKING_KEY,
+  IDEAS_STUDIO_TRACKING_JS_URL,
+} from "@/lib/ideasStudio";
 
 /*
   inter.variable → injecte --font-inter sur <html>
@@ -60,6 +65,15 @@ export default function RootLayout({
         gtag('js', new Date());
         gtag('config', 'G-NQP0TCMF3D');
       `}</Script>
+
+      {IDEAS_STUDIO_TRACKING_JS_URL && IDEAS_STUDIO_PROJECT_ID && IDEAS_STUDIO_TRACKING_KEY && (
+        <Script
+          src={IDEAS_STUDIO_TRACKING_JS_URL}
+          data-project-id={IDEAS_STUDIO_PROJECT_ID}
+          data-tracking-key={IDEAS_STUDIO_TRACKING_KEY}
+          strategy="afterInteractive"
+        />
+      )}
 
       <body
         style={{ fontFamily: "var(--font-inter), -apple-system, system-ui, sans-serif", backgroundColor: "#F5F0E8" }}
