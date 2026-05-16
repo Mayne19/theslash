@@ -2,6 +2,11 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import { marked } from "marked";
+import {
+  fetchPublishedArticles,
+  fetchArticleBySlug,
+  type IdeasStudioArticle,
+} from "./ideasStudio";
 
 const POSTS_DIR = path.join(process.cwd(), "content/posts");
 
@@ -16,6 +21,8 @@ export interface Article {
   coverImage: string | null;
   faq?: { question: string; answer: string }[];
   content?: string;
+  /** Identifies source for slug dedup */
+  _source?: "static" | "ideas-studio";
 }
 
 const categoryLabels: Record<string, string> = {
@@ -31,12 +38,37 @@ const categoryLabels: Record<string, string> = {
   "local-business": "Local Business",
 };
 
+const categoryColors: Record<string, string> = {
+  "seo": "#2563eb",
+  "web-design": "#9333ea",
+  "performance": "#059669",
+  "site-web": "#dc2626",
+  "marketing": "#ea580c",
+  "e-commerce": "#0891b2",
+  "tech": "#4f46e5",
+  "analytics": "#ca8a04",
+  "copywriting": "#db2777",
+  "local-business": "#65a30d",
+};
+
 export function getCategoryLabel(value: string) {
   return categoryLabels[value] ?? value;
 }
 
 export function getCategoryLabels() {
   return { ...categoryLabels };
+}
+
+export function getCategoryColor(value: string): string {
+  return categoryColors[value] ?? "#6b7280";
+}
+
+export function getCategories(): { slug: string; name: string; color: string }[] {
+  return Object.entries(categoryLabels).map(([slug, name]) => ({
+    slug,
+    name,
+    color: categoryColors[slug] ?? "#6b7280",
+  }));
 }
 
 function parseTitle(raw: unknown): string {
@@ -62,34 +94,68 @@ function parseArticle(slug: string, raw: string): Article {
   };
 }
 
-export async function getAllArticles(): Promise<Article[]> {
+function ideasStudioToArticle(isa: IdeasStudioArticle): Article {
+  return {
+    slug: isa.slug,
+    title: isa.title,
+    description: isa.excerpt || isa.meta_description || "",
+    date: isa.published_at ? new Date(isa.published_at).toISOString().split("T")[0] : "",
+    author: "/ theslash",
+    readingTime: null,
+    category: isa.category?.slug || "",
+    coverImage: isa.cover_image_url,
+    content: isa.content || undefined,
+    _source: "ideas-studio",
+  };
+}
+
+async function fetchIdeasStudioArticles(): Promise<Article[]> {
   try {
-    if (!fs.existsSync(POSTS_DIR)) return [];
-    const files = fs.readdirSync(POSTS_DIR).filter((f) => f.endsWith(".md") || f.endsWith(".mdx"));
-    return files
-      .map((file) => {
-        const slug = file.replace(/\.(mdx?|yaml)$/, "");
-        const raw = fs.readFileSync(path.join(POSTS_DIR, file), "utf8");
-        return parseArticle(slug, raw);
-      })
-      .sort((a, b) => (a.date < b.date ? 1 : -1));
+    const items = await fetchPublishedArticles();
+    return items.map(ideasStudioToArticle);
   } catch {
     return [];
   }
 }
 
-export async function getArticleBySlug(slug: string): Promise<Article | null> {
+export async function getAllArticles(): Promise<Article[]> {
+  let staticArticles: Article[] = [];
   try {
-    // Keystatic writes .mdx, legacy support for .md
-    // Normalize Unicode to handle accented characters properly
+    if (fs.existsSync(POSTS_DIR)) {
+      const files = fs.readdirSync(POSTS_DIR).filter((f) => f.endsWith(".md") || f.endsWith(".mdx"));
+      staticArticles = files.map((file) => {
+        const slug = file.replace(/\.(mdx?|yaml)$/, "");
+        const raw = fs.readFileSync(path.join(POSTS_DIR, file), "utf8");
+        return { ...parseArticle(slug, raw), _source: "static" as const };
+      });
+    }
+  } catch {
+    // No static posts
+  }
+
+  const ideasArticles = await fetchIdeasStudioArticles();
+
+  // Merge: Ideas Studio articles take precedence for same slug
+  const slugSet = new Set(ideasArticles.map((a) => a.slug));
+  const uniqueStatic = staticArticles.filter((a) => !slugSet.has(a.slug));
+
+  return [...ideasArticles, ...uniqueStatic].sort((a, b) => {
+    const da = a.date ? new Date(a.date).getTime() : 0;
+    const db = b.date ? new Date(b.date).getTime() : 0;
+    return db - da;
+  });
+}
+
+export async function getArticleBySlug(slug: string): Promise<Article | null> {
+  // Try static files first
+  try {
     const normalizedSlug = slug.normalize("NFC");
     const candidates = [
       path.join(POSTS_DIR, `${normalizedSlug}.mdx`),
       path.join(POSTS_DIR, `${normalizedSlug}.md`),
     ];
     let filePath = candidates.find((p) => fs.existsSync(p));
-    
-    // If not found, try checking all files in directory for case-insensitive and encoding-tolerant match
+
     if (!filePath) {
       try {
         const files = fs.readdirSync(POSTS_DIR).filter((f) => f.endsWith(".md") || f.endsWith(".mdx"));
@@ -101,16 +167,29 @@ export async function getArticleBySlug(slug: string): Promise<Article | null> {
           filePath = path.join(POSTS_DIR, filePath);
         }
       } catch {
-        // Ignore, filePath remains null
+        // Ignore
       }
     }
-    
-    if (!filePath) return null;
-    const raw = fs.readFileSync(filePath, "utf8");
-    return parseArticle(slug, raw);
+
+    if (filePath) {
+      const raw = fs.readFileSync(filePath, "utf8");
+      return { ...parseArticle(slug, raw), _source: "static" as const };
+    }
   } catch {
-    return null;
+    // Not found locally
   }
+
+  // Try Ideas Studio public API
+  try {
+    const isa = await fetchArticleBySlug(slug);
+    if (isa) {
+      return { ...ideasStudioToArticle(isa), _source: "ideas-studio" as const };
+    }
+  } catch {
+    // Not found in Ideas Studio
+  }
+
+  return null;
 }
 
 const renderer = new marked.Renderer();
