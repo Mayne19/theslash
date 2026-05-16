@@ -1,51 +1,52 @@
+import { ideasStudioCallouts } from "@/lib/ideasStudioConfig";
+
 interface ArticleCalloutProps {
   type: "important" | "erreur" | "chiffre";
   label?: string;
   children: React.ReactNode;
 }
 
-const configs = {
-  important: {
-    label: "Point important",
-    bg: "#FFF9C4",
-    border: "#F3C709",
-    labelBg: "#F3C709",
-    labelColor: "#1A1A1A",
-    textColor: "#1A1A1A",
-    emoji: "💡",
-  },
-  erreur: {
-    label: "L'erreur fatale",
-    bg: "#FEE2E2",
-    border: "#EF4444",
-    labelBg: "#EF4444",
-    labelColor: "#ffffff",
-    textColor: "#1A1A1A",
-    emoji: "🥊",
-  },
-  chiffre: {
-    label: "Le chiffre clé",
-    bg: "#DBEAFE",
-    border: "#3B82F6",
-    labelBg: "#3B82F6",
-    labelColor: "#ffffff",
-    textColor: "#1A1A1A",
-    emoji: "📊",
-  },
-};
+const configs = Object.fromEntries(
+  ideasStudioCallouts.map((callout) => [
+    callout.key,
+    {
+      label: callout.defaultTitle,
+      bg: callout.colors.background,
+      border: callout.colors.border,
+      labelBg: callout.colors.badgeBackground,
+      labelColor: callout.colors.badgeText,
+      textColor: callout.colors.text,
+      emoji: callout.emoji,
+      className: callout.className,
+    },
+  ])
+) as Record<ArticleCalloutProps["type"], {
+  label: string;
+  bg: string;
+  border: string;
+  labelBg: string;
+  labelColor: string;
+  textColor: string;
+  emoji: string;
+  className: string;
+}>;
 
 export default function ArticleCallout({ type, label, children }: ArticleCalloutProps) {
   const c = configs[type];
   return (
-    <div style={{
-      position: "relative",
-      backgroundColor: c.bg,
-      border: `2px solid ${c.border}`,
-      borderRadius: "16px",
-      padding: "24px 24px 24px 28px",
-      margin: "32px 0",
-      fontFamily: "var(--font-inter), -apple-system, sans-serif",
-    }}>
+    <div
+      className={c.className}
+      data-callout-type={type}
+      style={{
+        position: "relative",
+        backgroundColor: c.bg,
+        border: `2px solid ${c.border}`,
+        borderRadius: "16px",
+        padding: "24px 24px 24px 28px",
+        margin: "32px 0",
+        fontFamily: "var(--font-inter), -apple-system, sans-serif",
+      }}
+    >
       {/* Label badge */}
       <div style={{
         position: "absolute",
