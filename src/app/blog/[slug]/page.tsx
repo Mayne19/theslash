@@ -67,16 +67,16 @@ function decodeEntities(text: string): string {
 }
 
 function extractTOC(html: string): { id: string; text: string; level: "h2" | "h3" }[] {
-  const headingRegex = /<(h2|h3)[^>]*id="([^"]*)"[^>]*>([\s\S]*?)<\/\1>/gi;
+  const headingRegex = /<(h2|h3)[^>]*>([\s\S]*?)<\/\1>/gi;
   const items: { id: string; text: string; level: "h2" | "h3" }[] = [];
   let match;
   while ((match = headingRegex.exec(html)) !== null) {
     const level = match[1].toLowerCase() as "h2" | "h3";
-    const id = match[2];
-    const raw = match[3].replace(/<[^>]+>/g, "").trim().replace(/^\d+\.\s*/, "");
-    if (decodeEntities(raw).toLowerCase().trim() === "introduction") continue;
-    const cleanText = decodeEntities(raw).replace(/\s+/g, " ").trim();
-    items.push({ id, text: cleanText, level });
+    const raw = match[2].replace(/<[^>]+>/g, "").trim().replace(/^\d+\.\s*/, "");
+    const cleaned = decodeEntities(raw).replace(/\s+/g, " ").trim();
+    if (cleaned.toLowerCase() === "introduction") continue;
+    const id = slugify(cleaned);
+    items.push({ id, text: cleaned, level });
   }
   return items;
 }
