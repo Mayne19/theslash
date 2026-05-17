@@ -409,9 +409,8 @@ export default async function ArticlePage({ params }: Props) {
           line-height: 1.7;
         }
         .article-body ol {
-          list-style: none;
-          counter-reset: article-ol;
-          padding: 0;
+          list-style: decimal outside;
+          padding-left: 1.5rem;
           margin: 0 0 20px 24px;
         }
         .article-body ol li {
@@ -419,23 +418,19 @@ export default async function ArticlePage({ params }: Props) {
           font-size: 1rem;
           color: #4B5563;
           line-height: 1.7;
-          padding: 3px 0 3px 28px;
-          position: relative;
-          counter-increment: article-ol;
+          padding: 3px 0 3px 4px;
         }
-        .article-body ol li::before {
-          content: counter(article-ol) ".";
+        .article-body ol li::marker {
           color: #F3C709;
           font-weight: 800;
-          font-size: 0.9rem;
-          position: absolute;
-          left: 0;
-          top: 4px;
-          line-height: 1.7;
-          min-width: 20px;
+          font-size: 0.95rem;
         }
         .article-body li p {
           margin-bottom: 0;
+        }
+        .article-body ol li p {
+          display: inline;
+          margin: 0;
         }
         .article-body ul li + li,
         .article-body ol li + li {
@@ -482,7 +477,7 @@ export default async function ArticlePage({ params }: Props) {
           margin: 32px 0;
           overflow: hidden;
           border: 1px solid #E5E1D8;
-          border-radius: 16px;
+          border-radius: 10px;
           background: #ffffff;
         }
         .article-body .table-wrapper table {
@@ -493,14 +488,14 @@ export default async function ArticlePage({ params }: Props) {
           border-spacing: 0;
           background: #ffffff;
           font-family: var(--font-inter), -apple-system, sans-serif;
-          font-size: 0.94rem;
+          font-size: 0.92rem;
         }
         .article-body .table-wrapper table th {
-          padding: 16px 18px;
+          padding: 12px 16px;
           background: #F3C709;
           text-align: left;
           font-weight: 700;
-          font-size: 0.92rem;
+          font-size: 0.9rem;
           line-height: 1.45;
           color: #1A1A1A;
           vertical-align: top;
@@ -509,14 +504,20 @@ export default async function ArticlePage({ params }: Props) {
           word-break: normal;
         }
         .article-body .table-wrapper table td {
-          padding: 16px 18px;
+          padding: 12px 16px;
           color: #334155;
           border-top: 1px solid #E5E7EB;
-          line-height: 1.65;
+          line-height: 1.5;
           vertical-align: top;
           white-space: normal;
           overflow-wrap: break-word;
           word-break: normal;
+        }
+        .article-body .table-wrapper table th + th {
+          border-left: 1px solid rgba(26, 26, 26, 0.12);
+        }
+        .article-body .table-wrapper table td + td {
+          border-left: 1px solid #E5E7EB;
         }
         .article-body .table-wrapper table tbody tr:first-child td {
           border-top: none;
