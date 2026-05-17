@@ -7,6 +7,7 @@ import ArticleSidebarLeft from "@/components/ArticleSidebarLeft";
 import ArticleSidebarRight from "@/components/ArticleSidebarRight";
 import ArticleReactions from "@/components/ArticleReactions";
 import ArticleFAQ from "@/components/ArticleFAQ";
+import SiteIcon from "@/components/SiteIcon";
 import { getAllArticles, getArticleBySlug, getCategoryLabel, renderMarkdown } from "@/lib/articles";
 import { transformIdeasStudioCallouts } from "@/lib/articleCallouts";
 import { Clock, Calendar, RefreshCw } from "lucide-react";
@@ -207,7 +208,7 @@ export default async function ArticlePage({ params }: Props) {
 
             <div style={{ display: "flex", flexDirection: "column", gap: "14px", paddingTop: "6px" }}>
               <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-                <img src="/icon.svg" alt="" style={{ height: "32px", width: "32px", flexShrink: 0 }} />
+                <SiteIcon size={32} />
                 <span style={{ fontFamily: "var(--font-inter), -apple-system, sans-serif", fontSize: "0.8rem", fontWeight: 700, color: "#1A1A1A" }}>{article.author}</span>
               </div>
               <div style={{ width: "100%", height: "1px", backgroundColor: "rgba(0,0,0,0.08)" }} />
