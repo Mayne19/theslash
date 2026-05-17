@@ -7,7 +7,7 @@ import ArticleSidebarLeft from "@/components/ArticleSidebarLeft";
 import ArticleSidebarRight from "@/components/ArticleSidebarRight";
 import ArticleReactions from "@/components/ArticleReactions";
 import ArticleFAQ from "@/components/ArticleFAQ";
-import SiteIcon from "@/components/SiteIcon";
+
 import { getAllArticles, getArticleBySlug, getCategoryLabel, renderMarkdown } from "@/lib/articles";
 import { transformIdeasStudioCallouts } from "@/lib/articleCallouts";
 import { Clock, Calendar, RefreshCw } from "lucide-react";
@@ -208,7 +208,7 @@ export default async function ArticlePage({ params }: Props) {
 
             <div style={{ display: "flex", flexDirection: "column", gap: "14px", paddingTop: "6px" }}>
               <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-                <SiteIcon size={32} />
+                <img src="/icon.svg" alt="" style={{ height: "32px", width: "32px", flexShrink: 0 }} loading="eager" />
                 <span style={{ fontFamily: "var(--font-inter), -apple-system, sans-serif", fontSize: "0.8rem", fontWeight: 700, color: "#1A1A1A" }}>{article.author}</span>
               </div>
               <div style={{ width: "100%", height: "1px", backgroundColor: "rgba(0,0,0,0.08)" }} />
@@ -452,39 +452,29 @@ export default async function ArticlePage({ params }: Props) {
           border: 1px solid #E5E7EB;
           -webkit-overflow-scrolling: touch;
         }
-        .article-body .table-wrapper table,
-        .article-body > table {
+        .article-body .table-wrapper table {
           width: 100%;
           min-width: 480px;
           border-collapse: collapse;
           font-family: var(--font-inter), -apple-system, sans-serif;
           font-size: 0.88rem;
         }
-        .article-body > table {
-          display: block;
-          overflow-x: auto;
-          margin: 24px 0;
-        }
-        .article-body .table-wrapper table thead tr,
-        .article-body > table thead tr {
+        .article-body .table-wrapper table thead tr {
           background: #F3C709;
         }
-        .article-body .table-wrapper table th,
-        .article-body > table th {
+        .article-body .table-wrapper table th {
           padding: 12px 16px;
           text-align: left;
           font-weight: 700;
           color: #1A1A1A;
           white-space: nowrap;
         }
-        .article-body .table-wrapper table td,
-        .article-body > table td {
+        .article-body .table-wrapper table td {
           padding: 12px 16px;
           color: #1A1A1A;
           border-top: 1px solid #F0EDE8;
         }
-        .article-body .table-wrapper table tbody tr:nth-child(even) td,
-        .article-body > table tbody tr:nth-child(even) td {
+        .article-body .table-wrapper table tbody tr:nth-child(even) td {
           background: #FAFAF9;
         }
         .article-body table tbody tr {

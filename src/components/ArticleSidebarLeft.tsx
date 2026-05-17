@@ -3,7 +3,7 @@
 import { useEffect, useState, useCallback } from "react";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import SiteIcon from "@/components/SiteIcon";
+
 
 interface TOCItem {
   id: string;
@@ -127,7 +127,7 @@ export default function ArticleSidebarLeft({ items }: ArticleSidebarLeftProps) {
       )}
 
       <div style={{ backgroundColor: "#1A1A1A", borderRadius: "16px", padding: "20px" }}>
-        <SiteIcon size={32} style={{ marginBottom: "12px" }} />
+        <img src="/icon.svg" alt="" style={{ height: "32px", width: "32px", marginBottom: "12px" }} loading="eager" />
         <p style={{ fontFamily: "var(--font-inter), -apple-system, sans-serif", fontWeight: 800, fontSize: "0.9rem", color: "#ffffff", lineHeight: 1.35, marginBottom: "8px" }}>
           Et si on bossait ensemble ?
         </p>
