@@ -451,40 +451,46 @@ export default async function ArticlePage({ params }: Props) {
           border: 1px solid #E5E7EB;
           -webkit-overflow-scrolling: touch;
         }
-        .article-body table {
-          width: 100% !important;
-          border-collapse: collapse !important;
+        .article-body .table-wrapper table,
+        .article-body > table {
+          width: 100%;
+          min-width: 480px;
+          border-collapse: collapse;
           font-family: var(--font-inter), -apple-system, sans-serif;
           font-size: 0.88rem;
-          border: none !important;
-          margin: 0;
         }
-        .article-body thead tr {
-          background: #F3C709 !important;
+        .article-body > table {
+          display: block;
+          overflow-x: auto;
+          margin: 24px 0;
         }
-        .article-body th {
-          padding: 12px 16px !important;
-          text-align: left !important;
-          font-weight: 700 !important;
-          color: #1A1A1A !important;
+        .article-body .table-wrapper table thead tr,
+        .article-body > table thead tr {
+          background: #F3C709;
+        }
+        .article-body .table-wrapper table th,
+        .article-body > table th {
+          padding: 12px 16px;
+          text-align: left;
+          font-weight: 700;
+          color: #1A1A1A;
           white-space: nowrap;
-          background: transparent !important;
-          border: none !important;
         }
-        .article-body td {
-          padding: 12px 16px !important;
-          color: #1A1A1A !important;
-          border-top: 1px solid #F0EDE8 !important;
-          border-left: none !important;
-          border-right: none !important;
-          border-bottom: none !important;
-          background: transparent !important;
+        .article-body .table-wrapper table td,
+        .article-body > table td {
+          padding: 12px 16px;
+          color: #1A1A1A;
+          border-top: 1px solid #F0EDE8;
         }
-        .article-body tbody tr:nth-child(even) td {
-          background: #FAFAF9 !important;
+        .article-body .table-wrapper table tbody tr:nth-child(even) td,
+        .article-body > table tbody tr:nth-child(even) td {
+          background: #FAFAF9;
         }
-        .article-body tbody tr:hover td {
-          background: rgba(243, 199, 9, 0.07) !important;
+        .article-body table tbody tr {
+          transition: background-color 120ms ease;
+        }
+        .article-body table tbody tr:hover {
+          background-color: rgba(243, 199, 9, 0.07) !important;
         }
         .article-body .article-callout-content p,
         .article-body .article-callout-content li,
