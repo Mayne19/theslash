@@ -133,6 +133,7 @@ export default async function ArticlePage({ params }: Props) {
   const coverImg = article.coverImage ?? coverImages[slug.charCodeAt(0) % coverImages.length];
 
   const rawContent = article.content ? await renderMarkdown(article.content) : "";
+
   const processedContent = addIDsToHeadings(transformIdeasStudioCallouts(rawContent));
   const tocItems = extractTOC(rawContent);
 
@@ -450,30 +451,40 @@ export default async function ArticlePage({ params }: Props) {
           border: 1px solid #E5E7EB;
           -webkit-overflow-scrolling: touch;
         }
-        .article-body .table-wrapper table {
-          width: 100%;
-          min-width: 480px;
-          border-collapse: collapse;
+        .article-body table {
+          width: 100% !important;
+          border-collapse: collapse !important;
           font-family: var(--font-inter), -apple-system, sans-serif;
           font-size: 0.88rem;
+          border: none !important;
+          margin: 0;
         }
-        .article-body .table-wrapper table thead tr {
-          background: #F3C709;
+        .article-body thead tr {
+          background: #F3C709 !important;
         }
-        .article-body .table-wrapper table th {
-          padding: 12px 16px;
-          text-align: left;
-          font-weight: 700;
-          color: #1A1A1A;
+        .article-body th {
+          padding: 12px 16px !important;
+          text-align: left !important;
+          font-weight: 700 !important;
+          color: #1A1A1A !important;
           white-space: nowrap;
+          background: transparent !important;
+          border: none !important;
         }
-        .article-body .table-wrapper table td {
-          padding: 12px 16px;
-          color: #1A1A1A;
-          border-top: 1px solid #F0EDE8;
+        .article-body td {
+          padding: 12px 16px !important;
+          color: #1A1A1A !important;
+          border-top: 1px solid #F0EDE8 !important;
+          border-left: none !important;
+          border-right: none !important;
+          border-bottom: none !important;
+          background: transparent !important;
         }
-        .article-body .table-wrapper table tbody tr:nth-child(even) td {
-          background: #FAFAF9;
+        .article-body tbody tr:nth-child(even) td {
+          background: #FAFAF9 !important;
+        }
+        .article-body tbody tr:hover td {
+          background: rgba(243, 199, 9, 0.07) !important;
         }
         .article-body .article-callout-content p,
         .article-body .article-callout-content li,
