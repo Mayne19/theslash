@@ -39,7 +39,7 @@ export default function ContactPage() {
               <div style={{ display: "inline-block", padding: "6px 16px", backgroundColor: "rgba(243,199,9,0.12)", border: "1px solid rgba(243,199,9,0.3)", borderRadius: "50px", marginBottom: "24px", fontFamily: "var(--font-inter), -apple-system, sans-serif", fontWeight: 600, fontSize: "0.75rem", color: "#1A1A1A" }}>
                 Réponse sous 24h
               </div>
-              <h1 style={{ fontFamily: "var(--font-inter), -apple-system, sans-serif", fontWeight: 800, fontSize: "clamp(2.6rem, 5vw, 4.5rem)", letterSpacing: "-0.035em", marginBottom: "20px", lineHeight: 1.1, color: "#1A1A1A" }}>
+              <h1 style={{ fontFamily: "var(--font-inter), -apple-system, sans-serif", fontWeight: 800, fontSize: "clamp(2.45rem, 4.8vw, 4.25rem)", letterSpacing: "-0.035em", marginBottom: "20px", lineHeight: 1.1, color: "#1A1A1A" }}>
                 Parlons de votre projet
               </h1>
               <p style={{ fontFamily: "var(--font-inter), -apple-system, sans-serif", fontSize: "1.05rem", color: "#6B7280", lineHeight: 1.8 }}>
@@ -58,7 +58,7 @@ export default function ContactPage() {
             {/* Left: Info */}
             <AnimatedSection>
               <div style={{ position: "sticky", top: "104px" }}>
-                <h2 style={{ fontFamily: "var(--font-inter), -apple-system, sans-serif", fontWeight: 800, fontSize: "clamp(2.2rem, 5vw, 3.8rem)", color: "#1A1A1A", letterSpacing: "-0.03em", lineHeight: 1.15, marginBottom: "24px" }}>
+                <h2 style={{ fontFamily: "var(--font-inter), -apple-system, sans-serif", fontWeight: 800, fontSize: "clamp(2.05rem, 4.75vw, 3.6rem)", color: "#1A1A1A", letterSpacing: "-0.03em", lineHeight: 1.15, marginBottom: "24px" }}>
                   <span style={{ color: "#A0A0A0", fontWeight: 700 }}>/</span>{" "}
                   <span style={{ color: "#A0A0A0", fontWeight: 700 }}>informations de</span>{" "}
                   <span style={{ color: "#1A1A1A", fontWeight: 800 }}>contact</span>

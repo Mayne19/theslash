@@ -72,7 +72,7 @@ export default function TestimonialsCarousel() {
           <div>
             <h2 style={{
               fontFamily: "var(--font-inter), -apple-system, sans-serif",
-              fontSize: "clamp(2.2rem, 5vw, 3.8rem)",
+              fontSize: "clamp(2.05rem, 4.75vw, 3.6rem)",
               letterSpacing: "-0.04em",
               lineHeight: 1.05,
             }}>
@@ -197,7 +197,7 @@ export default function TestimonialsCarousel() {
               <p style={{
                 fontFamily: "var(--font-inter), -apple-system, sans-serif",
                 fontWeight: 800,
-                fontSize: "clamp(1.3rem, 3vw, 2rem)",
+                fontSize: "clamp(1.22rem, 2.85vw, 1.9rem)",
                 color: "#1A1A1A",
                 letterSpacing: "-0.03em",
                 lineHeight: 1.2,

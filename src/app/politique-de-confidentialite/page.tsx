@@ -14,7 +14,7 @@ export default function PolitiqueConfidentialitePage() {
           <div style={{ display: "inline-block", padding: "6px 16px", backgroundColor: "rgba(243,199,9,0.12)", border: "1px solid rgba(243,199,9,0.3)", borderRadius: "50px", marginBottom: "28px", fontFamily: "var(--font-inter), -apple-system, sans-serif", fontWeight: 600, fontSize: "0.75rem", color: "#1A1A1A" }}>
             Vos données personnelles
           </div>
-          <h1 style={{ fontFamily: "var(--font-inter), -apple-system, sans-serif", fontWeight: 800, fontSize: "clamp(2.2rem, 4.5vw, 4rem)", letterSpacing: "-0.035em", lineHeight: 1.1, marginBottom: "20px" }}>
+          <h1 style={{ fontFamily: "var(--font-inter), -apple-system, sans-serif", fontWeight: 800, fontSize: "clamp(2.05rem, 4.3vw, 3.8rem)", letterSpacing: "-0.035em", lineHeight: 1.1, marginBottom: "20px" }}>
             <span style={{ color: "#A0A0A0" }}>/ politique de</span>{" "}
             <span style={{ color: "#1A1A1A" }}>confidentialité</span>
           </h1>
@@ -101,7 +101,7 @@ export default function PolitiqueConfidentialitePage() {
 function LegalSection({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div style={{ backgroundColor: "#FAFAF8", borderRadius: "16px", padding: "28px 32px", border: "1px solid rgba(0,0,0,0.05)" }}>
-      <h2 style={{ fontFamily: "var(--font-inter), -apple-system, sans-serif", fontWeight: 800, fontSize: "clamp(1.05rem, 2vw, 1.2rem)", letterSpacing: "-0.02em", lineHeight: 1.2, marginBottom: "16px" }}>
+      <h2 style={{ fontFamily: "var(--font-inter), -apple-system, sans-serif", fontWeight: 800, fontSize: "clamp(1rem, 1.9vw, 1.14rem)", letterSpacing: "-0.02em", lineHeight: 1.2, marginBottom: "16px" }}>
         <span style={{ color: "#1A1A1A" }}>{title}</span>
       </h2>
       {children}

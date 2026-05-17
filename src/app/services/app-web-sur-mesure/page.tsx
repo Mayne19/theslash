@@ -47,7 +47,7 @@ export default function AppWebService() {
               <div style={{ display: "inline-block", padding: "6px 16px", backgroundColor: "rgba(243,199,9,0.12)", border: "1px solid rgba(243,199,9,0.3)", borderRadius: "50px", marginBottom: "24px", fontFamily: "var(--font-inter), -apple-system, sans-serif", fontWeight: 600, fontSize: "0.75rem", color: "#1A1A1A" }}>
                 Développement sur mesure
               </div>
-              <h1 style={{ fontFamily: "var(--font-inter), -apple-system, sans-serif", fontWeight: 800, fontSize: "clamp(2rem, 5vw, 4.5rem)", color: "#1A1A1A", letterSpacing: "-0.035em", marginBottom: "20px", lineHeight: 1.1 }}>
+              <h1 style={{ fontFamily: "var(--font-inter), -apple-system, sans-serif", fontWeight: 800, fontSize: "clamp(1.9rem, 4.8vw, 4.25rem)", color: "#1A1A1A", letterSpacing: "-0.035em", marginBottom: "20px", lineHeight: 1.1 }}>
                 Création d&apos;application web sur mesure
               </h1>
               <p style={{ fontFamily: "var(--font-inter), -apple-system, sans-serif", fontSize: "1.1rem", color: "#6B7280", lineHeight: 1.75, marginBottom: "28px", maxWidth: "560px" }}>
@@ -95,7 +95,7 @@ export default function AppWebService() {
             <div style={{ display: "inline-block", padding: "6px 16px", backgroundColor: "rgba(243,199,9,0.15)", border: "1px solid rgba(243,199,9,0.3)", borderRadius: "50px", marginBottom: "24px", fontFamily: "var(--font-inter), -apple-system, sans-serif", fontWeight: 600, fontSize: "0.75rem", color: "#F3C709" }}>
               Stack technique
             </div>
-            <h2 style={{ fontFamily: "var(--font-inter), -apple-system, sans-serif", fontWeight: 800, fontSize: "clamp(2.2rem, 5vw, 3.8rem)", letterSpacing: "-0.03em", marginBottom: "16px" }}>
+            <h2 style={{ fontFamily: "var(--font-inter), -apple-system, sans-serif", fontWeight: 800, fontSize: "clamp(2.05rem, 4.75vw, 3.6rem)", letterSpacing: "-0.03em", marginBottom: "16px" }}>
               <span style={{ color: "rgba(255,255,255,0.45)", fontWeight: 700 }}>/</span>{" "}
               <span style={{ color: "rgba(255,255,255,0.45)", fontWeight: 700 }}>des technologies</span>{" "}
               <span style={{ color: "#ffffff", fontWeight: 800 }}>modernes, éprouvées</span>
@@ -137,7 +137,7 @@ export default function AppWebService() {
         <div style={{ maxWidth: "800px", margin: "0 auto", padding: "0 clamp(20px, 3vw, 44px)" }}>
           <AnimatedSection>
             <div style={{ textAlign: "center", marginBottom: "48px" }}>
-              <SlashTitle gray="de l'idée" black="au lancement" as="h3" fontSize="clamp(1.8rem, 3vw, 2.4rem)" />
+              <SlashTitle gray="de l'idée" black="au lancement" as="h3" fontSize="clamp(1.7rem, 2.85vw, 2.25rem)" />
             </div>
           </AnimatedSection>
           <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>

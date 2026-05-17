@@ -46,7 +46,7 @@ export default function RefonteService() {
               <div style={{ display: "inline-block", padding: "6px 16px", backgroundColor: "rgba(243,199,9,0.12)", border: "1px solid rgba(243,199,9,0.3)", borderRadius: "50px", marginBottom: "24px", fontFamily: "var(--font-inter), -apple-system, sans-serif", fontWeight: 600, fontSize: "0.75rem", color: "#1A1A1A" }}>
                 Modernisation complète
               </div>
-              <h1 style={{ fontFamily: "var(--font-inter), -apple-system, sans-serif", fontWeight: 800, fontSize: "clamp(2.6rem, 5vw, 4.5rem)", color: "#1A1A1A", letterSpacing: "-0.035em", marginBottom: "20px", lineHeight: 1.1 }}>
+              <h1 style={{ fontFamily: "var(--font-inter), -apple-system, sans-serif", fontWeight: 800, fontSize: "clamp(2.45rem, 4.8vw, 4.25rem)", color: "#1A1A1A", letterSpacing: "-0.035em", marginBottom: "20px", lineHeight: 1.1 }}>
                 Refonte de site web professionnel
               </h1>
               <p style={{ fontFamily: "var(--font-inter), -apple-system, sans-serif", fontSize: "1.1rem", color: "#6B7280", lineHeight: 1.75, marginBottom: "32px", maxWidth: "560px" }}>
@@ -107,7 +107,7 @@ export default function RefonteService() {
         <div style={{ maxWidth: "800px", margin: "0 auto", padding: "0 clamp(20px, 3vw, 44px)" }}>
           <AnimatedSection>
             <div style={{ textAlign: "center", marginBottom: "48px" }}>
-              <SlashTitle gray="notre processus" black="de refonte" as="h3" fontSize="clamp(1.8rem, 3vw, 2.4rem)" />
+              <SlashTitle gray="notre processus" black="de refonte" as="h3" fontSize="clamp(1.7rem, 2.85vw, 2.25rem)" />
             </div>
           </AnimatedSection>
           <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>

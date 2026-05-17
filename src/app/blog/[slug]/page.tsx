@@ -233,7 +233,7 @@ export default async function ArticlePage({ params }: Props) {
                   {category}
                 </span>
               )}
-              <h1 style={{ fontFamily: "var(--font-inter), -apple-system, sans-serif", fontWeight: 800, fontSize: "clamp(1.8rem, 4vw, 3rem)", color: "#1A1A1A", letterSpacing: "-0.03em", lineHeight: 1.15, marginBottom: "16px" }}>
+              <h1 style={{ fontFamily: "var(--font-inter), -apple-system, sans-serif", fontWeight: 800, fontSize: "clamp(1.7rem, 3.8vw, 2.85rem)", color: "#1A1A1A", letterSpacing: "-0.03em", lineHeight: 1.15, marginBottom: "16px" }}>
                 {title}
               </h1>
               {description && (
@@ -324,7 +324,7 @@ export default async function ArticlePage({ params }: Props) {
       <section style={{ backgroundColor: "#F5F0E8", padding: "72px 0", overflowX: "hidden" }}>
         <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "0 clamp(20px, 3vw, 44px)" }}>
           <div style={{ marginBottom: "40px" }}>
-            <h2 style={{ fontFamily: "var(--font-inter), -apple-system, sans-serif", fontWeight: 800, fontSize: "clamp(1.8rem, 3vw, 2.4rem)", color: "#1A1A1A", letterSpacing: "-0.03em", lineHeight: 1.15 }}>
+            <h2 style={{ fontFamily: "var(--font-inter), -apple-system, sans-serif", fontWeight: 800, fontSize: "clamp(1.7rem, 2.85vw, 2.25rem)", color: "#1A1A1A", letterSpacing: "-0.03em", lineHeight: 1.15 }}>
               <span style={{ color: "#A0A0A0", fontWeight: 700 }}>/</span>{" "}
               <span style={{ color: "#A0A0A0", fontWeight: 700 }}>encore plus d&apos;articles sur</span>{" "}
               <span style={{ color: "#1A1A1A", fontWeight: 800 }}>{category.toLowerCase()}</span>

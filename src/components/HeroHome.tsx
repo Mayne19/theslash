@@ -98,7 +98,7 @@ export default function HeroHome() {
                   display: "block",
                   fontFamily: "var(--font-inter), -apple-system, sans-serif",
                   fontWeight: 800,
-                  fontSize: "clamp(2.6rem, 5vw, 4.5rem)",
+                  fontSize: "clamp(2.45rem, 4.8vw, 4.25rem)",
                   letterSpacing: "-0.035em",
                   color: "#1A1A1A",
                   lineHeight: 1.08,
@@ -115,7 +115,7 @@ export default function HeroHome() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.35, duration: 0.4 }}
               style={{
-                fontSize: "clamp(2.6rem, 5vw, 4.5rem)",
+                fontSize: "clamp(2.45rem, 4.8vw, 4.25rem)",
                 height: "1.15em",
                 overflow: "hidden",
                 position: "relative",
@@ -156,7 +156,7 @@ export default function HeroHome() {
             style={{
               fontFamily: "var(--font-inter), -apple-system, sans-serif",
               fontWeight: 400,
-              fontSize: "clamp(1rem, 1.5vw, 1.15rem)",
+              fontSize: "clamp(0.97rem, 1.4vw, 1.08rem)",
               color: "#6B7280",
               lineHeight: 1.75,
               maxWidth: "480px",

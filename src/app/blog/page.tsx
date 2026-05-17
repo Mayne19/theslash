@@ -47,7 +47,7 @@ export default async function BlogPage() {
               <div style={{ display: "inline-block", padding: "6px 16px", backgroundColor: "rgba(243,199,9,0.12)", border: "1px solid rgba(243,199,9,0.3)", borderRadius: "50px", marginBottom: "24px", fontFamily: "var(--font-inter), -apple-system, sans-serif", fontWeight: 600, fontSize: "0.75rem", color: "#1A1A1A" }}>
                 Ressources pour entrepreneurs
               </div>
-              <h1 style={{ fontFamily: "var(--font-inter), -apple-system, sans-serif", fontWeight: 800, fontSize: "clamp(2.6rem, 5vw, 4.5rem)", letterSpacing: "-0.035em", marginBottom: "20px", lineHeight: 1.1, color: "#1A1A1A" }}>
+              <h1 style={{ fontFamily: "var(--font-inter), -apple-system, sans-serif", fontWeight: 800, fontSize: "clamp(2.45rem, 4.8vw, 4.25rem)", letterSpacing: "-0.035em", marginBottom: "20px", lineHeight: 1.1, color: "#1A1A1A" }}>
                 Blog — web design, SEO et création de sites
               </h1>
               <p style={{ fontFamily: "var(--font-inter), -apple-system, sans-serif", fontSize: "1.1rem", color: "#6B7280", lineHeight: 1.75, marginBottom: "36px", maxWidth: "580px" }}>
@@ -81,7 +81,7 @@ export default async function BlogPage() {
                       )}
                       <span style={{ padding: "3px 10px", backgroundColor: "rgba(0,0,0,0.06)", borderRadius: "50px", fontFamily: "var(--font-inter), -apple-system, sans-serif", fontSize: "0.68rem", fontWeight: 600, color: "#6B7280" }}>À la une</span>
                     </div>
-                    <h2 style={{ fontFamily: "var(--font-inter), -apple-system, sans-serif", fontWeight: 800, fontSize: "clamp(1.15rem, 2vw, 1.55rem)", color: "#1A1A1A", letterSpacing: "-0.02em", marginBottom: "10px", lineHeight: 1.3, overflowWrap: "break-word", wordBreak: "break-word" }}>{articles[0].title}</h2>
+                    <h2 style={{ fontFamily: "var(--font-inter), -apple-system, sans-serif", fontWeight: 800, fontSize: "clamp(1.1rem, 1.9vw, 1.45rem)", color: "#1A1A1A", letterSpacing: "-0.02em", marginBottom: "10px", lineHeight: 1.3, overflowWrap: "break-word", wordBreak: "break-word" }}>{articles[0].title}</h2>
                     <p style={{ fontFamily: "var(--font-inter), -apple-system, sans-serif", fontSize: "0.82rem", color: "#6B7280", lineHeight: 1.6, marginBottom: "16px", overflowWrap: "break-word", wordBreak: "break-word" }}>{articles[0].excerpt}</p>
                     <div style={{ display: "flex", alignItems: "center", gap: "6px", fontFamily: "var(--font-inter), -apple-system, sans-serif", fontSize: "0.78rem", fontWeight: 700, color: "#1A1A1A" }}>
                       Lire l&apos;article <ArrowRight size={12} />

@@ -65,7 +65,7 @@ export default function ServicesPage() {
               <h1 style={{
                 fontFamily: "var(--font-inter), -apple-system, sans-serif",
                 fontWeight: 800,
-                fontSize: "clamp(2.6rem, 5vw, 4.5rem)",
+                fontSize: "clamp(2.45rem, 4.8vw, 4.25rem)",
                 color: "#1A1A1A",
                 letterSpacing: "-0.035em",
                 marginBottom: "20px",

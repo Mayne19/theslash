@@ -63,7 +63,7 @@ export default function Testimonials() {
           </div>
           <h2 style={{
             fontFamily: "var(--font-inter), -apple-system, sans-serif",
-            fontSize: "clamp(2.2rem, 5vw, 3.8rem)",
+            fontSize: "clamp(2.05rem, 4.75vw, 3.6rem)",
             letterSpacing: "-0.03em",
             marginBottom: "16px",
           }}>

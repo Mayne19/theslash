@@ -77,7 +77,7 @@ export default function CommentsSection({ articleSlug }: { articleSlug: string }
             <p style={{ fontFamily: "var(--font-inter), -apple-system, sans-serif", fontSize: "0.72rem", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: "#9CA3AF", marginBottom: "4px" }}>
               Discussion
             </p>
-            <h2 style={{ fontFamily: "var(--font-inter), -apple-system, sans-serif", fontWeight: 800, fontSize: "clamp(1.4rem, 3vw, 1.9rem)", color: "#1A1A1A", letterSpacing: "-0.025em", lineHeight: 1.2 }}>
+            <h2 style={{ fontFamily: "var(--font-inter), -apple-system, sans-serif", fontWeight: 800, fontSize: "clamp(1.32rem, 2.85vw, 1.8rem)", color: "#1A1A1A", letterSpacing: "-0.025em", lineHeight: 1.2 }}>
               {comments.length} commentaire{comments.length !== 1 ? "s" : ""}
             </h2>
           </div>

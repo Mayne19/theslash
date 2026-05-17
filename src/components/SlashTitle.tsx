@@ -13,7 +13,7 @@ export default function SlashTitle({
   gray,
   black,
   as: Tag = "h2",
-  fontSize = "clamp(2.2rem, 5vw, 3.8rem)",
+  fontSize = "clamp(2.05rem, 4.75vw, 3.6rem)",
   style,
   className,
 }: SlashTitleProps) {

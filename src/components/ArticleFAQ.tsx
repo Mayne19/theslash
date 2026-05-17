@@ -24,7 +24,7 @@ export default function ArticleFAQ({ items }: ArticleFAQProps) {
           <h2 style={{
             fontFamily: "var(--font-inter), -apple-system, sans-serif",
             fontWeight: 800,
-            fontSize: "clamp(1.6rem, 3vw, 2.2rem)",
+            fontSize: "clamp(1.5rem, 2.85vw, 2.05rem)",
             color: "#1A1A1A",
             letterSpacing: "-0.03em",
             marginBottom: "36px",

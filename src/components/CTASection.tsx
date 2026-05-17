@@ -31,7 +31,7 @@ export default function CTASection({
         <h2 style={{
           fontFamily: "var(--font-inter), -apple-system, sans-serif",
           fontWeight: 800,
-          fontSize: "clamp(2.2rem, 5vw, 3.8rem)",
+          fontSize: "clamp(2.05rem, 4.75vw, 3.6rem)",
           color: "#1A1A1A",
           letterSpacing: "-0.03em",
           marginBottom: "20px",

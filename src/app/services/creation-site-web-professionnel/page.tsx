@@ -67,7 +67,7 @@ export default function BlogStrategieSeoPage() {
               <h1 style={{
                 fontFamily: "var(--font-inter), -apple-system, sans-serif",
                 fontWeight: 800,
-                fontSize: "clamp(1.9rem, 5vw, 4.5rem)",
+                fontSize: "clamp(1.8rem, 4.8vw, 4.25rem)",
                 color: "#1A1A1A",
                 letterSpacing: "-0.035em",
                 marginBottom: "20px",
@@ -138,7 +138,7 @@ export default function BlogStrategieSeoPage() {
           >
             <AnimatedSection>
               <div>
-                <SlashTitle gray="pourquoi un blog" black="est votre meilleur commercial ?" as="h3" fontSize="clamp(1.8rem, 3vw, 2.4rem)" style={{ marginBottom: "16px" }} />
+                <SlashTitle gray="pourquoi un blog" black="est votre meilleur commercial ?" as="h3" fontSize="clamp(1.7rem, 2.85vw, 2.25rem)" style={{ marginBottom: "16px" }} />
                 <p style={{ fontFamily: "var(--font-inter), -apple-system, sans-serif", fontSize: "1rem", color: "#6B7280", lineHeight: 1.75, marginBottom: "16px" }}>
                   La publicité arrête de fonctionner dès que vous coupez le budget. Un article SEO bien placé sur Google continue d&apos;attirer des visiteurs qualifiés pendant des années, sans coût supplémentaire.
                 </p>

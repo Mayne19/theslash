@@ -28,7 +28,7 @@ export default function NewsletterSection() {
               <h2 style={{
                 fontFamily: "var(--font-inter), -apple-system, sans-serif",
                 fontWeight: 800,
-                fontSize: "clamp(1.4rem, 3vw, 2rem)",
+                fontSize: "clamp(1.32rem, 2.85vw, 1.9rem)",
                 letterSpacing: "-0.03em",
                 marginBottom: "8px",
               }}>
@@ -45,7 +45,7 @@ export default function NewsletterSection() {
               <h2 style={{
                 fontFamily: "var(--font-inter), -apple-system, sans-serif",
                 fontWeight: 800,
-                fontSize: "clamp(1.6rem, 3.5vw, 2.4rem)",
+                fontSize: "clamp(1.5rem, 3.3vw, 2.25rem)",
                 letterSpacing: "-0.03em",
                 marginBottom: "12px",
                 lineHeight: 1.15,

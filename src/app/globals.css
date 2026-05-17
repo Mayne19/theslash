@@ -24,11 +24,12 @@
 
 html {
   /* scroll-behavior removed: Next.js handles scroll-to-top on navigation */
+  font-size: 15.25px;
 }
 
 body {
   font-family: var(--font-inter), -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  font-size: 16px;
+  font-size: 15px;
   line-height: 1.7;
   color: #1A1A1A;
   background-color: #F5F0E8;
@@ -83,5 +84,12 @@ h1, h2, h3, h4, h5, h6 {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+@media (max-width: 640px) {
+  html,
+  body {
+    font-size: 15.5px;
   }
 }
