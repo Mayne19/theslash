@@ -83,12 +83,11 @@ function extractTOC(html: string): { id: string; text: string; level: "h2" | "h3
   while ((match = headingRegex.exec(html)) !== null) {
     const level = match[1].toLowerCase() as "h2" | "h3";
     const inner = match[2];
-    const cleaned = decodeEntities(inner.replace(/<[^>]+>/g, ""))
-      .replace(/^\d+\.\s*/, "")
+    const rawText = decodeEntities(inner.replace(/<[^>]+>/g, ""))
       .replace(/\s+/g, " ")
       .trim();
-    if (cleaned.toLowerCase() === "introduction") continue;
-    items.push({ id: headingId(inner), text: cleaned, level });
+    if (rawText.toLowerCase().replace(/^\d+\.\s*/, "") === "introduction") continue;
+    items.push({ id: headingId(inner), text: rawText, level });
   }
   return items;
 }
@@ -96,8 +95,7 @@ function extractTOC(html: string): { id: string; text: string; level: "h2" | "h3
 function addIDsToHeadings(html: string): string {
   let result = html.replace(/<h2[^>]*>([\s\S]*?)<\/h2>/gi, (_match, inner) => {
     const id = headingId(inner);
-    const cleanInner = inner.replace(/^\d+\.\s*/, "");
-    return `<h2 id="${id}">${cleanInner}</h2>`;
+    return `<h2 id="${id}">${inner}</h2>`;
   });
   result = result.replace(/<h3[^>]*>([\s\S]*?)<\/h3>/gi, (_match, inner) => {
     const id = headingId(inner);
@@ -422,22 +420,28 @@ export default async function ArticlePage({ params }: Props) {
         }
         .article-body blockquote {
           font-family: var(--font-inter), -apple-system, sans-serif;
-          font-size: 1.05rem;
-          font-weight: 600;
-          color: #1A1A1A;
-          line-height: 1.7;
-          margin: 28px 0;
-          padding: 20px 24px 20px 28px;
-          border-left: 4px solid #F3C709;
-          background: #FAFAF9;
-          border-radius: 0 12px 12px 0;
+          font-size: 1rem;
           font-style: italic;
+          color: #4B5563;
+          line-height: 1.85;
+          margin: 24px 0;
+          padding: 0 0 0 20px;
+          border-left: 2px solid #E5E7EB;
         }
         .article-body blockquote p {
           margin-bottom: 0;
           color: inherit;
           font-size: inherit;
           line-height: inherit;
+        }
+        .article-body blockquote cite,
+        .article-body blockquote footer {
+          font-style: normal;
+          font-size: 0.8rem;
+          color: #9CA3AF;
+          font-weight: 600;
+          display: block;
+          margin-top: 8px;
         }
         .article-body .table-wrapper {
           overflow-x: auto;

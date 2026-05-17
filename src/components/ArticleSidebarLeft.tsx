@@ -68,7 +68,7 @@ export default function ArticleSidebarLeft({ items }: ArticleSidebarLeftProps) {
   }, [updateScroll]);
 
   return (
-    <div style={{ position: "sticky", top: "104px", display: "flex", flexDirection: "column", gap: "20px" }}>
+    <div style={{ position: "sticky", top: "104px", display: "flex", flexDirection: "column", gap: "16px" }}>
 
       {items.length > 0 && (
         <nav>
@@ -87,13 +87,13 @@ export default function ArticleSidebarLeft({ items }: ArticleSidebarLeftProps) {
                     style={{
                       display: "block",
                       fontFamily: "var(--font-inter), -apple-system, sans-serif",
-                      fontSize: item.level === "h3" ? "0.75rem" : "0.8rem",
+                      fontSize: item.level === "h3" ? "0.72rem" : "0.78rem",
                       fontWeight: isActive ? 700 : 400,
                       color: isActive ? "#1A1A1A" : "#9CA3AF",
                       textDecoration: "none",
-                      padding: "6px 0 4px",
+                      padding: "3px 0 3px",
                       paddingLeft: item.level === "h3" ? "16px" : "0",
-                      lineHeight: 1.45,
+                      lineHeight: 1.3,
                       transition: "color 150ms ease",
                     }}
                   >
@@ -104,7 +104,7 @@ export default function ArticleSidebarLeft({ items }: ArticleSidebarLeftProps) {
                       height: "2px",
                       borderRadius: "2px",
                       overflow: "hidden",
-                      marginBottom: "8px",
+                      marginBottom: "4px",
                       marginLeft: item.level === "h3" ? "16px" : "0",
                       backgroundColor: "transparent",
                     }}>
@@ -117,7 +117,7 @@ export default function ArticleSidebarLeft({ items }: ArticleSidebarLeftProps) {
                       }} />
                     </div>
                   )}
-                  {!isActive && <div style={{ marginBottom: "8px" }} />}
+                  {!isActive && <div style={{ marginBottom: "4px" }} />}
                 </li>
               );
             })}
