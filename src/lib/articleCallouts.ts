@@ -101,9 +101,12 @@ function getCalloutColors(attributes: string): {
   text: string | null;
 } {
   return {
-    bg: getAttribute(attributes, "data-callout-color-background"),
-    border: getAttribute(attributes, "data-callout-color-border"),
-    text: getAttribute(attributes, "data-callout-color-text"),
+    bg: getAttribute(attributes, "data-callout-color-background")
+      ?? getAttribute(attributes, "data-color-background"),
+    border: getAttribute(attributes, "data-callout-color-border")
+      ?? getAttribute(attributes, "data-color-border"),
+    text: getAttribute(attributes, "data-callout-color-text")
+      ?? getAttribute(attributes, "data-color-text"),
   };
 }
 
