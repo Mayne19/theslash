@@ -12,7 +12,7 @@ interface ArticleFAQProps {
 }
 
 export default function ArticleFAQ({ items }: ArticleFAQProps) {
-  const [open, setOpen] = useState<number | null>(null);
+  const [open, setOpen] = useState<number | null>(0);
 
   if (!items || items.length === 0) return null;
 
@@ -68,7 +68,12 @@ export default function ArticleFAQ({ items }: ArticleFAQProps) {
                     </svg>
                   </div>
                 </button>
-                {isOpen && (
+                <div style={{
+                  maxHeight: isOpen ? "500px" : "0",
+                  opacity: isOpen ? 1 : 0,
+                  overflow: "hidden",
+                  transition: "max-height 300ms ease, opacity 250ms ease",
+                }}>
                   <p style={{
                     fontFamily: "var(--font-inter), -apple-system, sans-serif",
                     fontSize: "0.88rem", color: "#6B7280", lineHeight: 1.75,
@@ -76,7 +81,7 @@ export default function ArticleFAQ({ items }: ArticleFAQProps) {
                   }}>
                     {item.a}
                   </p>
-                )}
+                </div>
               </div>
             );
           })}
