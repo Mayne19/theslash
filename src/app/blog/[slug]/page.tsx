@@ -105,6 +105,43 @@ function addIDsToHeadings(html: string): string {
   return result;
 }
 
+function stripTableDesignAttrs(tag: string): string {
+  return tag.replace(
+    /\s(?:style|class|width|min-width|border|cellpadding|cellspacing|align|valign)=("[^"]*"|'[^']*'|[^\s>]+)/gi,
+    ""
+  );
+}
+
+function normalizeArticleTable(tableHtml: string): string {
+  let table = tableHtml
+    .replace(/<colgroup\b[\s\S]*?<\/colgroup>/gi, "")
+    .replace(/<(\/?)(table|thead|tbody|tr|th|td)\b([^>]*)>/gi, (match, closing) =>
+      closing ? match : stripTableDesignAttrs(match)
+    );
+
+  if (!/<thead\b/i.test(table)) {
+    table = table.replace(/<tbody\b[^>]*>\s*(<tr\b[^>]*>[\s\S]*?<\/tr>)/i, (match, firstRow) => {
+      if (!/<th\b/i.test(firstRow)) return match;
+      return `<thead>${firstRow}</thead><tbody>`;
+    });
+  }
+
+  return `<div class="table-wrapper">${table}</div>`;
+}
+
+function normalizeArticleTables(html: string): string {
+  let normalized = html;
+  const wrappedTableRegex = /<div\b(?=[^>]*\bclass=(["'])[^"']*\btable-wrapper\b[^"']*\1)[^>]*>\s*(<table\b[\s\S]*?<\/table>)\s*<\/div>/gi;
+
+  let previous: string;
+  do {
+    previous = normalized;
+    normalized = normalized.replace(wrappedTableRegex, "$2");
+  } while (normalized !== previous);
+
+  return normalized.replace(/<table\b[\s\S]*?<\/table>/gi, (table) => normalizeArticleTable(table));
+}
+
 export default async function ArticlePage({ params }: Props) {
   const { slug } = await params;
   const article = await getArticleBySlug(slug);
@@ -135,7 +172,7 @@ export default async function ArticlePage({ params }: Props) {
 
   const rawContent = article.content ? await renderMarkdown(article.content) : "";
 
-  const processedContent = addIDsToHeadings(transformIdeasStudioCallouts(rawContent).replace(/<table/g, '<div class="table-wrapper"><table').replace(/<\/table>/g, '</table></div>').replace(/<div class="table-wrapper"><div class="table-wrapper">/g, '<div class="table-wrapper">').replace(/<\/table><\/div><\/div>/g, '</table></div>'));
+  const processedContent = addIDsToHeadings(normalizeArticleTables(transformIdeasStudioCallouts(rawContent)));
   const tocItems = extractTOC(rawContent);
 
   const articleUrl = `https://theslash.fr/blog/${slug}`;
@@ -397,12 +434,6 @@ export default async function ArticlePage({ params }: Props) {
           line-height: 1.7;
           min-width: 20px;
         }
-        .article-body table tbody tr {
-          transition: background-color 120ms ease;
-        }
-        .article-body table tbody tr:hover {
-          background-color: rgba(243, 199, 9, 0.07) !important;
-        }
         .article-body li p {
           margin-bottom: 0;
         }
@@ -446,33 +477,46 @@ export default async function ArticlePage({ params }: Props) {
           margin-top: 8px;
         }
         .article-body .table-wrapper {
-          overflow-x: auto;
-          margin: 28px 0;
-          border-radius: 14px;
-          border: 1px solid #E5E7EB;
-          -webkit-overflow-scrolling: touch;
+          width: 100%;
           max-width: 100%;
+          margin: 32px 0;
+          overflow: hidden;
+          border: 1px solid #E5E1D8;
+          border-radius: 16px;
+          background: #ffffff;
         }
         .article-body .table-wrapper table {
           width: 100%;
-          border-collapse: collapse;
+          max-width: 100%;
+          table-layout: fixed;
+          border-collapse: separate;
+          border-spacing: 0;
+          background: #ffffff;
           font-family: var(--font-inter), -apple-system, sans-serif;
-          font-size: 0.88rem;
-        }
-        .article-body .table-wrapper table thead tr {
-          background: #F3C709;
+          font-size: 0.94rem;
         }
         .article-body .table-wrapper table th {
-          padding: 14px 18px;
+          padding: 16px 18px;
+          background: #F3C709;
           text-align: left;
           font-weight: 700;
+          font-size: 0.92rem;
+          line-height: 1.45;
           color: #1A1A1A;
-          white-space: nowrap;
+          vertical-align: top;
+          white-space: normal;
+          overflow-wrap: break-word;
+          word-break: normal;
         }
         .article-body .table-wrapper table td {
-          padding: 14px 18px;
-          color: #1A1A1A;
+          padding: 16px 18px;
+          color: #334155;
           border-top: 1px solid #E5E7EB;
+          line-height: 1.65;
+          vertical-align: top;
+          white-space: normal;
+          overflow-wrap: break-word;
+          word-break: normal;
         }
         .article-body .table-wrapper table tbody tr:first-child td {
           border-top: none;
@@ -480,11 +524,18 @@ export default async function ArticlePage({ params }: Props) {
         .article-body .table-wrapper table tbody tr:nth-child(even) td {
           background: #FAFAF9;
         }
+        .article-body .table-wrapper table tbody tr:hover td {
+          background: #FFFDF2;
+        }
+        .article-body .table-wrapper table th p,
+        .article-body .table-wrapper table td p {
+          margin: 0;
+          color: inherit;
+          font: inherit;
+          line-height: inherit;
+        }
         .article-body table tbody tr {
           transition: background-color 120ms ease;
-        }
-        .article-body table tbody tr:hover {
-          background-color: rgba(243, 199, 9, 0.07) !important;
         }
         .article-body .article-callout-content p,
         .article-body .article-callout-content li,
@@ -544,6 +595,14 @@ export default async function ArticlePage({ params }: Props) {
           .article-body h2 { font-size: 1.25rem !important; }
           .article-body h3 { font-size: 1.1rem !important; }
           .article-body p, .article-body li { font-size: 0.95rem !important; }
+          .article-body .table-wrapper {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+          }
+          .article-body .table-wrapper table {
+            min-width: 560px;
+            table-layout: auto;
+          }
         }
       `}</style>
     </>
