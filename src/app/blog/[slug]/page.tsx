@@ -135,7 +135,7 @@ export default async function ArticlePage({ params }: Props) {
 
   const rawContent = article.content ? await renderMarkdown(article.content) : "";
 
-  const processedContent = addIDsToHeadings(transformIdeasStudioCallouts(rawContent));
+  const processedContent = addIDsToHeadings(transformIdeasStudioCallouts(rawContent).replace(/<table/g, '<div class="table-wrapper"><table').replace(/<\/table>/g, '</table></div>').replace(/<div class="table-wrapper"><div class="table-wrapper">/g, '<div class="table-wrapper">').replace(/<\/table><\/div><\/div>/g, '</table></div>'));
   const tocItems = extractTOC(rawContent);
 
   const articleUrl = `https://theslash.fr/blog/${slug}`;
@@ -447,10 +447,11 @@ export default async function ArticlePage({ params }: Props) {
         }
         .article-body .table-wrapper {
           overflow-x: auto;
-          margin: 24px 0;
-          border-radius: 12px;
+          margin: 28px 0;
+          border-radius: 14px;
           border: 1px solid #E5E7EB;
           -webkit-overflow-scrolling: touch;
+          max-width: 100%;
         }
         .article-body .table-wrapper table {
           width: 100%;
