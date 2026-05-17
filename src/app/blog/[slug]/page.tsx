@@ -6,6 +6,7 @@ import ArticleCard from "@/components/ArticleCard";
 import ArticleSidebarLeft from "@/components/ArticleSidebarLeft";
 import ArticleSidebarRight from "@/components/ArticleSidebarRight";
 import ArticleReactions from "@/components/ArticleReactions";
+import ArticleFAQ from "@/components/ArticleFAQ";
 import { getAllArticles, getArticleBySlug, getCategoryLabel, renderMarkdown } from "@/lib/articles";
 import { transformIdeasStudioCallouts } from "@/lib/articleCallouts";
 import { Clock, Calendar, RefreshCw } from "lucide-react";
@@ -279,25 +280,7 @@ export default async function ArticlePage({ params }: Props) {
 
       {/* ── FAQ ── */}
       {article.faq.length > 0 && (
-        <section style={{ backgroundColor: "#ffffff", padding: "64px 0" }}>
-          <div style={{ maxWidth: "800px", margin: "0 auto", padding: "0 clamp(20px, 3vw, 44px)" }}>
-            <h2 style={{ fontFamily: "var(--font-inter), -apple-system, sans-serif", fontWeight: 800, fontSize: "clamp(1.5rem, 2.5vw, 2rem)", color: "#1A1A1A", letterSpacing: "-0.03em", lineHeight: 1.15, marginBottom: "36px" }}>
-              Questions fréquentes
-            </h2>
-            <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-              {article.faq.map((item, i) => (
-                <div key={i} style={{ border: "1px solid #E5E7EB", borderRadius: "12px", padding: "20px 24px", backgroundColor: "#FAFAF9" }}>
-                  <p style={{ fontFamily: "var(--font-inter), -apple-system, sans-serif", fontWeight: 700, fontSize: "0.95rem", color: "#1A1A1A", lineHeight: 1.4, marginBottom: "10px" }}>
-                    {item.question}
-                  </p>
-                  <p style={{ fontFamily: "var(--font-inter), -apple-system, sans-serif", fontSize: "0.9rem", color: "#4B5563", lineHeight: 1.7, margin: 0 }}>
-                    {item.answer}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+        <ArticleFAQ items={article.faq.map((i) => ({ q: i.question, a: i.answer }))} />
       )}
 
       {/* ── ARTICLES LIÉS ── */}
@@ -436,6 +419,25 @@ export default async function ArticlePage({ params }: Props) {
           height: auto;
           border-radius: 8px;
           display: block;
+        }
+        .article-body blockquote {
+          font-family: var(--font-inter), -apple-system, sans-serif;
+          font-size: 1.05rem;
+          font-weight: 600;
+          color: #1A1A1A;
+          line-height: 1.7;
+          margin: 28px 0;
+          padding: 20px 24px 20px 28px;
+          border-left: 4px solid #F3C709;
+          background: #FAFAF9;
+          border-radius: 0 12px 12px 0;
+          font-style: italic;
+        }
+        .article-body blockquote p {
+          margin-bottom: 0;
+          color: inherit;
+          font-size: inherit;
+          line-height: inherit;
         }
         .article-body .table-wrapper {
           overflow-x: auto;

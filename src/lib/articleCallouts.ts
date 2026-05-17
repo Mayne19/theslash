@@ -95,19 +95,75 @@ export function resolveArticleCalloutType(value: string | null | undefined): Art
   return "important";
 }
 
+function getCalloutColors(attributes: string): {
+  bg: string | null;
+  border: string | null;
+  text: string | null;
+} {
+  return {
+    bg: getAttribute(attributes, "data-callout-color-background"),
+    border: getAttribute(attributes, "data-callout-color-border"),
+    text: getAttribute(attributes, "data-callout-color-text"),
+  };
+}
+
+function isValidHexColor(value: string | null): value is string {
+  return typeof value === "string" && /^#[0-9A-Fa-f]{6}$/.test(value.trim());
+}
+
+interface ResolvedCalloutColors {
+  bg: string;
+  border: string;
+  text: string;
+  labelBg: string;
+  labelColor: string;
+}
+
+function resolveCalloutStyle(
+  type: ArticleCalloutType,
+  attributes: string
+): ResolvedCalloutColors {
+  const source = getAttribute(attributes, "data-callout-source");
+  const isManual = !source || source === "manual";
+
+  if (isManual) {
+    const custom = getCalloutColors(attributes);
+    if (isValidHexColor(custom.bg) && isValidHexColor(custom.border) && isValidHexColor(custom.text)) {
+      return {
+        bg: custom.bg!,
+        border: custom.border!,
+        text: custom.text!,
+        labelBg: custom.border!,
+        labelColor: custom.text!,
+      };
+    }
+  }
+
+  const config = articleCalloutConfigs[type];
+  return {
+    bg: config.bg,
+    border: config.border,
+    text: config.textColor,
+    labelBg: config.labelBg,
+    labelColor: config.labelColor,
+  };
+}
+
 export function renderArticleCalloutHtml(
   type: ArticleCalloutType,
   title: string | null | undefined,
-  bodyHtml: string
+  bodyHtml: string,
+  attributes: string = ""
 ): string {
   const config = articleCalloutConfigs[type];
+  const colors = resolveCalloutStyle(type, attributes);
   const safeTitle = escapeHtml(title?.trim() || config.label);
   const sanitizedBody = stripInlineStyles(bodyHtml).trim();
 
   return [
-    `<div class="article-callout ${config.className}" data-callout-type="${config.type}" style="position: relative; background-color: ${config.bg}; border: 2px solid ${config.border}; border-radius: 16px; padding: 24px 24px 24px 28px; margin: 32px 0; font-family: var(--font-inter), -apple-system, sans-serif;">`,
-    `<div class="article-callout-label" style="position: absolute; top: -14px; left: 20px; background-color: ${config.labelBg}; color: ${config.labelColor}; font-weight: 800; font-size: 0.78rem; letter-spacing: 0.01em; padding: 4px 12px; border-radius: 6px; font-family: var(--font-inter), -apple-system, sans-serif; white-space: nowrap;">${safeTitle}</div>`,
-    `<div class="article-callout-content" style="font-size: 0.92rem; color: ${config.textColor}; line-height: 1.8; margin-top: 6px;">${sanitizedBody}</div>`,
+    `<div class="article-callout ${config.className}" data-callout-type="${config.type}" style="position: relative; background-color: ${colors.bg}; border: 2px solid ${colors.border}; border-radius: 16px; padding: 24px 24px 24px 28px; margin: 32px 0; font-family: var(--font-inter), -apple-system, sans-serif;">`,
+    `<div class="article-callout-label" style="position: absolute; top: -14px; left: 20px; background-color: ${colors.labelBg}; color: ${colors.labelColor}; font-weight: 800; font-size: 0.78rem; letter-spacing: 0.01em; padding: 4px 12px; border-radius: 6px; font-family: var(--font-inter), -apple-system, sans-serif; white-space: nowrap;">${safeTitle}</div>`,
+    `<div class="article-callout-content" style="font-size: 0.92rem; color: ${colors.text}; line-height: 1.8; margin-top: 6px;">${sanitizedBody}</div>`,
     `</div>`,
   ].join("");
 }
@@ -128,7 +184,7 @@ export function transformIdeasStudioCallouts(html: string): string {
         ?? getAttribute(attributes, "data-callout-label")
         ?? (titleHtml ? stripHtml(titleHtml) : null);
 
-      return renderArticleCalloutHtml(type, title, bodyHtml);
+      return renderArticleCalloutHtml(type, title, bodyHtml, attributes);
     }
   );
 }
