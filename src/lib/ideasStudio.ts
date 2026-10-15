@@ -5,7 +5,9 @@ export const IDEAS_STUDIO_TRACKING_KEY =
 export const IDEAS_STUDIO_TRACKING_JS_URL =
   process.env.NEXT_PUBLIC_IDEAS_STUDIO_TRACKING_JS_URL;
 
-const API_BASE = "https://ideas-studio.onrender.com/api/public";
+const API_BASE =
+  process.env.NEXT_PUBLIC_IDEAS_STUDIO_API_URL ||
+  "https://ideas-studio-production.up.railway.app/api/public";
 const PROJECT_ID = process.env.NEXT_PUBLIC_IDEAS_STUDIO_PROJECT_ID;
 
 export interface IdeasStudioArticle {
